@@ -9,7 +9,7 @@ public class Solution31 {
         int firstPrice = scanner.nextInt();
         int secondPrice = scanner.nextInt();
 
-        int totalPrice = firstPrice + secondPrice;
+        long totalPrice = (long) firstPrice + secondPrice;
 
         System.out.println(totalPrice);
     }

@@ -6,7 +6,7 @@ public class Solution68 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int totalSales = 0;
+        long totalSales = 0;
 
         while (true) {
             int sale = scanner.nextInt();

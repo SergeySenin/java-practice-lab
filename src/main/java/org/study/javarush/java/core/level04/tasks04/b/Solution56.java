@@ -6,7 +6,7 @@ public class Solution56 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int sumOfCoffeePrices = 0;
+        long sumOfCoffeePrices = 0;
         int costOfCoffee = scanner.nextInt();
 
         while (costOfCoffee >= 0) {

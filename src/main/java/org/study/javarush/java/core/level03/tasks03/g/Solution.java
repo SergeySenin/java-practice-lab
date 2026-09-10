@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
-
         Scanner console = new Scanner(System.in);
 
         String customerNameInput = console.nextLine();
@@ -26,7 +25,7 @@ public class Solution {
         boolean hasEnoughBalance = transferAmount <= accountBalance;
         boolean isLargeTransfer = transferAmount > 100000;
         boolean isNewAccount = accountAgeDays < 30;
-        boolean hasTooManyFailedAttempts = failedLoginAttempts >=3;
+        boolean hasTooManyFailedAttempts = failedLoginAttempts >= 3;
 
         boolean basicConditionsPassed =
                 isAccountActive && hasEnoughBalance && (!hasTooManyFailedAttempts);

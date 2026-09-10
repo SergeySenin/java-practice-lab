@@ -1,11 +1,12 @@
 package org.study.javarush.java.core.level02.tasks02.g;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
-
         Scanner console = new Scanner(System.in);
+        console.useLocale(Locale.forLanguageTag("ru-RU"));
 
         String passengerNameInput = console.nextLine();
         String emailInput = console.nextLine();

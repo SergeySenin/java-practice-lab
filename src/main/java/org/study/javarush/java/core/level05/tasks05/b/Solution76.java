@@ -8,7 +8,7 @@ public class Solution76 {
         Scanner console = new Scanner(System.in);
         int magicLimit = console.nextInt();
 
-        for (int number = 1; number <= magicLimit; number++) {
+        for (long number = 1; number <= magicLimit; number++) {
             System.out.println(number * number);
         }
     }

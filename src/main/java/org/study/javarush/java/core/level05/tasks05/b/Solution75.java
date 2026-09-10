@@ -8,8 +8,10 @@ public class Solution75 {
         Scanner console = new Scanner(System.in);
         String magicMessage = console.nextLine();
 
-        for (int index = magicMessage.length() - 1; index >= 0; index--) {
-            System.out.print(magicMessage.charAt(index));
+        int[] messageCodePoints = magicMessage.codePoints().toArray();
+
+        for (int index = messageCodePoints.length - 1; index >= 0; index--) {
+            System.out.print(new String(Character.toChars(messageCodePoints[index])));
         }
     }
 }

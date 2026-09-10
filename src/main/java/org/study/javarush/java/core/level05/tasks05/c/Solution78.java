@@ -8,12 +8,13 @@ public class Solution78 {
         Scanner console = new Scanner(System.in);
         String ancientRiddle = console.nextLine();
 
+        int[] riddleCodePoints = ancientRiddle.codePoints().toArray();
         boolean isPalindrome = true;
 
-        for (int leftIndex = 0; leftIndex < ancientRiddle.length() / 2; leftIndex++) {
-            int rightIndex = ancientRiddle.length() - 1 - leftIndex;
+        for (int leftIndex = 0; leftIndex < riddleCodePoints.length / 2; leftIndex++) {
+            int rightIndex = riddleCodePoints.length - 1 - leftIndex;
 
-            if (ancientRiddle.charAt(leftIndex) != ancientRiddle.charAt(rightIndex)) {
+            if (riddleCodePoints[leftIndex] != riddleCodePoints[rightIndex]) {
                 isPalindrome = false;
                 break;
             }
