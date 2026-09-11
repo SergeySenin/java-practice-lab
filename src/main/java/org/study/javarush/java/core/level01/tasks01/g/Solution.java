@@ -2,6 +2,7 @@ package org.study.javarush.java.core.level01.tasks01.g;
 
 public class Solution {
     public static void main(String[] args) {
+
         String userName = "Alice";
         String productName = "Mechanical Keyboard";
 

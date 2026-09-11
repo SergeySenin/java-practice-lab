@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
+
         Scanner console = new Scanner(System.in);
         console.useLocale(Locale.forLanguageTag("ru-RU"));
 
