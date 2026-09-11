@@ -7,6 +7,7 @@ public class DateDemo {
 
         Date utilDate = new Date();
         java.sql.Date sqlDate = new java.sql.Date(System.currentTimeMillis());
+
         System.out.println("java.util.Date: " + utilDate);
         System.out.println("java.sql.Date: " + sqlDate);
     }

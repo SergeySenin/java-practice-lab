@@ -7,6 +7,7 @@ public class Main {
 
         Scanner console = new Scanner(System.in);
         String applicationInput = console.nextLine();
+
         System.out.println("Application input: " + applicationInput);
     }
 }
