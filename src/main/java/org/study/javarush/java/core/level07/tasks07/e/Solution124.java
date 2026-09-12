@@ -7,13 +7,20 @@ public class Solution124 {
         playerAchievements[0] = new int[2];
         playerAchievements[1] = new int[4];
         playerAchievements[2] = new int[1];
-        int value = 101;
-        for (int i = 0; i < playerAchievements.length; i++) {
-            for (int j = 0; j < playerAchievements[i].length; j++) {
-                playerAchievements[i][j] = value;
-                value++;
-                System.out.print(playerAchievements[i][j]);
-                if (j < playerAchievements[i].length) {
+
+        int achievementId = 101;
+
+        for (int levelIndex = 0; levelIndex < playerAchievements.length; levelIndex++) {
+            for (int achievementIndex = 0;
+                 achievementIndex < playerAchievements[levelIndex].length;
+                 achievementIndex++) {
+
+                playerAchievements[levelIndex][achievementIndex] = achievementId;
+                achievementId++;
+
+                System.out.print(playerAchievements[levelIndex][achievementIndex]);
+
+                if (achievementIndex < playerAchievements[levelIndex].length - 1) {
                     System.out.print(" ");
                 }
             }

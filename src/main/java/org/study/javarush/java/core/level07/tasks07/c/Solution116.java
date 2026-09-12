@@ -4,8 +4,9 @@ public class Solution116 {
     public static void main(String[] args) {
 
         int[] gameHighScores = {10, 20, 30, 40, 50};
-        for (int gameHighscrore : gameHighScores) {
-            System.out.println(gameHighscrore);
+
+        for (int gameHighScore : gameHighScores) {
+            System.out.println(gameHighScore);
         }
     }
 }

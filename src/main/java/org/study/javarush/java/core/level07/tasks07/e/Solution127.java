@@ -8,14 +8,20 @@ public class Solution127 {
                 new int[] {25, 25},
                 new int[] {22, 20, 22, 20}
         };
-        int x = zoneTemperatures[0][0];
-        for (int i = 0; i < zoneTemperatures.length; i++) {
-            for (int j = 0; j < zoneTemperatures[i].length; j++) {
-                if (x < zoneTemperatures[i][j]) {
-                    x = zoneTemperatures[i][j];
+
+        int maxTemperature = zoneTemperatures[0][0];
+
+        for (int zoneIndex = 0; zoneIndex < zoneTemperatures.length; zoneIndex++) {
+            for (int temperatureIndex = 0;
+                 temperatureIndex < zoneTemperatures[zoneIndex].length;
+                 temperatureIndex++) {
+
+                if (zoneTemperatures[zoneIndex][temperatureIndex] > maxTemperature) {
+                    maxTemperature = zoneTemperatures[zoneIndex][temperatureIndex];
                 }
             }
         }
-        System.out.println(x);
+
+        System.out.println(maxTemperature);
     }
 }

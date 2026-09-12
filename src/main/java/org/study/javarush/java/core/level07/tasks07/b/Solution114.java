@@ -5,11 +5,13 @@ public class Solution114 {
 
         double[] sensorReadings = new double[4];
         sensorReadings[2] = 3.14;
-        for (int i = 0; i < sensorReadings.length; i++) {
-            if (i > 0) {
+
+        for (int sensorIndex = 0; sensorIndex < sensorReadings.length; sensorIndex++) {
+            if (sensorIndex > 0) {
                 System.out.print(" ");
             }
-            System.out.print(sensorReadings[i]);
+
+            System.out.print(sensorReadings[sensorIndex]);
         }
     }
 }

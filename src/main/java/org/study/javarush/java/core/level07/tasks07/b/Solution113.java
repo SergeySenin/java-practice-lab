@@ -7,6 +7,7 @@ public class Solution113 {
         favoriteLanguages[0] = "Java";
         favoriteLanguages[1] = "Java";
         favoriteLanguages[2] = "Java";
+
         System.out.println(favoriteLanguages.length);
     }
 }

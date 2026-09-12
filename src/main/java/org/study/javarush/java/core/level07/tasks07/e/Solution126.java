@@ -8,12 +8,18 @@ public class Solution126 {
                 {3, 4, 5},
                 {6}
         };
-        int x = 0;
-        for (int i = 0; i < miniGameScores.length; i++) {
-            for (int j = 0; j < miniGameScores[i].length; j++) {
-                x += miniGameScores[i][j];
+
+        int totalScore = 0;
+
+        for (int miniGameIndex = 0; miniGameIndex < miniGameScores.length; miniGameIndex++) {
+            for (int scoreIndex = 0;
+                 scoreIndex < miniGameScores[miniGameIndex].length;
+                 scoreIndex++) {
+
+                totalScore += miniGameScores[miniGameIndex][scoreIndex];
             }
         }
-        System.out.println(x);
+
+        System.out.println(totalScore);
     }
 }

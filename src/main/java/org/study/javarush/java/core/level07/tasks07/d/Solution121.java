@@ -5,6 +5,7 @@ public class Solution121 {
 
         String[][] displayGrid = new String[3][2];
         displayGrid[2][1] = "Hello";
+
         System.out.println(displayGrid[2][1]);
     }
 }

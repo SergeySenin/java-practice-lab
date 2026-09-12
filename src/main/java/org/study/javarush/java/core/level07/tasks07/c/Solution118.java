@@ -4,10 +4,12 @@ public class Solution118 {
     public static void main(String[] args) {
 
         int[] itemPrices = {5, 7, 2, 9};
-        int sum = 0;
+        int totalPrice = 0;
+
         for (int itemPrice : itemPrices) {
-            sum += itemPrice;
+            totalPrice += itemPrice;
         }
-        System.out.println(sum);
+
+        System.out.println(totalPrice);
     }
 }

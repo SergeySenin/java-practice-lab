@@ -7,11 +7,13 @@ public class Solution117 {
 
         String[] favoriteMovies = new String[3];
         Scanner console = new Scanner(System.in);
-        for (int i = 0; i < favoriteMovies.length; i++) {
-            favoriteMovies[i] = console.nextLine();
+
+        for (int movieIndex = 0; movieIndex < favoriteMovies.length; movieIndex++) {
+            favoriteMovies[movieIndex] = console.nextLine();
         }
-        for (int i = favoriteMovies.length - 1; i >= 0; i--) {
-            System.out.println(favoriteMovies[i]);
+
+        for (int movieIndex = favoriteMovies.length - 1; movieIndex >= 0; movieIndex--) {
+            System.out.println(favoriteMovies[movieIndex]);
         }
     }
 }

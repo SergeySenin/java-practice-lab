@@ -7,7 +7,9 @@ public class Solution131 {
 
         int[] mainCode = {3, 6, 9, 12};
         int[] backupCode = {3, 6, 9, 12};
-        boolean y = Arrays.equals(mainCode, backupCode);
-        System.out.println(y);
+
+        boolean codesMatch = Arrays.equals(mainCode, backupCode);
+
+        System.out.println(codesMatch);
     }
 }

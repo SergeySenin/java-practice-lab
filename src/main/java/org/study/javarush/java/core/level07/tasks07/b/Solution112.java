@@ -5,6 +5,7 @@ public class Solution112 {
 
         int[] inventorySlots = new int[5];
         inventorySlots[0] = 7;
+
         System.out.println(inventorySlots[0]);
     }
 }

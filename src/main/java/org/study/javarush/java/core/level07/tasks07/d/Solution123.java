@@ -4,13 +4,16 @@ public class Solution123 {
     public static void main(String[] args) {
 
         int[][] sensorData = new int[2][5];
-        int value = 10;
-        for (int i = 0; i < sensorData.length; i++) {
-            for (int j = 0; j < sensorData[i].length; j++) {
-                sensorData[i][j] = value;
-                value++;
-                System.out.print(sensorData[i][j]);
-                if (j < sensorData[i].length - 1) {
+        int sensorReading = 10;
+
+        for (int rowIndex = 0; rowIndex < sensorData.length; rowIndex++) {
+            for (int columnIndex = 0; columnIndex < sensorData[rowIndex].length; columnIndex++) {
+                sensorData[rowIndex][columnIndex] = sensorReading;
+                sensorReading++;
+
+                System.out.print(sensorData[rowIndex][columnIndex]);
+
+                if (columnIndex < sensorData[rowIndex].length - 1) {
                     System.out.print(" ");
                 }
             }
