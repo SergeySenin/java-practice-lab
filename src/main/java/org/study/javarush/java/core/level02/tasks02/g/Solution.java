@@ -16,9 +16,9 @@ public class Solution {
         String ticketPriceText = console.nextLine();
         String travelMinutesText = console.nextLine();
 
-        int availableSeats = console.nextInt();
-        int soldTickets = console.nextInt();
-        double routeDistance = console.nextDouble();
+        int availableSeatCount = console.nextInt();
+        int soldTicketCount = console.nextInt();
+        double routeDistanceKilometers = console.nextDouble();
 
         byte carriageNumber = 7;
 
@@ -37,39 +37,40 @@ public class Solution {
         routeDisplayName = routeDisplayName.toUpperCase();
 
         int ticketPrice = Integer.parseInt(ticketPriceText);
-        int travelMinutes = Integer.parseInt(travelMinutesText);
+        int totalTravelMinutes = Integer.parseInt(travelMinutesText);
 
-        int travelHours, remainingMinutes;
-        travelHours = travelMinutes / 60;
-        remainingMinutes = travelMinutes % 60;
+        int travelHours, remainingTravelMinutes;
+        travelHours = totalTravelMinutes / 60;
+        remainingTravelMinutes = totalTravelMinutes % 60;
 
-        soldTickets++;
-        availableSeats--;
+        soldTicketCount++;
+        availableSeatCount--;
 
         String ticketPriceAsText = String.valueOf(ticketPrice);
 
         int ticketNumber = 1000;
         ticketNumber++;
 
-        String prefix = "";
-        String ticketCode = prefix + "TRAIN-" + ticketNumber;
+        String ticketCodePrefix = "";
+        String ticketCode = ticketCodePrefix + "TRAIN-" + ticketNumber;
 
         String ticketFilePath = "C:\\Tickets\\" + ticketCode + ".txt";
 
         String electronicTicket =
-                "\"RAILWAY TICKET\""                                                                      + "\n"
-                        + "\tCode: "            + ticketCode                                              + "\n"
-                        + "\tPassenger: "       + passengerName                                           + "\n"
-                        + "\tEmail: "           + email                                                   + "\n"
-                        + "\tName length: "     + passengerNameLength                                     + "\n"
-                        + "\tRoute: "           + routeName                                               + "\n"
-                        + "\tRoute display: "   + routeDisplayName                                        + "\n"
-                        + "\tCarriage: "        + carriageNumber                                          + "\n"
-                        + "\tDistance: "        + routeDistance       + " km"                             + "\n"
-                        + "\tTravel time: "     + travelHours         + " h " + remainingMinutes + " min" + "\n"
-                        + "\tPrice: "           + ticketPriceAsText                                       + "\n"
-                        + "\tSold tickets: "    + soldTickets                                             + "\n"
-                        + "\tAvailable seats: " + availableSeats                                          + "\n"
+                "\"RAILWAY TICKET\""                                               + "\n"
+                        + "\tCode: "            + ticketCode                       + "\n"
+                        + "\tPassenger: "       + passengerName                    + "\n"
+                        + "\tEmail: "           + email                            + "\n"
+                        + "\tName length: "     + passengerNameLength              + "\n"
+                        + "\tRoute: "           + routeName                        + "\n"
+                        + "\tRoute display: "   + routeDisplayName                 + "\n"
+                        + "\tCarriage: "        + carriageNumber                   + "\n"
+                        + "\tDistance: "        + routeDistanceKilometers + " km"  + "\n"
+                        + "\tTravel time: "     + travelHours             + " h "
+                                                + remainingTravelMinutes  + " min" + "\n"
+                        + "\tPrice: "           + ticketPriceAsText                + "\n"
+                        + "\tSold tickets: "    + soldTicketCount                  + "\n"
+                        + "\tAvailable seats: " + availableSeatCount               + "\n"
                         + "\tFile: "            + ticketFilePath;
 
         System.out.println(electronicTicket);

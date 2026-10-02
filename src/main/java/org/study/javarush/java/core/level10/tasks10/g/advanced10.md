@@ -207,11 +207,11 @@ nextLine()
 
 Программа должна последовательно получить:
 
-1. «окружение» (`environmentInput`);
-2. «команду оператора» (`commandInput`);
+1. «окружение развёртывания» (`deploymentEnvironmentInput`);
+2. «команду оператора» (`operatorCommandInput`);
 3. «количество попыток текстом» (`retryCountText`);
 4. «режим проверки без реального развёртывания текстом» (`dryRunText`);
-5. «ограничение процессора текстом» (`cpuLimitText`);
+5. «ограничение процессора в процентах текстом» (`cpuLimitPercentText`);
 6. «ручной порт текстом» (`manualPortText`);
 7. «символ номера выпуска» (`releaseCharacterInput`);
 8. «диагностическое значение мониторинга» (`monitoringValueText`).
@@ -250,7 +250,7 @@ var
 Например:
 
 ```text
-результат toUpperCase() → String
+результат toUpperCase()                  → String
 результат DeploymentEnvironment.values() → DeploymentEnvironment[]
 ```
 
@@ -263,7 +263,7 @@ var
 
 ## 8. Этап 6. Нормализация пользовательского ввода
 
-Переменную `environmentInput`:
+Переменную `deploymentEnvironmentInput`:
 
 1. очистите методом `trim()`;
 2. преобразуйте в верхний регистр.
@@ -274,7 +274,7 @@ var
 normalizedEnvironmentName
 ```
 
-Команду `commandInput`:
+Команду `operatorCommandInput`:
 
 1. очистите через `trim()`;
 2. преобразуйте в нижний регистр.
@@ -289,7 +289,7 @@ normalizedCommand
 
 ```text
 normalizedEnvironmentName → PRODUCTION
-normalizedCommand → deploy
+normalizedCommand         → deploy
 ```
 
 ## 9. Этап 7. Преобразование строки в enum
@@ -346,7 +346,7 @@ PRODUCTION
 
 Создайте:
 
-«официальное имя окружения» (`environmentOfficialName`) типа `String`.
+«имя окружения развёртывания» (`deploymentEnvironmentName`) типа `String`.
 
 Получите его методом:
 
@@ -357,14 +357,14 @@ deploymentEnvironment.name()
 Для основного теста:
 
 ```text
-environmentOfficialName → PRODUCTION
+deploymentEnvironmentName → PRODUCTION
 ```
 
 ## 12. Этап 10. ordinal()
 
 Создайте:
 
-«порядковый номер окружения» (`environmentOrdinal`) типа `int`.
+«порядковый номер окружения развёртывания» (`deploymentEnvironmentOrdinal`) типа `int`.
 
 Получите его через:
 
@@ -423,7 +423,7 @@ requestedRetryCount → 3
 
 Создайте переменную:
 
-«обёрнутое количество попыток» (`wrappedRetryCount`) типа:
+«упакованное количество попыток» (`boxedRetryCount`) типа:
 
 ```
 Integer
@@ -447,25 +447,25 @@ int → Integer
 
 Создайте переменную:
 
-«распакованное количество попыток» (`unwrappedRetryCount`) типа `int`.
+«распакованное количество попыток» (`unboxedRetryCount`) типа `int`.
 
 Получите значение через:
 
 ```
-wrappedRetryCount.intValue()
+boxedRetryCount.intValue()
 ```
 
 Результат:
 
 ```text
-unwrappedRetryCount → 3
+unboxedRetryCount → 3
 ```
 
 ## 16. Этап 14. Автоупаковка и автораспаковка Integer
 
 Создайте ещё две переменные.
 
-«Количество попыток как объект» (`automaticRetryCount`) типа:
+«автоматически упакованное количество попыток» (`autoBoxedRetryCount`) типа:
 
 ```
 Integer
@@ -477,13 +477,13 @@ Integer
 
 После этого создайте:
 
-«количество попыток как примитив» (`automaticRetryCountValue`) типа:
+«автоматически распакованное количество попыток» (`autoUnboxedRetryCount`) типа:
 
 ```
 int
 ```
 
-и присвойте ей `automaticRetryCount`.
+и присвойте ей `autoBoxedRetryCount`.
 
 Компилятор должен выполнить автораспаковку.
 
@@ -552,7 +552,7 @@ false
 
 Создайте:
 
-«режим проверки» (`dryRun`) типа:
+«настройка режима проверки» (`dryRunSetting`) типа:
 
 ```
 Boolean
@@ -569,7 +569,7 @@ Boolean.parseBoolean()
 Для основного теста:
 
 ```text
-dryRun → true
+dryRunSetting → true
 ```
 
 ## 19. Этап 17. Автораспаковка Boolean
@@ -585,7 +585,7 @@ boolean
 Присвойте ей объект:
 
 ```
-dryRun
+dryRunSetting
 ```
 
 Должна произойти автораспаковка:
@@ -599,10 +599,10 @@ Boolean → boolean
 Переменная:
 
 ```
-cpuLimitText
+cpuLimitPercentText
 ```
 
-содержит значение ограничения процессора.
+содержит значение ограничения процессора в процентах.
 
 Преобразуйте её через:
 
@@ -612,7 +612,7 @@ Double.parseDouble()
 
 Создайте объект:
 
-«ограничение процессора» (`cpuLimit`) типа:
+«ограничение процессора в процентах» (`cpuLimitPercent`) типа:
 
 ```
 Double
@@ -621,7 +621,7 @@ Double
 Для основного теста:
 
 ```text
-cpuLimit → 75.5
+cpuLimitPercent → 75.5
 ```
 
 Здесь результат `Double.parseDouble()` является примитивом `double`, который затем должен
@@ -631,7 +631,7 @@ cpuLimit → 75.5
 
 Создайте:
 
-«числовое значение ограничения процессора» (`cpuLimitValue`) типа:
+«числовое значение ограничения процессора в процентах» (`cpuLimitPercentValue`) типа:
 
 ```
 double
@@ -640,7 +640,7 @@ double
 Присвойте:
 
 ```
-cpuLimit
+cpuLimitPercent
 ```
 
 Ожидается автораспаковка:
@@ -900,7 +900,7 @@ final var
 Значение сформируйте из:
 
 * `DeploymentSettings.APPLICATION_NAME`;
-* `environmentOfficialName`;
+* `deploymentEnvironmentName`;
 * `releaseCharacter`.
 
 Например:
@@ -939,8 +939,8 @@ append()
 
 ```text
 Deployment ID: JavaService-PRODUCTION-7
-Environment: PRODUCTION
-Port: 443
+Environment:   PRODUCTION
+Port:          443
 ```
 
 То есть состояние объекта должно изменяться несмотря на `final`.
@@ -1013,7 +1013,7 @@ UNKNOWN
 
 ```text
 normalizedCommand → deploy
-commandCategory → DEPLOYMENT
+commandCategory   → DEPLOYMENT
 ```
 
 В каждой рабочей ветке классического `switch` должен присутствовать необходимый `break`.
@@ -1029,10 +1029,10 @@ commandCategory → DEPLOYMENT
 Правила:
 
 ```text
-build  → Build process selected.
-test   → Test process selected.
-deploy → Deployment process selected.
-status → Status information requested.
+build   → Build process selected.
+test    → Test process selected.
+deploy  → Deployment process selected.
+status  → Status information requested.
 default → Unknown command.
 ```
 
@@ -1091,8 +1091,8 @@ executionMode → DRY_RUN
 * команда относится к категории `"DEPLOYMENT"`;
 * символ выпуска является цифрой;
 * фактическое количество попыток не превышает `MAX_RETRY_COUNT`;
-* `cpuLimitValue` больше `0`;
-* `cpuLimitValue` меньше или равно `100`.
+* `cpuLimitPercentValue` больше `0`;
+* `cpuLimitPercentValue` меньше или равно `100`.
 
 Для основного теста:
 
@@ -1105,11 +1105,11 @@ isDeploymentAllowed → true
 Добавьте в `deploymentLog` через `append()`:
 
 ```text
-Command: deploy
-Command category: DEPLOYMENT
-Execution mode: DRY_RUN
-Retry count: 3
-CPU limit: 75.5
+Command:            deploy
+Command category:   DEPLOYMENT
+Execution mode:     DRY_RUN
+Retry count:        3
+CPU limit:          75.5
 Deployment allowed: true
 ```
 
@@ -1120,25 +1120,25 @@ Deployment allowed: true
 Выведите:
 
 ```text
-Application: JavaService
-Deployment ID: JavaService-PRODUCTION-7
-Environment: PRODUCTION
-Environment ordinal: 3
-Command: deploy
-Command category: DEPLOYMENT
-Command message: Deployment process selected.
-Execution mode: DRY_RUN
-Requested retries: 3
-Effective retries: 3
-CPU limit: 75.5
-Manual port: null
-Automatic port: 443
-Effective port: 443
-Release character: 7
+Application:                JavaService
+Deployment ID:              JavaService-PRODUCTION-7
+Environment:                PRODUCTION
+Environment ordinal:        3
+Command:                    deploy
+Command category:           DEPLOYMENT
+Command message:            Deployment process selected.
+Execution mode:             DRY_RUN
+Requested retries:          3
+Effective retries:          3
+CPU limit:                  75.5
+Manual port:                null
+Automatic port:             443
+Effective port:             443
+Release character:          7
 Release character is digit: true
-Monitoring value: NaN
-Monitoring value is NaN: true
-Deployment allowed: true
+Monitoring value:           NaN
+Monitoring value is NaN:    true
+Deployment allowed:         true
 ```
 
 Все изменяемые данные должны попадать в отчёт из соответствующих переменных или констант.
@@ -1217,13 +1217,13 @@ manualPort != null
 Внутри `main` создайте временную переменную:
 
 ```
-final int TEST_LIMIT = 10;
+final int testLimit = 10;
 ```
 
 Временно попробуйте затем присвоить:
 
 ```
-TEST_LIMIT = 20;
+testLimit = 20;
 ```
 
 Код должен перестать компилироваться.
@@ -1343,23 +1343,23 @@ auto
 Ожидаемые ключевые значения:
 
 ```text
-deploymentEnvironment → DEVELOPMENT
-automaticPort → 8080
-manualPort → null
-effectivePort → 8080
+deploymentEnvironment   → DEVELOPMENT
+automaticPort           → 8080
+manualPort              → null
+effectivePort           → 8080
 
-requestedRetryCount → 9
-effectiveRetryCount → 5
+requestedRetryCount     → 9
+effectiveRetryCount     → 5
 
-commandCategory → PREPARATION
-commandMessage → Build process selected.
+commandCategory         → PREPARATION
+commandMessage          → Build process selected.
 
-executionMode → LIVE
+executionMode           → LIVE
 
-releaseCharacter → 4
+releaseCharacter        → 4
 isReleaseCharacterDigit → true
 
-isMonitoringValueNaN → false
+isMonitoringValueNaN    → false
 ```
 
 Обратите внимание:
@@ -1395,9 +1395,9 @@ false
 
 ```text
 deploymentEnvironment → STAGING
-automaticPort → 8443
-manualPort → 9090
-effectivePort → 9090
+automaticPort         → 8443
+manualPort            → 9090
+effectivePort         → 9090
 ```
 
 Ручной порт должен иметь приоритет над автоматически выбранным.
@@ -1421,9 +1421,9 @@ auto
 
 ```text
 deploymentEnvironment → TESTING
-automaticPort → 8080
-commandCategory → PREPARATION
-commandMessage → Test process selected.
+automaticPort         → 8080
+commandCategory       → PREPARATION
+commandMessage        → Test process selected.
 ```
 
 Этот тест также подтверждает, что:
@@ -1453,8 +1453,8 @@ auto
 Ожидается:
 
 ```text
-commandCategory → UNKNOWN
-commandMessage → Unknown command.
+commandCategory     → UNKNOWN
+commandMessage      → Unknown command.
 isDeploymentAllowed → false
 ```
 
@@ -1474,7 +1474,7 @@ releaseCharacterInput → A
 
 ```text
 Character.isDigit('A') → false
-isDeploymentAllowed → false
+isDeploymentAllowed    → false
 ```
 
 ## 47. Дополнительный тест 6. Разный регистр окружения
@@ -1629,9 +1629,9 @@ ordinal()
 В задании он должен продемонстрировать:
 
 ```
-case ... -> значение
+case ...  -> значение
 case A, B -> значение
-case X -> {
+case X    -> {
     ...
     yield значение;
 }
@@ -1663,10 +1663,10 @@ null
 Вы должны понимать четыре формы:
 
 ```text
-int → Integer.valueOf(...) → Integer
+int     → Integer.valueOf(...) → Integer
 Integer → intValue() → int
 
-int → Integer
+int     → Integer
 Integer → int
 ```
 
@@ -1778,7 +1778,7 @@ switch-выражение
 12. отдельно показана автораспаковка `Integer → int`;
 13. `dryRunText` преобразуется через `Boolean.parseBoolean()`;
 14. используется автоупаковка или автораспаковка `Boolean`;
-15. `cpuLimitText` преобразуется через `Double.parseDouble()`;
+15. `cpuLimitPercentText` преобразуется через `Double.parseDouble()`;
 16. используется `Double`;
 17. `"NaN"` преобразуется в `double`;
 18. `NaN` проверяется через `Double.isNaN()`;

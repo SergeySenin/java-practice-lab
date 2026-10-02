@@ -10,75 +10,75 @@ public class Solution {
         String missionNameInput = console.nextLine();
         String missionName = missionNameInput.trim();
 
-        int batteryLevel;
+        int batteryLevelPercent;
 
         do {
-            batteryLevel = console.nextInt();
+            batteryLevelPercent = console.nextInt();
 
-            if (batteryLevel < 20 || batteryLevel > 100) {
+            if (batteryLevelPercent < 20 || batteryLevelPercent > 100) {
                 System.out.println("Invalid battery level.");
             }
-        } while (batteryLevel < 20 || batteryLevel > 100);
+        } while (batteryLevelPercent < 20 || batteryLevelPercent > 100);
 
-        System.out.println("Battery accepted: " + batteryLevel + "%");
+        System.out.println("Battery accepted: " + batteryLevelPercent + "%");
 
         int checkpointCount = console.nextInt();
-        int targetCheckpoint = console.nextInt();
-        int mapSize = console.nextInt();
-        int beaconRow = console.nextInt();
-        int beaconColumn = console.nextInt();
+        int targetCheckpointNumber = console.nextInt();
+        int mapSideLength = console.nextInt();
+        int beaconRowIndex = console.nextInt();
+        int beaconColumnIndex = console.nextInt();
 
-        for (int countdown = 3; countdown >= 1; countdown--) {
-            System.out.println(countdown);
+        for (int launchCountdown = 3; launchCountdown >= 1; launchCountdown--) {
+            System.out.println(launchCountdown);
         }
 
         System.out.println("LAUNCH");
 
-        int sensorReading = console.nextInt();
+        int sensorDistanceReading = console.nextInt();
         int sensorReadingCount = 0;
-        int sensorReadingSum = 0;
+        int sensorDistanceSum = 0;
         int dangerousObjectCount = 0;
 
-        while (sensorReading >= 0) {
+        while (sensorDistanceReading >= 0) {
             sensorReadingCount++;
-            sensorReadingSum += sensorReading;
+            sensorDistanceSum += sensorDistanceReading;
 
-            if (sensorReading <= 100) {
+            if (sensorDistanceReading <= 100) {
                 dangerousObjectCount++;
             }
 
-            sensorReading = console.nextInt();
+            sensorDistanceReading = console.nextInt();
         }
 
         System.out.println("Sensor readings: "   + sensorReadingCount);
-        System.out.println("Sensor sum: "        + sensorReadingSum);
+        System.out.println("Sensor sum: "        + sensorDistanceSum);
         System.out.println("Dangerous objects: " + dangerousObjectCount);
 
-        boolean targetFound = false;
+        boolean isTargetFound = false;
 
-        for (int checkpoint = 1; checkpoint <= checkpointCount; checkpoint++) {
-            if (checkpoint % 4 == 0) {
-                System.out.println("Checkpoint " + checkpoint + ": RESTRICTED");
+        for (int checkpointNumber = 1; checkpointNumber <= checkpointCount; checkpointNumber++) {
+            if (checkpointNumber % 4 == 0) {
+                System.out.println("Checkpoint " + checkpointNumber + ": RESTRICTED");
                 continue;
             }
 
-            System.out.println("Checkpoint " + checkpoint + ": scanning");
+            System.out.println("Checkpoint " + checkpointNumber + ": scanning");
 
-            if (checkpoint == targetCheckpoint) {
-                targetFound = true;
-                System.out.println("TARGET FOUND AT CHECKPOINT " + checkpoint);
+            if (checkpointNumber == targetCheckpointNumber) {
+                isTargetFound = true;
+                System.out.println("TARGET FOUND AT CHECKPOINT " + checkpointNumber);
                 break;
             }
         }
 
-        String searchStatus = targetFound ? "FOUND" : "NOT FOUND";
+        String targetSearchStatus = isTargetFound ? "FOUND" : "NOT FOUND";
 
-        System.out.println("Search status: " + searchStatus);
+        System.out.println("Search status: " + targetSearchStatus);
 
-        for (int row = 0; row < mapSize; row++) {
-            for (int column = 0; column < mapSize; column++) {
+        for (int mapRowIndex = 0; mapRowIndex < mapSideLength; mapRowIndex++) {
+            for (int mapColumnIndex = 0; mapColumnIndex < mapSideLength; mapColumnIndex++) {
 
-                if (row == beaconRow && column == beaconColumn) {
+                if (mapRowIndex == beaconRowIndex && mapColumnIndex == beaconColumnIndex) {
                     System.out.print("B");
                 } else {
                     System.out.print(".");
@@ -89,12 +89,12 @@ public class Solution {
         }
 
         System.out.println("Mission: "           + missionName);
-        System.out.println("Battery: "           + batteryLevel           + "%");
+        System.out.println("Battery: "           + batteryLevelPercent      + "%");
         System.out.println("Sensor readings: "   + sensorReadingCount);
         System.out.println("Dangerous objects: " + dangerousObjectCount);
-        System.out.println("Target checkpoint: " + targetCheckpoint);
-        System.out.println("Search status: "     + searchStatus);
-        System.out.println("Map size: "          + mapSize                + "x"   + mapSize);
+        System.out.println("Target checkpoint: " + targetCheckpointNumber);
+        System.out.println("Search status: "     + targetSearchStatus);
+        System.out.println("Map size: "          + mapSideLength            + "x" + mapSideLength);
 
         console.close();
     }

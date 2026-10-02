@@ -3,41 +3,41 @@ package org.study.javarush.java.core.level01.tasks01.g;
 public class Solution {
     public static void main(String[] args) {
 
-        String userName = "Alice";
+        String customerName = "Alice";
         String productName = "Mechanical Keyboard";
 
-        int itemPrice = 4800;
+        int itemUnitPrice = 4800;
         int itemCount = 3;
-        int deliveryPrice = 600;
-        int discount = 1200;
+        int deliveryFee = 600;
+        int orderDiscount = 1200;
         int serviceFee = 200;
 
-        int itemsCost;
-        itemsCost = itemPrice * itemCount;
+        int totalItemsCost;
+        totalItemsCost = itemUnitPrice * itemCount;
 
-        int orderCostBeforeDiscount = (itemsCost + deliveryPrice);
+        int orderCostBeforeDiscount = (totalItemsCost + deliveryFee);
 
-        int discountPerItem = discount / itemCount;
+        int discountPerItem = orderDiscount / itemCount;
 
-        int totalCost = orderCostBeforeDiscount - discount;
-        totalCost = totalCost + serviceFee;
+        int totalOrderCost = orderCostBeforeDiscount - orderDiscount;
+        totalOrderCost = totalOrderCost + serviceFee;
 
-        String finalMessage = "Итого к оплате: " + totalCost + " руб.";
+        String orderTotalMessage = "Итого к оплате: " + totalOrderCost + " руб.";
 
         System.out.print("Покупатель: ");
-        System.out.println(userName);
+        System.out.println(customerName);
 
         System.out.print("Товар: ");
         System.out.println(productName);
 
-        System.out.println("Цена за единицу: "      + itemPrice               + " руб.");
+        System.out.println("Цена за единицу: "      + itemUnitPrice           + " руб.");
         System.out.println("Количество: "           + itemCount);
-        System.out.println("Стоимость товаров: "    + itemsCost               + " руб.");
-        System.out.println("Доставка: "             + deliveryPrice           + " руб.");
+        System.out.println("Стоимость товаров: "    + totalItemsCost          + " руб.");
+        System.out.println("Доставка: "             + deliveryFee             + " руб.");
         System.out.println("Стоимость до скидки: "  + orderCostBeforeDiscount + " руб.");
-        System.out.println("Скидка: "               + discount                + " руб.");
+        System.out.println("Скидка: "               + orderDiscount           + " руб.");
         System.out.println("Скидка на один товар: " + discountPerItem         + " руб.");
         System.out.println("Сервисный сбор: "       + serviceFee              + " руб.");
-        System.out.println(finalMessage);
+        System.out.println(orderTotalMessage);
     }
 }

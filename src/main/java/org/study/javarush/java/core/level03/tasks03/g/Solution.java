@@ -21,15 +21,15 @@ public class Solution {
 
         boolean isAccountActive = accountStatusInput.equals("ACTIVE");
         boolean isTrustedDevice = deviceStatusInput.equals("TRUSTED");
-        boolean isCodeCorrect = confirmationCodeInput.equals("BANK-2026");
+        boolean isConfirmationCodeCorrect = confirmationCodeInput.equals("BANK-2026");
 
-        boolean hasEnoughBalance = transferAmount <= accountBalance;
+        boolean hasSufficientBalance = transferAmount <= accountBalance;
         boolean isLargeTransfer = transferAmount > 100000;
         boolean isNewAccount = accountAgeDays < 30;
         boolean hasTooManyFailedAttempts = failedLoginAttempts >= 3;
 
-        boolean basicConditionsPassed =
-                isAccountActive && hasEnoughBalance && (!hasTooManyFailedAttempts);
+        boolean areBasicSecurityConditionsMet =
+                isAccountActive && hasSufficientBalance && (!hasTooManyFailedAttempts);
 
         String transferType = isLargeTransfer ? "LARGE" : "STANDARD";
 
@@ -47,19 +47,19 @@ public class Solution {
             System.out.println("SECURITY NOTICE: additional verification is required.");
         }
 
-        boolean transferAllowed = false;
+        boolean isTransferAllowed = false;
         // По умолчанию перевод запрещён.
         // Если никакое разрешающее условие не сработает,
         // значение так и останется false.
 
-        if (basicConditionsPassed) {
+        if (areBasicSecurityConditionsMet) {
             // Только если основные условия выполнены,
             // переходим к дополнительным проверкам.
 
             if (isLargeTransfer) {
                 // Если перевод КРУПНЫЙ...
 
-                if (!isNewAccount && isCodeCorrect) {
+                if (!isNewAccount && isConfirmationCodeCorrect) {
                     // Крупный перевод разрешается только если:
                     //
                     // 1. счёт НЕ новый
@@ -67,18 +67,18 @@ public class Solution {
                     //
                     // Оба условия должны быть true.
 
-                    transferAllowed = true;
+                    isTransferAllowed = true;
                 }
 
                 // Если условие выше не выполнилось,
                 // ничего не делаем.
-                // transferAllowed уже был false.
+                // isTransferAllowed уже был false.
 
             } else {
                 // Если перевод НЕ крупный,
                 // значит он обычный.
 
-                if (isTrustedDevice || isCodeCorrect) {
+                if (isTrustedDevice || isConfirmationCodeCorrect) {
                     // Обычный перевод разрешается,
                     // если выполняется ХОТЯ БЫ одно условие:
                     //
@@ -86,41 +86,41 @@ public class Solution {
                     // ИЛИ
                     // 2. код правильный.
 
-                    transferAllowed = true;
+                    isTransferAllowed = true;
                 }
 
                 // Если оба условия false,
-                // transferAllowed просто остаётся false.
+                // isTransferAllowed просто остаётся false.
             }
         }
 
-        // Если basicConditionsPassed == false,
+        // Если areBasicSecurityConditionsMet == false,
         // тело внешнего if вообще не выполнится.
         //
-        // transferAllowed останется равным false,
+        // isTransferAllowed останется равным false,
         // поэтому отдельный else здесь не нужен.
 
-        int balanceAfterTransfer = accountBalance;
+        int accountBalanceAfterTransfer = accountBalance;
 
-        if (transferAllowed) {
-            balanceAfterTransfer -= transferAmount;
+        if (isTransferAllowed) {
+            accountBalanceAfterTransfer -= transferAmount;
         }
 
-        String transferStatus = transferAllowed ? "APPROVED" : "DECLINED";
+        String transferStatus = isTransferAllowed ? "APPROVED" : "DECLINED";
 
         System.out.println("Customer: "                 + customerName);
         System.out.println("Transfer type: "            + transferType);
         System.out.println("Risk level: "               + riskLevel);
         System.out.println("Account active: "           + isAccountActive);
         System.out.println("Trusted device: "           + isTrustedDevice);
-        System.out.println("Code correct: "             + isCodeCorrect);
-        System.out.println("Enough balance: "           + hasEnoughBalance);
+        System.out.println("Code correct: "             + isConfirmationCodeCorrect);
+        System.out.println("Enough balance: "           + hasSufficientBalance);
         System.out.println("New account: "              + isNewAccount);
         System.out.println("Too many failed attempts: " + hasTooManyFailedAttempts);
         System.out.println("Transfer status: "          + transferStatus);
         System.out.println("Balance before: "           + accountBalance);
         System.out.println("Transfer amount: "          + transferAmount);
-        System.out.println("Balance after: "            + balanceAfterTransfer);
+        System.out.println("Balance after: "            + accountBalanceAfterTransfer);
 
         console.close();
     }
