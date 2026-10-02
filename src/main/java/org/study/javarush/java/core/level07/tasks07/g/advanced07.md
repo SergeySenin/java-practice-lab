@@ -134,9 +134,9 @@ athleteNotes[0] = "Team captain"
 
 ```text
 First athlete: Alice
-First score: 78
-Last athlete: Diana
-Last score: 87
+First score:   78
+Last athlete:  Diana
+Last score:    87
 ```
 
 Последний индекс нельзя записывать вручную как `3`.
@@ -292,7 +292,7 @@ Arrays.toString()
 
 Чтобы дальнейший анализ не изменял исходный массив, создайте:
 
-«копия результатов» (`scoresCopy`) типа `int[]`.
+«копия результатов» (`qualifyingScoresCopy`) типа `int[]`.
 
 Используйте:
 
@@ -309,7 +309,7 @@ qualifyingScores.length
 После создания копии измените:
 
 ```
-scoresCopy[0]
+qualifyingScoresCopy[0]
 ```
 
 например, прибавив ещё `10`.
@@ -318,10 +318,10 @@ scoresCopy[0]
 
 ```
 qualifyingScores
-scoresCopy
+qualifyingScoresCopy
 ```
 
-Изменение в `scoresCopy` **не должно** изменить `qualifyingScores`.
+Изменение в `qualifyingScoresCopy` **не должно** изменить `qualifyingScores`.
 
 Вы должны увидеть практическую разницу между:
 
@@ -339,7 +339,7 @@ Arrays.copyOf(...)
 
 Создайте ещё одну независимую копию:
 
-«отсортированные результаты» (`sortedScores`).
+«отсортированные результаты» (`sortedQualifyingScores`).
 
 Скопируйте в неё текущее содержимое `qualifyingScores` через `Arrays.copyOf()`.
 
@@ -359,7 +359,7 @@ Sorted scores: [...]
 через `Arrays.toString()`.
 
 Исходный массив `qualifyingScores` не должен изменить порядок элементов в результате сортировки
-`sortedScores`.
+`sortedQualifyingScores`.
 
 Метод `Arrays.sort()` должен применяться именно к копии.
 
@@ -375,7 +375,7 @@ Sorted scores: [...]
 Arrays.copyOfRange()
 ```
 
-Скопируйте два наибольших значения из `sortedScores`.
+Скопируйте два наибольших значения из `sortedQualifyingScores`.
 
 Поскольку массив отсортирован по возрастанию, нужные значения находятся в его конце.
 
@@ -393,19 +393,19 @@ Finalist scores: [...]
 
 Создайте независимую копию текущего массива `qualifyingScores`:
 
-«резервные результаты» (`backupScores`).
+«резервные результаты» (`backupQualifyingScores`).
 
 Используйте `Arrays.copyOf()`.
 
 Создайте переменную:
 
-«результаты совпадают» (`scoresMatch`) типа `boolean`.
+«результаты совпадают» (`qualifyingScoresMatchBackup`) типа `boolean`.
 
 Сравните содержимое:
 
 ```
 qualifyingScores
-backupScores
+backupQualifyingScores
 ```
 
 методом:
@@ -417,10 +417,10 @@ Arrays.equals()
 Ожидается:
 
 ```text
-scoresMatch → true
+qualifyingScoresMatchBackup → true
 ```
 
-После этого измените один элемент `backupScores` и повторите сравнение.
+После этого измените один элемент `backupQualifyingScores` и повторите сравнение.
 
 Теперь результат должен быть:
 
@@ -505,11 +505,10 @@ competitionScores[спортсмен][дисциплина]
 Выведите:
 
 ```text
-=== COMPETITION SCORES ===
-Alice: 80 75 90
-Bob: 92 88 95
+Alice:   80 75 90
+Bob:     92 88 95
 Charlie: 85 79 83
-Diana: 90 91 89
+Diana:   90 91 89
 ```
 
 Для перебора строк используйте:
@@ -530,7 +529,7 @@ competitionScores[athleteIndex].length
 
 Создайте одномерный массив:
 
-«итоговые баллы» (`totalScores`) типа `int[]`
+«итоговые баллы» (`athleteTotalScores`) типа `int[]`
 
 длиной `athleteNames.length`.
 
@@ -539,7 +538,7 @@ competitionScores[athleteIndex].length
 1. обнулите временную сумму;
 2. пройдите по его строке в `competitionScores`;
 3. сложите результаты всех дисциплин;
-4. сохраните сумму в соответствующий элемент `totalScores`.
+4. сохраните сумму в соответствующий элемент `athleteTotalScores`.
 
 Для основного теста:
 
@@ -552,7 +551,7 @@ Diana   → 270
 
 ## 19. Этап 18. Лучший спортсмен
 
-Найдите индекс спортсмена с максимальным значением в `totalScores`.
+Найдите индекс спортсмена с максимальным значением в `athleteTotalScores`.
 
 Создайте переменную:
 
@@ -567,13 +566,13 @@ Diana   → 270
 Сравнивайте результаты через:
 
 ```
-totalScores[i]
+athleteTotalScores[athleteIndex]
 ```
 
 После поиска выведите:
 
 ```text
-Winner: Bob
+Winner:       Bob
 Winner score: 275
 ```
 
@@ -586,7 +585,7 @@ athleteNames[winnerIndex]
 а результат — через:
 
 ```
-totalScores[winnerIndex]
+athleteTotalScores[winnerIndex]
 ```
 
 ## 20. Этап 19. Вывод двумерного массива через `Arrays`
@@ -614,15 +613,15 @@ Arrays.deepToString()
 
 Создайте:
 
-* «обычное сравнение таблиц» (`shallowComparison`);
-* «глубокое сравнение таблиц» (`deepComparison`).
+* «обычное сравнение таблиц» (`shallowCompetitionScoresMatch`);
+* «глубокое сравнение таблиц» (`deepCompetitionScoresMatch`).
 
 Обе переменные имеют тип `boolean`.
 
 Получите:
 
 ```
-shallowComparison
+shallowCompetitionScoresMatch
 ```
 
 через:
@@ -634,7 +633,7 @@ Arrays.equals()
 а:
 
 ```
-deepComparison
+deepCompetitionScoresMatch
 ```
 
 через:
@@ -646,8 +645,8 @@ Arrays.deepEquals()
 Для двух разных двумерных массивов с одинаковыми числовыми значениями ожидается:
 
 ```text
-shallowComparison → false
-deepComparison → true
+shallowCompetitionScoresMatch → false
+deepCompetitionScoresMatch    → true
 ```
 
 Цель этапа — увидеть различие между сравнением верхнего уровня массива и сравнением содержимого
@@ -659,7 +658,7 @@ deepComparison → true
 
 Создайте зубчатый массив:
 
-«дополнительные попытки» (`extraAttempts`) типа:
+«баллы дополнительных попыток» (`extraAttemptScores`) типа:
 
 ```
 int[][]
@@ -695,12 +694,12 @@ Diana   → 3, 5, 7
 
 С помощью вложенных циклов «для каждого» (`for-each`) вычислите:
 
-«общая сумма дополнительных попыток» (`extraAttemptsSum`).
+«суммарный балл дополнительных попыток» (`totalExtraAttemptScore`).
 
 Для тестовых данных:
 
 ```text
-extraAttemptsSum → 64
+totalExtraAttemptScore → 64
 ```
 
 Для вычисления суммы индексы не используйте.
@@ -708,13 +707,13 @@ extraAttemptsSum → 64
 Нужно пройти непосредственно по:
 
 ```
-int[] row
+int[] athleteAttemptScores
 ```
 
 а затем по:
 
 ```
-int value
+int attemptScore
 ```
 
 ## 24. Этап 23. Вывод количества попыток
@@ -722,16 +721,16 @@ int value
 Отдельным циклом `for` выведите количество дополнительных попыток каждого спортсмена:
 
 ```text
-Alice attempts: 2
-Bob attempts: 4
+Alice attempts:   2
+Bob attempts:     4
 Charlie attempts: 1
-Diana attempts: 3
+Diana attempts:   3
 ```
 
 Количество должно определяться через:
 
 ```
-extraAttempts[i].length
+extraAttemptScores[athleteIndex].length
 ```
 
 ## 25. Этап 24. Заполнение массива через `Arrays.fill()`
@@ -785,20 +784,20 @@ awardStatuses[winnerIndex] = "GOLD"
 После завершения обработки выведите:
 
 ```text
-Athletes: [количество спортсменов]
-Qualification scores: [массив]
-Qualification sum: [сумма]
+Athletes:              [количество спортсменов]
+Qualification scores:  [массив]
+Qualification sum:     [сумма]
 Qualification average: [среднее]
-Minimum score: [минимум]
-Maximum score: [максимум]
-Sorted scores: [отсортированная копия]
-Finalist scores: [массив финалистов]
-Competition scores: [двумерный массив]
-Total scores: [итоговые результаты]
-Winner: [имя победителя]
-Winner score: [результат победителя]
-Extra attempts sum: [сумма дополнительных попыток]
-Award statuses: [статусы]
+Minimum score:         [минимум]
+Maximum score:         [максимум]
+Sorted scores:         [отсортированная копия]
+Finalist scores:       [массив финалистов]
+Competition scores:    [двумерный массив]
+Total scores:          [итоговые результаты]
+Winner:                [имя победителя]
+Winner score:          [результат победителя]
+Extra attempts sum:    [сумма дополнительных попыток]
+Award statuses:        [статусы]
 ```
 
 Для одномерных массивов используйте:
@@ -869,23 +868,23 @@ workingScores = qualifyingScores
 После:
 
 ```
-scoresCopy = Arrays.copyOf(...)
+qualifyingScoresCopy = Arrays.copyOf(...)
 ```
 
-измените `scoresCopy[0]`.
+измените `qualifyingScoresCopy[0]`.
 
 Убедитесь, что исходный массив не изменился.
 
 Сформулируйте разницу между:
 
 ```
-int[] b = a;
+int[] copiedScores = originalScores;
 ```
 
 и:
 
 ```
-int[] b = Arrays.copyOf(a, a.length);
+int[] copiedScores = Arrays.copyOf(originalScores, originalScores.length);
 ```
 
 ## 30. Дополнительная проверка 3. for и `for-each`
@@ -893,10 +892,10 @@ int[] b = Arrays.copyOf(a, a.length);
 Попробуйте временно написать:
 
 ```
-for (int score : qualifyingScores)
+for (int qualifyingScore : qualifyingScores)
 ```
 
-и внутри присвоить переменной `score` новое значение.
+и внутри присвоить переменной `qualifyingScore` новое значение.
 
 После цикла выведите массив.
 
@@ -912,7 +911,7 @@ for (int score : qualifyingScores)
 Для любого одномерного массива определите:
 
 ```text
-первый допустимый индекс → 0
+первый допустимый индекс    → 0
 последний допустимый индекс → array.length - 1
 ```
 
@@ -929,7 +928,7 @@ array[array.length]
 Создайте временный массив:
 
 ```
-String[] test = new String[2];
+String[] temporaryStringValues = new String[2];
 ```
 
 До присваивания строк выведите оба элемента.
@@ -991,7 +990,7 @@ null
 Вы должны понимать:
 
 ```text
-первый индекс → 0
+первый индекс    → 0
 последний индекс → array.length - 1
 ```
 
@@ -1022,7 +1021,7 @@ int[][]
 Поэтому:
 
 ```
-b = a;
+copiedScores = originalScores;
 ```
 
 не создаёт независимую копию массива.

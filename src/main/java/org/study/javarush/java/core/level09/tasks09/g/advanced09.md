@@ -37,7 +37,8 @@ java.util.Scanner
 Для основного теста введите:
 
 ```text
-   INC-5042   |   error   |   auth-service   |   User@Example.com   |   C:\Logs\auth.log   |   Invalid password for "admin"
+   INC-5042   |   error   |   auth-service   |   User@Example.com
+   User@Example.com   |   C:\Logs\auth.log   |   Invalid password for "admin"
 ```
 
 В одной строке содержится шесть полей.
@@ -48,7 +49,7 @@ java.util.Scanner
 
 Создайте переменную:
 
-«части записи журнала» (`logParts`) типа:
+«поля записи журнала» (`logFields`) типа:
 
 ```
 String[]
@@ -74,19 +75,19 @@ split()
 После разделения:
 
 ```text
-logParts.length → 6
+logFields.length → 6
 ```
 
 ## 4. Этап 3. Проверка количества полей
 
 Создайте переменную:
 
-«формат записи корректен» (`isLogStructureValid`) типа `boolean`.
+«получено ожидаемое количество полей» (`hasExpectedLogFieldCount`) типа `boolean`.
 
 Она должна быть `true`, если:
 
 ```
-logParts.length == 6
+logFields.length == 6
 ```
 
 Если количество частей отличается от `6`, выведите:
@@ -99,7 +100,7 @@ Invalid log structure.
 
 ## 5. Этап 4. Извлечение полей
 
-Из массива `logParts` получите:
+Из массива `logFields` получите:
 
 * «код инцидента» (`incidentCode`);
 * «уровень события» (`eventLevel`);
@@ -123,11 +124,11 @@ strip()
 После обработки основные значения должны быть:
 
 ```text
-incidentCode → INC-5042
-eventLevel → error
-serviceName → auth-service
-email → User@Example.com
-logFilePath → C:\Logs\auth.log
+incidentCode    → INC-5042
+eventLevel      → error
+serviceName     → auth-service
+email           → User@Example.com
+logFilePath     → C:\Logs\auth.log
 incidentMessage → Invalid password for "admin"
 ```
 
@@ -152,7 +153,7 @@ eventLevel → ERROR
 Создайте:
 
 * «длина кода инцидента» (`incidentCodeLength`);
-* «длина сообщения» (`messageLength`).
+* «длина сообщения инцидента» (`incidentMessageLength`).
 
 Обе переменные имеют тип `int`.
 
@@ -166,7 +167,7 @@ length()
 
 ```text
 incidentCodeLength → 8
-messageLength → 28
+incidentMessageLength → 28
 ```
 
 ## 8. Этап 7. Первый символ кода
@@ -231,7 +232,7 @@ toCharArray()
 
 Создайте переменную:
 
-«количество цифр в коде» (`digitCount`) типа `int`.
+«количество цифр в коде инцидента» (`incidentCodeDigitCount`) типа `int`.
 
 Циклом пройдите по массиву символов.
 
@@ -250,7 +251,7 @@ INC-5042
 ожидается:
 
 ```text
-digitCount → 4
+incidentCodeDigitCount → 4
 ```
 
 ## 11. Этап 10. Поиск домена электронной почты
@@ -269,7 +270,7 @@ indexOf()
 
 Сохраните индекс в:
 
-«индекс символа @» (`atIndex`).
+«индекс символа @ в email» (`emailAtSignIndex`).
 
 После этого создайте:
 
@@ -365,7 +366,7 @@ isErrorEvent → true
 
 Создайте строку:
 
-«сообщение в нижнем регистре» (`lowerCaseMessage`).
+«сообщение инцидента в нижнем регистре» (`lowerCaseIncidentMessage`).
 
 Получите её через:
 
@@ -375,7 +376,7 @@ toLowerCase()
 
 Создайте переменную:
 
-«сообщение содержит слово password» (`containsPasswordKeyword`).
+«сообщение содержит ключевое слово password» (`hasPasswordKeyword`).
 
 Проверьте методом:
 
@@ -392,7 +393,7 @@ password
 Для основного теста:
 
 ```text
-containsPasswordKeyword → true
+hasPasswordKeyword → true
 ```
 
 Исходную переменную `incidentMessage` изменять не нужно.
@@ -413,8 +414,8 @@ C:\Logs\
 
 Создайте:
 
-* `isExpectedLogDirectory`;
-* `isLogFile`.
+* `isLogFileInExpectedDirectory`;
+* `hasLogFileExtension`.
 
 Обе переменные имеют тип `boolean`.
 
@@ -424,7 +425,7 @@ C:\Logs\
 startsWith()
 ```
 
-что путь начинается с ожидаемого каталога.
+что путь файла журнала начинается с ожидаемого каталога.
 
 Вторая должна проверять через:
 
@@ -432,7 +433,7 @@ startsWith()
 endsWith()
 ```
 
-что файл заканчивается расширением:
+что имя файла имеет расширение:
 
 ```text
 .log
@@ -526,7 +527,7 @@ billing-service
 
 Создайте:
 
-«результат сравнения сервисов» (`serviceComparison`) типа `int`.
+«результат сравнения имён сервисов» (`serviceNameComparison`) типа `int`.
 
 Выполните:
 
@@ -536,7 +537,7 @@ serviceName.compareTo(referenceServiceName)
 
 После этого создайте:
 
-«положение сервиса» (`serviceOrder`) типа `String`.
+«положение имени сервиса» (`serviceNameOrder`) типа `String`.
 
 Значение:
 
@@ -554,7 +555,7 @@ billing-service
 ожидается:
 
 ```text
-serviceOrder → BEFORE
+serviceNameOrder → BEFORE
 ```
 
 Здесь сравнение используется как диагностическая имитация алфавитной сортировки сервисов.
@@ -563,27 +564,27 @@ serviceOrder → BEFORE
 
 Создайте переменную:
 
-«количество пройденных проверок» (`passedValidationChecks`) типа `int` со значением `0`.
+«количество пройденных проверок» (`passedValidationCheckCount`) типа `int` со значением `0`.
 
 Учитывайте пять проверок:
 
 1. `hasValidIncidentPrefix`;
 2. `isRegisteredEmail`;
 3. `isErrorEvent`;
-4. `isExpectedLogDirectory && isLogFile`;
-5. `containsPasswordKeyword`.
+4. `isLogFileInExpectedDirectory && hasLogFileExtension`;
+5. `hasPasswordKeyword`.
 
 Для каждой успешно пройденной проверки увеличивайте счётчик.
 
 Для основного теста:
 
 ```text
-passedValidationChecks → 5
+passedValidationCheckCount → 5
 ```
 
 Создайте:
 
-«общее количество проверок» (`totalValidationChecks`):
+«общее количество проверок» (`totalValidationCheckCount`):
 
 ```text
 5
@@ -598,7 +599,7 @@ passedValidationChecks → 5
 Рассчитайте:
 
 ```
-passedValidationChecks / totalValidationChecks * 100
+passedValidationCheckCount / totalValidationCheckCount * 100
 ```
 
 без потери дробной части.
@@ -654,7 +655,7 @@ Validation: 80,0%
 
 Через `String.format()` создайте:
 
-«строка таблицы» (`formattedTableRow`).
+«форматированная таблица сервисов» (`formattedServiceTable`).
 
 Она должна содержать:
 
@@ -827,16 +828,16 @@ append()
 добавьте в `reportBuilder` основные сведения:
 
 ```text
-Incident: INC-5042
-Level: ERROR
-Service: auth-service
-Email: User[at]Example.com
-Domain: example.com
-File: auth.log
-Message: Invalid password for "admin"
-Code digits: 4
+Incident:      INC-5042
+Level:         ERROR
+Service:       auth-service
+Email:         User[at]Example.com
+Domain:        example.com
+File:          auth.log
+Message:       Invalid password for "admin"
+Code digits:   4
 Service order: BEFORE
-Validation: 100,0%
+Validation:    100,0%
 ```
 
 При множественной последовательной сборке текста используйте именно `StringBuilder`.
@@ -875,7 +876,7 @@ TEMPORARY LINE
 
 Перед добавлением сохраните текущую длину `reportBuilder` в переменную:
 
-«начало временной строки» (`temporaryLineStart`).
+«индекс начала временной строки» (`temporaryLineStartIndex`).
 
 После добавления удалите весь временный фрагмент методом:
 
@@ -992,7 +993,7 @@ true
 Выведите:
 
 1. текстовый баннер (`reportBanner`);
-2. форматированную строку таблицы (`formattedTableRow`);
+2. форматированную строку таблицы (`formattedServiceTable`);
 3. экранированное диагностическое сообщение (`escapedDiagnosticMessage`);
 4. результат `buildIncidentReport`;
 5. зеркальный код инцидента.
@@ -1002,43 +1003,43 @@ true
 Для основного теста:
 
 ```text
-logParts.length → 6
+logFields.length             → 6
 
-incidentCode → INC-5042
-eventLevel → ERROR
-serviceName → auth-service
-email → User@Example.com
-emailDomain → example.com
+incidentCode                 → INC-5042
+eventLevel                   → ERROR
+serviceName                  → auth-service
+email                        → User@Example.com
+emailDomain                  → example.com
 
-logFilePath → C:\Logs\auth.log
-logFileName → auth.log
+logFilePath                  → C:\Logs\auth.log
+logFileName                  → auth.log
 
-incidentMessage → Invalid password for "admin"
+incidentMessage              → Invalid password for "admin"
 
-incidentCodeLength → 8
-messageLength → 28
-firstCodeCharacter → I
-digitCount → 4
+incidentCodeLength           → 8
+incidentMessageLength        → 28
+firstCodeCharacter           → I
+incidentCodeDigitCount       → 4
 
-hasValidIncidentPrefix → true
-isRegisteredEmail → true
-isErrorEvent → true
-isExpectedLogDirectory → true
-isLogFile → true
-containsPasswordKeyword → true
+hasValidIncidentPrefix       → true
+isRegisteredEmail            → true
+isErrorEvent                 → true
+isLogFileInExpectedDirectory → true
+hasLogFileExtension          → true
+hasPasswordKeyword           → true
 
-maskedEmail → User[at]Example.com
+maskedEmail                  → User[at]Example.com
 
-serviceComparison → отрицательное число
-serviceOrder → BEFORE
+serviceNameComparison        → отрицательное число
+serviceNameOrder             → BEFORE
 
-passedValidationChecks → 5
-totalValidationChecks → 5
-validationPercent → 100.0
+passedValidationCheckCount   → 5
+totalValidationCheckCount    → 5
+validationPercent            → 100.0
 
-formattedValidationResult → Validation: 100,0%
+formattedValidationResult    → Validation: 100,0%
 
-reverseIncidentCode → 2405-CNI
+reverseIncidentCode          → 2405-CNI
 ```
 
 ## 37. Основной итоговый отчёт `StringBuilder`
@@ -1047,17 +1048,17 @@ reverseIncidentCode → 2405-CNI
 
 ```text
 ⚠ [CRITICAL]
-STATUS: VALIDATED
-Incident: INC-5042
-Level: ERROR
-Service: auth-service
-Email: User[at]Example.com
-Domain: example.com
-File: auth.log
-Message: Invalid password for "admin"
-Code digits: 4
+STATUS:        VALIDATED
+Incident:      INC-5042
+Level:         ERROR
+Service:       auth-service
+Email:         User[at]Example.com
+Domain:        example.com
+File:          auth.log
+Message:       Invalid password for "admin"
+Code digits:   4
 Service order: BEFORE
-Validation: 100,0%
+Validation:    100,0%
 ```
 
 Строки должны быть собраны через `StringBuilder`.
@@ -1119,7 +1120,7 @@ User@Other.org
 Проверьте:
 
 ```text
-emailDomain → other.org
+emailDomain       → other.org
 isRegisteredEmail → false
 ```
 
@@ -1148,8 +1149,8 @@ C:\Logs\auth.txt
 Ожидается:
 
 ```text
-isExpectedLogDirectory → true
-isLogFile → false
+isLogFileInExpectedDirectory → true
+hasLogFileExtension          → false
 ```
 
 Общая проверка пути не должна считаться успешно пройденной.
@@ -1165,8 +1166,8 @@ D:\Temp\auth.log
 Ожидается:
 
 ```text
-isExpectedLogDirectory → false
-isLogFile → true
+isLogFileInExpectedDirectory → false
+hasLogFileExtension          → true
 ```
 
 ## 43. Дополнительный тест 6. Сообщение без password
@@ -1180,7 +1181,7 @@ Connection timeout
 Ожидается:
 
 ```text
-containsPasswordKeyword → false
+hasPasswordKeyword → false
 ```
 
 ## 44. Дополнительный тест 7. Ошибка структуры
@@ -1405,11 +1406,11 @@ compareTo()
 Вы должны понимать:
 
 ```text
-indexOf() → индекс или -1
+indexOf()             → индекс или -1
 substring(start, end) → end не включается
-charAt(index) → один char
-split() → String[]
-toCharArray() → char[]
+charAt(index)         → один char
+split()               → String[]
+toCharArray()         → char[]
 ```
 
 Вы должны понимать разницу между:
@@ -1469,5 +1470,5 @@ toCharArray() → char[]
 37. содержимое двух построителей сравнивается после `toString()`;
 38. основной и дополнительные тесты дают ожидаемое поведение;
 39. вы можете объяснить неизменяемость `String`;
-40. вы можете объяснить, когда следует использовать `StringBuilder` вместо последовательной
-    конкатенации `String`.
+40. вы можете объяснить, когда следует использовать `StringBuilder`
+    вместо последовательной конкатенации `String`.

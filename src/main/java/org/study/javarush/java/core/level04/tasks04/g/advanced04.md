@@ -27,7 +27,7 @@
 
 ## 3. Этап 2. Проверка заряда аккумулятора
 
-Создайте переменную «уровень заряда» (`batteryLevel`) типа `int`.
+Создайте переменную «уровень заряда в процентах» (`batteryLevelPercent`) типа `int`.
 
 Программа должна запросить уровень заряда аккумулятора **хотя бы один раз**.
 
@@ -53,23 +53,23 @@ Invalid battery level.
 Battery accepted: [уровень заряда]%
 ```
 
-Значение должно подставляться из переменной `batteryLevel`.
+Значение должно подставляться из переменной `batteryLevelPercent`.
 
 ## 4. Этап 3. Параметры маршрута
 
 Считайте с клавиатуры:
 
 * «количество контрольных точек» (`checkpointCount`) типа `int`;
-* «номер искомой контрольной точки» (`targetCheckpoint`) типа `int`;
-* «размер карты» (`mapSize`) типа `int`;
-* «строку маяка» (`beaconRow`) типа `int`;
-* «столбец маяка» (`beaconColumn`) типа `int`.
+* «номер искомой контрольной точки» (`targetCheckpointNumber`) типа `int`;
+* «длина стороны карты» (`mapSideLength`) типа `int`;
+* «индекс строки маяка» (`beaconRowIndex`) типа `int`;
+* «индекс столбца маяка» (`beaconColumnIndex`) типа `int`.
 
 Для этого задания предполагается, что:
 
 * `checkpointCount` больше `0`;
-* `targetCheckpoint` находится в диапазоне от `1` до `checkpointCount`;
-* `mapSize` больше `0`;
+* `targetCheckpointNumber` находится в диапазоне от `1` до `checkpointCount`;
+* `mapSideLength` больше `0`;
 * координаты маяка находятся внутри карты.
 
 Дополнительную проверку этих значений выполнять не требуется.
@@ -105,9 +105,9 @@ LAUNCH
 
 Создайте:
 
-* «показание датчика» (`sensorReading`) типа `int`;
+* «показание расстояния датчика» (`sensorDistanceReading`) типа `int`;
 * «количество показаний» (`sensorReadingCount`) типа `int` со значением `0`;
-* «сумма показаний» (`sensorReadingSum`) типа `int` со значением `0`;
+* «сумма расстояний» (`sensorDistanceSum`) типа `int` со значением `0`;
 * «количество опасных объектов» (`dangerousObjectCount`) типа `int` со значением `0`.
 
 Используйте цикл «с предусловием» (`while`).
@@ -127,14 +127,14 @@ LAUNCH
 Для каждого неотрицательного показания:
 
 1. увеличьте `sensorReadingCount` на единицу;
-2. прибавьте расстояние к `sensorReadingSum`;
+2. прибавьте расстояние к `sensorDistanceSum`;
 3. если расстояние меньше или равно `100`, увеличьте `dangerousObjectCount` на единицу.
 
 После завершения ввода выведите:
 
 ```text
-Sensor readings: [количество]
-Sensor sum: [сумма]
+Sensor readings:   [количество]
+Sensor sum:        [сумма]
 Dangerous objects: [количество опасных объектов]
 ```
 
@@ -152,8 +152,8 @@ Dangerous objects: [количество опасных объектов]
 
 должны получиться:
 
-* `sensorReadingCount` → `4`;
-* `sensorReadingSum` → `790`;
+* `sensorReadingCount`   → `4`;
+* `sensorDistanceSum`    → `790`;
 * `dangerousObjectCount` → `2`.
 
 ## 7. Этап 6. Проверка контрольных точек маршрута
@@ -186,7 +186,7 @@ Checkpoint [номер]: RESTRICTED
 
 ## 8. Этап 7. Поиск маяка
 
-Создайте переменную «маяк найден» (`targetFound`) типа `boolean` со значением `false`.
+Создайте переменную «маяк найден» (`isTargetFound`) типа `boolean` со значением `false`.
 
 Для каждой контрольной точки, которая **не была пропущена** через `continue`, выведите:
 
@@ -194,11 +194,11 @@ Checkpoint [номер]: RESTRICTED
 Checkpoint [номер]: scanning
 ```
 
-После этого сравните текущий номер контрольной точки с `targetCheckpoint`.
+После этого сравните текущий номер контрольной точки с `targetCheckpointNumber`.
 
 Если номера совпадают:
 
-1. присвойте `targetFound = true`;
+1. присвойте `isTargetFound = true`;
 
 2. выведите:
 
@@ -212,20 +212,21 @@ Checkpoint [номер]: scanning
 
 ### Важное следствие
 
-Если `targetCheckpoint` является каждой четвёртой точкой, например `4` или `8`, сначала должен
+Если `targetCheckpointNumber` является каждой четвёртой точкой, например `4` или `8`, сначала должен
 выполниться `continue`.
 
 Следовательно, такая точка будет считаться закрытой зоной и маяк найден не будет.
 
-Не изменяйте порядок этих проверок только ради получения `targetFound = true`.
+Не изменяйте порядок этих проверок только ради получения `isTargetFound = true`.
 
 ## 9. Этап 8. Результат поиска
 
-После завершения цикла создайте переменную «результат поиска» (`searchStatus`) типа `String`.
+После завершения цикла создайте переменную «статус поиска цели» (`targetSearchStatus`)
+типа `String`.
 
 Используйте тернарный оператор (`?:`):
 
-* `"FOUND"`, если `targetFound == true`;
+* `"FOUND"`, если `isTargetFound == true`;
 * `"NOT FOUND"` в противном случае.
 
 Выведите:
@@ -238,16 +239,16 @@ Search status: [результат]
 
 После завершения поиска программа должна вывести квадратную текстовую карту размером:
 
-`mapSize × mapSize`.
+`mapSideLength × mapSideLength`.
 
 Используйте **два вложенных цикла `for`**:
 
-* внешний цикл отвечает за строки (`row`);
-* внутренний цикл отвечает за столбцы (`column`).
+* внешний цикл отвечает за индекс строки карты (`mapRowIndex`);
+* внутренний цикл отвечает за индекс столбца карты (`mapColumnIndex`).
 
 Индексация начинается с `0`.
 
-Например, при `mapSize = 5`:
+Например, при `mapSideLength = 5`:
 
 * строки имеют номера от `0` до `4`;
 * столбцы имеют номера от `0` до `4`.
@@ -262,8 +263,8 @@ Search status: [результат]
 Если одновременно выполняются условия:
 
 ```
-row == beaconRow
-column == beaconColumn
+mapRowIndex == beaconRowIndex
+mapColumnIndex == beaconColumnIndex
 ```
 
 выведите:
@@ -288,9 +289,9 @@ B
 Например, для:
 
 ```text
-mapSize = 5
-beaconRow = 2
-beaconColumn = 3
+mapSideLength     = 5
+beaconRowIndex    = 2
+beaconColumnIndex = 3
 ```
 
 карта должна выглядеть так:
@@ -308,13 +309,13 @@ beaconColumn = 3
 После карты выведите:
 
 ```text
-Mission: [название миссии]
-Battery: [заряд]%
-Sensor readings: [количество показаний]
+Mission:           [название миссии]
+Battery:           [заряд]%
+Sensor readings:   [количество показаний]
 Dangerous objects: [количество опасных объектов]
 Target checkpoint: [искомая точка]
-Search status: [FOUND/NOT FOUND]
-Map size: [размер]x[размер]
+Search status:     [FOUND/NOT FOUND]
+Map size:          [размер]x[размер]
 ```
 
 Все изменяемые значения должны попадать в отчёт из соответствующих переменных.
@@ -354,15 +355,15 @@ Map size: [размер]x[размер]
 
 После выполнения программы:
 
-* `missionName` → `Arctic Explorer`;
-* `batteryLevel` → `75`;
-* `checkpointCount` → `10`;
-* `targetCheckpoint` → `7`;
-* `sensorReadingCount` → `4`;
-* `sensorReadingSum` → `790`;
-* `dangerousObjectCount` → `2`;
-* `targetFound` → `true`;
-* `searchStatus` → `FOUND`.
+* `missionName`            → `Arctic Explorer`;
+* `batteryLevelPercent`    → `75`;
+* `checkpointCount`        → `10`;
+* `targetCheckpointNumber` → `7`;
+* `sensorReadingCount`     → `4`;
+* `sensorDistanceSum`      → `790`;
+* `dangerousObjectCount`   → `2`;
+* `isTargetFound`          → `true`;
+* `targetSearchStatus`     → `FOUND`.
 
 Контрольная точка `4` должна быть пропущена как закрытая.
 
@@ -372,21 +373,21 @@ Map size: [размер]x[размер]
 
 ```text
 Invalid battery level.
-Battery accepted: 75%
+Battery accepted:  75%
 3
 2
 1
 LAUNCH
-Sensor readings: 4
-Sensor sum: 790
+Sensor readings:   4
+Sensor sum:        790
 Dangerous objects: 2
-Checkpoint 1: scanning
-Checkpoint 2: scanning
-Checkpoint 3: scanning
-Checkpoint 4: RESTRICTED
-Checkpoint 5: scanning
-Checkpoint 6: scanning
-Checkpoint 7: scanning
+Checkpoint 1:      scanning
+Checkpoint 2:      scanning
+Checkpoint 3:      scanning
+Checkpoint 4:      RESTRICTED
+Checkpoint 5:      scanning
+Checkpoint 6:      scanning
+Checkpoint 7:      scanning
 TARGET FOUND AT CHECKPOINT 7
 Search status: FOUND
 .....
@@ -394,13 +395,13 @@ Search status: FOUND
 ...B.
 .....
 .....
-Mission: Arctic Explorer
-Battery: 75%
-Sensor readings: 4
+Mission:           Arctic Explorer
+Battery:           75%
+Sensor readings:   4
 Dangerous objects: 2
 Target checkpoint: 7
-Search status: FOUND
-Map size: 5x5
+Search status:     FOUND
+Map size:          5x5
 ```
 
 Текст приглашений к вводу (`Введите...`) можете добавлять по своему усмотрению. При сравнении
@@ -421,8 +422,8 @@ Map size: 5x5
 Используйте:
 
 ```text
-checkpointCount = 10
-targetCheckpoint = 8
+checkpointCount        = 10
+targetCheckpointNumber = 8
 ```
 
 Ожидаемая логика:
@@ -431,8 +432,8 @@ targetCheckpoint = 8
 * точка `8` → `RESTRICTED`;
 * `TARGET FOUND...` не выводится;
 * цикл продолжает работу до точки `10`;
-* `targetFound` → `false`;
-* `searchStatus` → `NOT FOUND`.
+* `isTargetFound`      → `false`;
+* `targetSearchStatus` → `NOT FOUND`.
 
 Этот тест проверяет, что `continue` выполняется **до** проверки искомой точки.
 
@@ -441,7 +442,7 @@ targetCheckpoint = 8
 Используйте:
 
 ```text
-targetCheckpoint = 1
+targetCheckpointNumber = 1
 ```
 
 После первой контрольной точки должен сработать `break`.
@@ -460,8 +461,8 @@ targetCheckpoint = 1
 
 Результат:
 
-* `sensorReadingCount` → `0`;
-* `sensorReadingSum` → `0`;
+* `sensorReadingCount`   → `0`;
+* `sensorDistanceSum`    → `0`;
 * `dangerousObjectCount` → `0`.
 
 Этот тест показывает отличие `while` от `do-while`.
@@ -525,11 +526,11 @@ targetCheckpoint = 1
 
 Для карты используйте отдельные счётчики:
 
-* «строка» (`row`);
-* «столбец» (`column`).
+* «индекс строки карты» (`mapRowIndex`);
+* «индекс столбца карты» (`mapColumnIndex`).
 
-Переменная `column` должна объявляться как счётчик внутреннего цикла так, чтобы при каждой новой
-строке перебор столбцов снова начинался с `0`.
+Переменная `mapColumnIndex` должна объявляться как счётчик внутреннего цикла так, чтобы при каждой
+новой строке перебор столбцов снова начинался с `0`.
 
 ## 18. Критерии выполнения
 
@@ -548,8 +549,8 @@ targetCheckpoint = 1
 11. код после `continue` на этой итерации не выполняется;
 12. после обнаружения маяка используется `break`;
 13. после `break` оставшиеся контрольные точки не проверяются;
-14. `searchStatus` определяется по значению `targetFound`;
+14. `targetSearchStatus` определяется по значению `isTargetFound`;
 15. карта строится двумя вложенными циклами `for`;
 16. внутренний цикл полностью выполняется заново для каждой строки карты;
-17. координата маяка определяется по `row` и `column`;
+17. координата маяка определяется по `mapRowIndex` и `mapColumnIndex`;
 18. основной и дополнительные тесты дают ожидаемое поведение.

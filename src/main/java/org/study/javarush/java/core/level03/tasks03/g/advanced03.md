@@ -84,7 +84,7 @@ BANK-2026
 
 ### Правильность кода
 
-Создайте переменную «код правильный» (`isCodeCorrect`) типа `boolean`.
+Создайте переменную «код правильный» (`isConfirmationCodeCorrect`) типа `boolean`.
 
 Она должна содержать результат сравнения `confirmationCodeInput` с правильным кодом `"BANK-2026"`.
 
@@ -92,7 +92,7 @@ BANK-2026
 
 Создайте следующие переменные типа `boolean`.
 
-### «Достаточно средств» (`hasEnoughBalance`)
+### «Достаточно средств» (`hasSufficientBalance`)
 
 Значение должно быть `true`, если сумма перевода (`transferAmount`) **меньше или равна** текущему
 балансу (`accountBalance`).
@@ -119,7 +119,8 @@ BANK-2026
 
 ## 6. Основная предварительная проверка
 
-Создайте переменную «основные условия выполнены» (`basicConditionsPassed`) типа `boolean`.
+Создайте переменную «основные условия безопасности выполнены»
+(`areBasicSecurityConditionsMet`) типа `boolean`.
 
 Основные условия считаются выполненными только одновременно в следующих случаях:
 
@@ -183,19 +184,19 @@ SECURITY NOTICE: additional verification is required.
 
 ## 10. Правила разрешения перевода
 
-Создайте переменную «перевод разрешён» (`transferAllowed`) типа `boolean` и первоначально присвойте
-ей значение `false`.
+Создайте переменную «перевод разрешён» (`isTransferAllowed`) типа `boolean` и первоначально
+присвойте ей значение `false`.
 
 После этого реализуйте многоуровневую проверку.
 
 ### Первый уровень
 
-С помощью `if` проверьте значение `basicConditionsPassed`.
+С помощью `if` проверьте значение `areBasicSecurityConditionsMet`.
 
 Дополнительные проверки должны выполняться **только в том случае**, если основные условия уже
 выполнены.
 
-Если основные условия не выполнены, `transferAllowed` должно сохранить значение `false`.
+Если основные условия не выполнены, `isTransferAllowed` должно сохранить значение `false`.
 
 ### Второй уровень
 
@@ -217,7 +218,7 @@ SECURITY NOTICE: additional verification is required.
 Если оба условия выполнены, присвойте:
 
 ```
-transferAllowed = true
+isTransferAllowed = true
 ```
 
 В противном случае оставьте значение `false`.
@@ -234,20 +235,21 @@ transferAllowed = true
 Если хотя бы одно условие выполнено, присвойте:
 
 ```
-transferAllowed = true
+isTransferAllowed = true
 ```
 
 В противном случае значение должно остаться `false`.
 
 ## 11. Изменение баланса
 
-Создайте переменную «баланс после операции» (`balanceAfterTransfer`) типа `int`.
+Создайте переменную «баланс после операции» (`accountBalanceAfterTransfer`) типа `int`.
 
 Сначала присвойте ей текущее значение `accountBalance`.
 
 После завершения всех проверок используйте отдельный `if` **без `else`**.
 
-Если `transferAllowed` равно `true`, уменьшите `balanceAfterTransfer` на значение `transferAmount`.
+Если `isTransferAllowed` равно `true`, уменьшите `accountBalanceAfterTransfer` на значение
+`transferAmount`.
 
 Если перевод запрещён, значение баланса изменяться не должно.
 
@@ -257,27 +259,27 @@ transferAllowed = true
 
 Определите её с помощью тернарного оператора (`?:`):
 
-* `"APPROVED"`, если `transferAllowed` равно `true`;
-* `"DECLINED"`, если `transferAllowed` равно `false`.
+* `"APPROVED"`, если `isTransferAllowed` равно `true`;
+* `"DECLINED"`, если `isTransferAllowed` равно `false`.
 
 ## 13. Итоговый отчёт
 
 После выполнения всех проверок выведите:
 
 ```text
-Customer: [имя клиента]
-Transfer type: [тип перевода]
-Risk level: [уровень риска]
-Account active: [true/false]
-Trusted device: [true/false]
-Code correct: [true/false]
-Enough balance: [true/false]
-New account: [true/false]
+Customer:                 [имя клиента]
+Transfer type:            [тип перевода]
+Risk level:               [уровень риска]
+Account active:           [true/false]
+Trusted device:           [true/false]
+Code correct:             [true/false]
+Enough balance:           [true/false]
+New account:              [true/false]
 Too many failed attempts: [true/false]
-Transfer status: [APPROVED/DECLINED]
-Balance before: [исходный баланс]
-Transfer amount: [сумма перевода]
-Balance after: [баланс после операции]
+Transfer status:          [APPROVED/DECLINED]
+Balance before:           [исходный баланс]
+Transfer amount:          [сумма перевода]
+Balance after:            [баланс после операции]
 ```
 
 Все значения в квадратных скобках должны попадать в вывод из соответствующих переменных.
@@ -299,20 +301,20 @@ BANK-2026
 
 Для этих данных должны получиться следующие значения:
 
-* `customerName` → `Sergey Senin`;
-* `isAccountActive` → `true`;
-* `isTrustedDevice` → `true`;
-* `isCodeCorrect` → `true`;
-* `hasEnoughBalance` → `true`;
-* `isLargeTransfer` → `true`;
-* `isNewAccount` → `false`;
-* `hasTooManyFailedAttempts` → `false`;
-* `basicConditionsPassed` → `true`;
-* `transferType` → `LARGE`;
-* `riskLevel` → `MEDIUM`;
-* `transferAllowed` → `true`;
-* `transferStatus` → `APPROVED`;
-* `balanceAfterTransfer` → `130000`.
+* `customerName`                  → `Sergey Senin`;
+* `isAccountActive`               → `true`;
+* `isTrustedDevice`               → `true`;
+* `isConfirmationCodeCorrect`     → `true`;
+* `hasSufficientBalance`          → `true`;
+* `isLargeTransfer`               → `true`;
+* `isNewAccount`                  → `false`;
+* `hasTooManyFailedAttempts`      → `false`;
+* `areBasicSecurityConditionsMet` → `true`;
+* `transferType`                  → `LARGE`;
+* `riskLevel`                     → `MEDIUM`;
+* `isTransferAllowed`             → `true`;
+* `transferStatus`                → `APPROVED`;
+* `accountBalanceAfterTransfer`   → `130000`.
 
 Перед итоговым отчётом также должна появиться строка:
 
@@ -323,20 +325,20 @@ SECURITY NOTICE: additional verification is required.
 Итоговый вывод:
 
 ```text
-SECURITY NOTICE: additional verification is required.
-Customer: Sergey Senin
-Transfer type: LARGE
-Risk level: MEDIUM
-Account active: true
-Trusted device: true
-Code correct: true
-Enough balance: true
-New account: false
+SECURITY NOTICE:          additional verification is required.
+Customer:                 Sergey Senin
+Transfer type:            LARGE
+Risk level:               MEDIUM
+Account active:           true
+Trusted device:           true
+Code correct:             true
+Enough balance:           true
+New account:              false
 Too many failed attempts: false
-Transfer status: APPROVED
-Balance before: 250000
-Transfer amount: 120000
-Balance after: 130000
+Transfer status:          APPROVED
+Balance before:           250000
+Transfer amount:          120000
+Balance after:            130000
 ```
 
 ## 15. Дополнительные тесты для самопроверки
@@ -358,11 +360,11 @@ WRONG
 
 Ожидаемые ключевые результаты:
 
-* `isLargeTransfer` → `true`;
-* `isCodeCorrect` → `false`;
-* `transferAllowed` → `false`;
-* `transferStatus` → `DECLINED`;
-* `balanceAfterTransfer` → `250000`.
+* `isLargeTransfer`             → `true`;
+* `isConfirmationCodeCorrect`   → `false`;
+* `isTransferAllowed`           → `false`;
+* `transferStatus`              → `DECLINED`;
+* `accountBalanceAfterTransfer` → `250000`.
 
 Обратите внимание: для **крупного** перевода одного доверенного устройства недостаточно.
 
@@ -381,13 +383,13 @@ WRONG
 
 Ожидаемые ключевые результаты:
 
-* `isLargeTransfer` → `false`;
-* `isTrustedDevice` → `true`;
-* `isCodeCorrect` → `false`;
-* `transferAllowed` → `true`;
-* `transferType` → `STANDARD`;
-* `riskLevel` → `LOW`;
-* `balanceAfterTransfer` → `40000`.
+* `isLargeTransfer`             → `false`;
+* `isTrustedDevice`             → `true`;
+* `isConfirmationCodeCorrect`   → `false`;
+* `isTransferAllowed`           → `true`;
+* `transferType`                → `STANDARD`;
+* `riskLevel`                   → `LOW`;
+* `accountBalanceAfterTransfer` → `40000`.
 
 ### Тест 4. Недостаточно средств
 
@@ -404,11 +406,11 @@ BANK-2026
 
 Ожидаемые ключевые результаты:
 
-* `hasEnoughBalance` → `false`;
-* `basicConditionsPassed` → `false`;
-* `transferAllowed` → `false`;
-* `transferStatus` → `DECLINED`;
-* `balanceAfterTransfer` → `5000`.
+* `hasSufficientBalance`          → `false`;
+* `areBasicSecurityConditionsMet` → `false`;
+* `isTransferAllowed`             → `false`;
+* `transferStatus`                → `DECLINED`;
+* `accountBalanceAfterTransfer`   → `5000`.
 
 ### Тест 5. Слишком много неудачных попыток
 
@@ -425,11 +427,11 @@ BANK-2026
 
 Ожидаемые ключевые результаты:
 
-* `hasTooManyFailedAttempts` → `true`;
-* `basicConditionsPassed` → `false`;
-* `riskLevel` → `HIGH`;
-* `transferAllowed` → `false`;
-* `transferStatus` → `DECLINED`.
+* `hasTooManyFailedAttempts`      → `true`;
+* `areBasicSecurityConditionsMet` → `false`;
+* `riskLevel`                     → `HIGH`;
+* `isTransferAllowed`             → `false`;
+* `transferStatus`                → `DECLINED`.
 
 ### Тест 6. Новый счёт и крупный перевод
 
@@ -446,11 +448,11 @@ BANK-2026
 
 Ожидаемые ключевые результаты:
 
-* `isLargeTransfer` → `true`;
-* `isNewAccount` → `true`;
-* `riskLevel` → `MEDIUM`;
-* `transferAllowed` → `false`;
-* `balanceAfterTransfer` → `300000`.
+* `isLargeTransfer`             → `true`;
+* `isNewAccount`                → `true`;
+* `riskLevel`                   → `MEDIUM`;
+* `isTransferAllowed`           → `false`;
+* `accountBalanceAfterTransfer` → `300000`.
 
 ## 16. Требования к используемому синтаксису
 
@@ -509,7 +511,7 @@ BANK-2026
 2. исходные данные считываются с клавиатуры;
 3. строки сравниваются методом `equals()`, а не оператором `==`;
 4. основные проверки сохраняются в переменных типа `boolean`;
-5. `basicConditionsPassed` вычисляется с помощью `&&` и `!`;
+5. `areBasicSecurityConditionsMet` вычисляется с помощью `&&` и `!`;
 6. уровень риска определяется конструкцией `if-else if-else`;
 7. оператор `||` используется при определении уровня риска и при проверке обычного перевода;
 8. крупный и обычный переводы обрабатываются разными ветками вложенного `if-else`;

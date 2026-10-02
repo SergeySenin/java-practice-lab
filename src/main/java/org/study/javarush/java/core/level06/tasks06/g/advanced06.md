@@ -51,7 +51,8 @@
 
 ### Общее количество измерений за всё время
 
-Переменная «общее количество измерений» (`totalMeasurements`) типа «длинное целое число» (`long`):
+Переменная «общее количество измерений» (`totalMeasurementCount`) типа
+«длинное целое число» (`long`):
 
 `12_500_000_000`
 
@@ -102,8 +103,8 @@ cast).
 В результате:
 
 ```text
-stationCode → M
-stationUnicodeCode → 77
+stationCode         → M
+stationUnicodeCode  → 77
 restoredStationCode → M
 ```
 
@@ -111,9 +112,9 @@ restoredStationCode → M
 
 С помощью метода `nextDouble()` считайте три температурных значения:
 
-* «температура 1» (`temperatureOne`);
-* «температура 2» (`temperatureTwo`);
-* «температура 3» (`temperatureThree`).
+* «температура 1» (`firstTemperature`);
+* «температура 2» (`secondTemperature`);
+* «температура 3» (`thirdTemperature`).
 
 Все три переменные должны иметь тип `double`.
 
@@ -223,19 +224,19 @@ truncatedTemperature → 19
 
 для округления `averageTemperature` до ближайшего целого.
 
-Сохраните результат в переменной «округлённая средняя температура» (`roundedTemperature`) типа
-`long`.
+Сохраните результат в переменной «округлённая средняя температура»
+(`averageTemperatureRoundedToWholeNumber`) типа `long`.
 
 Для основного теста:
 
 ```text
-roundedTemperature → 20
+averageTemperatureRoundedToWholeNumber → 20
 ```
 
 Обратите внимание на различие:
 
 ```text
-(int) averageTemperature → 19
+(int) averageTemperature       → 19
 Math.round(averageTemperature) → 20
 ```
 
@@ -247,9 +248,9 @@ Math.round(averageTemperature) → 20
 
 Создайте переменные типа `double`:
 
-* «округление вниз» (`temperatureFloor`);
-* «округление вверх» (`temperatureCeil`);
-* «банковское округление» (`temperatureRint`).
+* «округление вниз» (`averageTemperatureRoundedDown`);
+* «округление вверх» (`averageTemperatureRoundedUp`);
+* «банковское округление» (`averageTemperatureRintResult`).
 
 Получите их с помощью:
 
@@ -264,14 +265,15 @@ Math.rint()
 Для основного теста ожидаются значения:
 
 ```text
-temperatureFloor → 19.0
-temperatureCeil → 20.0
-temperatureRint → 20.0
+averageTemperatureRoundedDown → 19.0
+averageTemperatureRoundedUp   → 20.0
+averageTemperatureRintResult  → 20.0
 ```
 
 ## 10. Этап 9. Математическое округление до двух знаков
 
-Создайте переменную «округлённая температура» (`roundedAverageTemperature`) типа `double`.
+Создайте переменную «округлённая температура» (`averageTemperatureRoundedToTwoDecimals`)
+типа `double`.
 
 Округлите `averageTemperature` до двух знаков после точки по схеме:
 
@@ -284,7 +286,7 @@ temperatureRint → 20.0
 Для основного теста:
 
 ```text
-roundedAverageTemperature → 19.78
+averageTemperatureRoundedToTwoDecimals → 19.78
 ```
 
 Именно это значение должно быть сохранено в переменной и может использоваться в дальнейших
@@ -292,7 +294,7 @@ roundedAverageTemperature → 19.78
 
 ## 11. Этап 10. Форматирование через `String.format()`
 
-Создайте переменную «температура для отображения» (`formattedTemperature`) типа `String`.
+Создайте переменную «температура для отображения» (`formattedAverageTemperature`) типа `String`.
 
 С помощью:
 
@@ -307,8 +309,8 @@ roundedAverageTemperature → 19.78
 
 Важно понимать отличие:
 
-* `roundedAverageTemperature` — новое числовое значение типа `double`;
-* `formattedTemperature` — строковое представление (`String`);
+* `averageTemperatureRoundedToTwoDecimals` — новое числовое значение типа `double`;
+* `formattedAverageTemperature` — строковое представление (`String`);
 * исходное значение `averageTemperature` при форматировании не изменяется.
 
 ## 12. Этап 11. Форматирование большого числа через `DecimalFormat`
@@ -318,7 +320,7 @@ roundedAverageTemperature → 19.78
 
 `12345678.9012`
 
-Создайте объект «формат больших чисел» (`largeNumberFormat`) типа `DecimalFormat`.
+Создайте объект «формат больших чисел» (`processedDataNumberFormat`) типа `DecimalFormat`.
 
 Используйте шаблон:
 
@@ -326,7 +328,7 @@ roundedAverageTemperature → 19.78
 
 Сохраните результат форматирования в переменную:
 
-«отформатированный объём данных» (`formattedProcessedData`) типа `String`.
+«отформатированный объём данных» (`formattedTotalProcessedData`) типа `String`.
 
 В зависимости от локали результат может выглядеть, например:
 
@@ -344,14 +346,14 @@ roundedAverageTemperature → 19.78
 
 * «фактический результат калибровки» (`actualCalibration`) типа `double`;
 * «ожидаемый результат калибровки» (`expectedCalibration`) типа `double`;
-* «допуск» (`epsilon`) типа `double`.
+* «допуск» (`calibrationTolerance`) типа `double`.
 
 Присвойте:
 
 ```
 actualCalibration = 0.1 + 0.2
 expectedCalibration = 0.3
-epsilon = 0.000001
+calibrationTolerance = 0.000001
 ```
 
 Сначала создайте переменную:
@@ -385,13 +387,13 @@ false
 Она должна быть `true`, если:
 
 ```
-calibrationDifference < epsilon
+calibrationDifference < calibrationTolerance
 ```
 
 Для тестовых данных:
 
 ```text
-exactCalibrationMatch → false
+exactCalibrationMatch      → false
 calibrationWithinTolerance → true
 ```
 
@@ -417,7 +419,7 @@ Calibration status: REJECTED
 
 Создайте переменную:
 
-«результат деления на ноль» (`infinityDiagnostic`) типа `double`.
+«результат деления на ноль» (`divisionByZeroResult`) типа `double`.
 
 Присвойте:
 
@@ -429,7 +431,7 @@ Calibration status: REJECTED
 
 После этого создайте переменную:
 
-«результат является бесконечностью» (`isInfiniteResult`) типа `boolean`.
+«результат является бесконечностью» (`isDivisionByZeroInfinite`) типа `boolean`.
 
 Получите её с помощью:
 
@@ -438,15 +440,15 @@ Calibration status: REJECTED
 Ожидается:
 
 ```text
-infinityDiagnostic → Infinity
-isInfiniteResult → true
+divisionByZeroResult     → Infinity
+isDivisionByZeroInfinite → true
 ```
 
 ## 16. Этап 15. Диагностика `NaN`
 
 Создайте переменную:
 
-«неопределённый результат» (`nanDiagnostic`) типа `double`.
+«неопределённый результат» (`negativeSquareRootResult`) типа `double`.
 
 Получите квадратный корень из отрицательного числа:
 
@@ -456,7 +458,7 @@ Math.sqrt(-1)
 
 Создайте переменную:
 
-«результат является `NaN`» (`isNaNResult`) типа `boolean`.
+«результат является `NaN`» (`isNegativeSquareRootNaN`) типа `boolean`.
 
 Получите её через:
 
@@ -465,8 +467,8 @@ Math.sqrt(-1)
 Ожидается:
 
 ```text
-nanDiagnostic → NaN
-isNaNResult → true
+negativeSquareRootResult → NaN
+isNegativeSquareRootNaN  → true
 ```
 
 Для проверки `NaN` используйте именно `Double.isNaN()`, а не сравнение через `==`.
@@ -496,7 +498,7 @@ int → byte
 Выведите:
 
 ```text
-Original value: 200
+Original value:          200
 Value after int -> byte: [результат]
 ```
 
@@ -509,33 +511,33 @@ Value after int -> byte: [результат]
 Выведите:
 
 ```text
-Protocol version: [protocolVersion]
-Station altitude: [stationAltitude] m
-Station code: [stationCode]
-Station Unicode code: [stationUnicodeCode]
-Restored station code: [restoredStationCode]
-Total measurements: [totalMeasurements]
-Legacy sensor accuracy: [legacySensorAccuracy]
-Calibration factor: [calibrationFactor]
-Measurement count: [measurementCount]
-Temperature sum: [temperatureSum]
-Average temperature: [averageTemperature]
-Average temperature rounded: [roundedAverageTemperature]
-Average temperature formatted: [formattedTemperature]
-Truncated temperature: [truncatedTemperature]
-Rounded temperature: [roundedTemperature]
-Floor: [temperatureFloor]
-Ceil: [temperatureCeil]
-Rint: [temperatureRint]
-Average rainfall: [averageRainfall]
-Processed data: [formattedProcessedData]
-Exact calibration match: [exactCalibrationMatch]
-Calibration within tolerance: [calibrationWithinTolerance]
-Infinity diagnostic: [infinityDiagnostic]
-Is infinite: [isInfiniteResult]
-NaN diagnostic: [nanDiagnostic]
-Is NaN: [isNaNResult]
-Legacy controller reading: [legacyControllerReading]
+Protocol version:              [protocolVersion]
+Station altitude:              [stationAltitude] m
+Station code:                  [stationCode]
+Station Unicode code:          [stationUnicodeCode]
+Restored station code:         [restoredStationCode]
+Total measurements:            [totalMeasurementCount]
+Legacy sensor accuracy:        [legacySensorAccuracy]
+Calibration factor:            [calibrationFactor]
+Measurement count:             [measurementCount]
+Temperature sum:               [temperatureSum]
+Average temperature:           [averageTemperature]
+Average temperature rounded:   [averageTemperatureRoundedToTwoDecimals]
+Average temperature formatted: [formattedAverageTemperature]
+Truncated temperature:         [truncatedTemperature]
+Rounded temperature:           [averageTemperatureRoundedToWholeNumber]
+Floor:                         [averageTemperatureRoundedDown]
+Ceil:                          [averageTemperatureRoundedUp]
+Rint:                          [averageTemperatureRintResult]
+Average rainfall:              [averageRainfall]
+Processed data:                [formattedTotalProcessedData]
+Exact calibration match:       [exactCalibrationMatch]
+Calibration within tolerance:  [calibrationWithinTolerance]
+Infinity diagnostic:           [divisionByZeroResult]
+Is infinite:                   [isDivisionByZeroInfinite]
+NaN diagnostic:                [negativeSquareRootResult]
+Is NaN:                        [isNegativeSquareRootNaN]
+Legacy controller reading:     [legacyControllerReading]
 ```
 
 Все значения должны выводиться из соответствующих переменных.
@@ -557,36 +559,36 @@ Legacy controller reading: [legacyControllerReading]
 После вычислений:
 
 ```text
-protocolVersion → 6
-stationAltitude → 1847
-measurementCount → 3
-totalMeasurements → 12500000000
-legacySensorAccuracy → 98.5
-stationCode → M
-stationUnicodeCode → 77
-restoredStationCode → M
+protocolVersion                        → 6
+stationAltitude                        → 1847
+measurementCount                       → 3
+totalMeasurementCount                  → 12500000000
+legacySensorAccuracy                   → 98.5
+stationCode                            → M
+stationUnicodeCode                     → 77
+restoredStationCode                    → M
 
-temperatureSum → 59.33
-averageTemperature → приблизительно 19.776666666...
-averageRainfall → 3.5
+temperatureSum                         → 59.33
+averageTemperature                     → приблизительно 19.776666666...
+averageRainfall                        → 3.5
 
-truncatedTemperature → 19
-roundedTemperature → 20
-temperatureFloor → 19.0
-temperatureCeil → 20.0
-temperatureRint → 20.0
-roundedAverageTemperature → 19.78
+truncatedTemperature                   → 19
+averageTemperatureRoundedToWholeNumber → 20
+averageTemperatureRoundedDown          → 19.0
+averageTemperatureRoundedUp            → 20.0
+averageTemperatureRintResult           → 20.0
+averageTemperatureRoundedToTwoDecimals → 19.78
 
-actualCalibration → 0.30000000000000004
-expectedCalibration → 0.3
-exactCalibrationMatch → false
-calibrationWithinTolerance → true
+actualCalibration                      → 0.30000000000000004
+expectedCalibration                    → 0.3
+exactCalibrationMatch                  → false
+calibrationWithinTolerance             → true
 
-infinityDiagnostic → Infinity
-isInfiniteResult → true
+divisionByZeroResult                   → Infinity
+isDivisionByZeroInfinite               → true
 
-nanDiagnostic → NaN
-isNaNResult → true
+negativeSquareRootResult               → NaN
+isNegativeSquareRootNaN                → true
 ```
 
 Значение `legacyControllerReading` определите самостоятельно запуском программы и объясните его
@@ -603,7 +605,7 @@ isNaNResult → true
 Убедитесь, что:
 
 ```text
-(int) 19.99 → 19
+(int) 19.99       → 19
 Math.round(19.99) → 20
 ```
 
@@ -639,7 +641,7 @@ Math.round(19.99) → 20
 
 ## 22. Дополнительная проверка 3. Форматирование не изменяет значение
 
-После формирования `formattedTemperature` повторно выведите:
+После формирования `formattedAverageTemperature` повторно выведите:
 
 `averageTemperature`
 
@@ -650,13 +652,13 @@ Math.round(19.99) → 20
 В диагностических целях сравните:
 
 ```
-nanDiagnostic == Double.NaN
+negativeSquareRootResult == Double.NaN
 ```
 
 и отдельно:
 
 ```
-Double.isNaN(nanDiagnostic)
+Double.isNaN(negativeSquareRootResult)
 ```
 
 Сравните полученные результаты.
@@ -696,7 +698,7 @@ Double.isNaN(nanDiagnostic)
 * метод `Math.rint()`;
 * метод `Double.isInfinite()`;
 * метод `Double.isNaN()`;
-* сравнение дробных значений с допуском (`epsilon`);
+* сравнение дробных значений с допуском (`calibrationTolerance`);
 * `String.format()`;
 * класс `DecimalFormat`;
 * метод `DecimalFormat.format()`;
@@ -804,7 +806,7 @@ DecimalFormat.format(...)
 может дать `false`, и почему вычисленные `double` часто сравниваются через:
 
 ```
-Math.abs(a - b) < epsilon
+Math.abs(a - b) < calibrationTolerance
 ```
 
 ### Специальные значения
@@ -851,7 +853,8 @@ Double.isNaN()
 17. `String.format()` используется только для представления значения;
 18. `DecimalFormat` используется для отдельного форматирования большого числа;
 19. прямое сравнение `0.1 + 0.2` и `0.3` демонстрирует проблему точности;
-20. основная проверка равенства дробных вычислений выполняется через `Math.abs()` и `epsilon`;
+20. основная проверка равенства дробных вычислений выполняется через `Math.abs()` и
+    `calibrationTolerance`;
 21. бесконечность обнаруживается через `Double.isInfinite()`;
 22. `NaN` обнаруживается через `Double.isNaN()`;
 23. выполняется явное сужение `int → byte`;

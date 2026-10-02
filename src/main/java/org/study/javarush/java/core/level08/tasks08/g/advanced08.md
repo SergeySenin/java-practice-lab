@@ -91,8 +91,8 @@ public static void main(String[] args)
 
 * «идентификатор обращения» (`requestId`);
 * «серьёзность проблемы» (`severityLevel`);
-* «количество затронутых пользователей» (`affectedUsers`);
-* «время ожидания в минутах» (`waitingMinutes`).
+* «количество затронутых пользователей» (`affectedUserCount`);
+* «время ожидания в минутах» (`waitingTimeMinutes`).
 
 Для основного теста используйте:
 
@@ -162,8 +162,8 @@ requestTitle → Payment service unavailable
 Он принимает три параметра типа `int`:
 
 * серьёзность (`severityLevel`);
-* количество затронутых пользователей (`affectedUsers`);
-* время ожидания (`waitingMinutes`).
+* количество затронутых пользователей (`affectedUserCount`);
+* время ожидания (`waitingTimeMinutes`).
 
 Метод должен возвращать `int`.
 
@@ -174,14 +174,14 @@ requestTitle → Payment service unavailable
 Верните `3`, если выполняется хотя бы одно условие:
 
 * `severityLevel >= 4`;
-* `affectedUsers >= 100`.
+* `affectedUserCount >= 100`.
 
 ### Средний приоритет — `2`
 
 Если критический уровень не был определён, верните `2`, когда:
 
 * `severityLevel >= 2`;
-* **или** `waitingMinutes >= 60`.
+* **или** `waitingTimeMinutes >= 60`.
 
 ### Обычный приоритет — `1`
 
@@ -207,7 +207,7 @@ priorityLevel → 3
 
 Создайте статический метод:
 
-«можно принять обращение» (`isRequestAccepted`).
+«можно принять обращение» (`canAcceptRequest`).
 
 Метод принимает:
 
@@ -231,12 +231,12 @@ boolean
 
 Сохраните результат в переменную:
 
-«обращение принято» (`isRequestAcceptedResult`).
+«обращение принято» (`isRequestAccepted`).
 
 Для основного теста:
 
 ```text
-isRequestAcceptedResult → true
+isRequestAccepted → true
 ```
 
 ## 8. Этап 6. Досрочный `return` в `void`-методе
@@ -281,7 +281,7 @@ CRITICAL REQUEST: Payment service unavailable
 
 Метод принимает один параметр:
 
-«обращение принято» (`isAccepted`) типа `boolean`.
+«обращение принято» (`isRequestAccepted`) типа `boolean`.
 
 Возвращаемый тип:
 
@@ -289,7 +289,7 @@ CRITICAL REQUEST: Payment service unavailable
 void
 ```
 
-Если `isAccepted == false`, завершите метод через ранний:
+Если `isRequestAccepted == false`, завершите метод через ранний:
 
 ```
 return;
@@ -330,7 +330,7 @@ processedRequestCount → 1
 
 В `main` создайте массив:
 
-«нагрузка за предыдущие периоды» (`requestLoads`) типа `int[]`.
+«количество обращений за предыдущие периоды» (`historicalRequestCounts`) типа `int[]`.
 
 Используйте быструю инициализацию:
 
@@ -344,7 +344,7 @@ processedRequestCount → 1
 
 Создайте статический метод:
 
-«рассчитать общую нагрузку» (`calculateTotalLoad`).
+«рассчитать общее количество обращений» (`calculateTotalRequestCount`).
 
 Метод принимает:
 
@@ -374,16 +374,16 @@ int
 должно получиться:
 
 ```text
-totalLoad → 17
+totalHistoricalRequestCount → 17
 ```
 
-Переменная суммы должна существовать только внутри `calculateTotalLoad`.
+Переменная суммы должна существовать только внутри `calculateTotalRequestCount`.
 
 ## 13. Этап 11. Массив времени ответа
 
 В `main` создайте:
 
-«время ответа» (`responseTimes`) типа `int[]`.
+«время ответа в минутах» (`responseTimesInMinutes`) типа `int[]`.
 
 Значения:
 
@@ -397,12 +397,12 @@ totalLoad → 17
 
 Создайте статический метод:
 
-«улучшить время ответа» (`improveResponseTimes`).
+«уменьшить время ответа» (`reduceResponseTimes`).
 
 Метод принимает:
 
-* массив `responseTimes`;
-* количество минут улучшения (`improvementMinutes`) типа `int`.
+* массив `responseTimesInMinutes`;
+* количество минут уменьшения (`reductionMinutes`) типа `int`.
 
 Возвращаемый тип:
 
@@ -411,7 +411,7 @@ void
 ```
 
 Метод должен пройти по всем элементам массива и уменьшить каждый элемент на значение
-`improvementMinutes` .
+`reductionMinutes`.
 
 Для основного теста передайте:
 
@@ -461,7 +461,7 @@ int[]
 void
 ```
 
-После вызова метода снова выведите `responseTimes` в `main`.
+После вызова метода снова выведите `responseTimesInMinutes` в `main`.
 
 До вызова:
 
@@ -475,8 +475,8 @@ void
 [35, 50, 25, 65]
 ```
 
-То есть присваивание параметру новой ссылки не должно заменить значение переменной `responseTimes` в
-`main` .
+То есть присваивание параметру новой ссылки не должно заменить значение переменной
+`responseTimesInMinutes` в `main`.
 
 ## 16. Этап 14. Правильная замена массива через return
 
@@ -495,12 +495,12 @@ void
 15, 20, 25, 30
 ```
 
-В `main` вызовите метод и **присвойте возвращённый массив переменной `responseTimes`**.
+В `main` вызовите метод и **присвойте возвращённый массив переменной `responseTimesInMinutes`**.
 
 После этого:
 
 ```text
-responseTimes → [15, 20, 25, 30]
+responseTimesInMinutes → [15, 20, 25, 30]
 ```
 
 Таким образом, вы должны практически увидеть разницу между:
@@ -529,7 +529,7 @@ responseTimes → [15, 20, 25, 30]
 
 Создайте статический метод:
 
-«попытаться изменить лимит» (`tryToChangeLimit`).
+«попытаться изменить дневной лимит обращений» (`tryToChangeDailyRequestLimit`).
 
 Метод принимает параметр типа `int`.
 
@@ -665,16 +665,16 @@ private
 
 В `SupportRequest` создайте публичный метод:
 
-«вывести карточку обращения» (`displayRequestProfile`).
+«вывести карточку обращения» (`printRequestProfile`).
 
 Метод не принимает параметров и ничего не возвращает.
 
 Он должен вывести:
 
 ```text
-ID: [requestId]
-Title: [requestTitle]
-Priority: [priorityLevel]
+ID:             [requestId]
+Title:          [requestTitle]
+Priority:       [priorityLevel]
 Priority label: [результат getPriorityLabel()]
 ```
 
@@ -709,7 +709,7 @@ new
 После этого вызовите:
 
 ```
-displayRequestProfile()
+printRequestProfile()
 ```
 
 ## 24. Этап 22. Практическая проверка `private`
@@ -741,7 +741,7 @@ request.priorityLevel
 Метод принимает:
 
 * объект `SupportRequest`;
-* новый заголовок (`newTitle`) типа `String`.
+* новый заголовок (`newRequestTitle`) типа `String`.
 
 Метод должен изменить публичное поле `requestTitle` переданного объекта.
 
@@ -751,7 +751,7 @@ request.priorityLevel
 Payment service unavailable - verified
 ```
 
-После возврата из метода вызовите `displayRequestProfile()` ещё раз.
+После возврата из метода вызовите `printRequestProfile()` ещё раз.
 
 Изменённый заголовок должен быть виден в исходном объекте `request`.
 
@@ -788,7 +788,7 @@ Payment service unavailable - verified
 
 Внутри блока `{ ... }` объявите локальную переменную:
 
-«сообщение обработки» (`processingMessage`) типа `String`.
+«сообщение об обработке обращения» (`requestProcessingMessage`) типа `String`.
 
 Значение:
 
@@ -798,7 +798,7 @@ Request accepted for processing
 
 Выведите её внутри этого блока.
 
-После успешного запуска временно попробуйте обратиться к `processingMessage`
+После успешного запуска временно попробуйте обратиться к `requestProcessingMessage`
 **после закрывающей фигурной скобки блока** .
 
 Код должен перестать компилироваться.
@@ -835,20 +835,20 @@ String
 Он должен **сформировать и вернуть** многострочную строку:
 
 ```text
-Request ID: [значение]
-Title: [значение]
-Priority: [значение]
-Accepted: [true/false]
+Request ID:            [значение]
+Title:                 [значение]
+Priority:              [значение]
+Accepted:              [true/false]
 Total historical load: [значение]
-Processed requests: [значение]
-Daily request limit: [значение]
+Processed requests:    [значение]
+Daily request limit:   [значение]
 ```
 
 ## 29. Этап 27. Метод вывода отчёта
 
 Создайте статический метод:
 
-«вывести отчёт» (`printReport`).
+«вывести отчёт об обращении» (`printRequestReport`).
 
 Метод принимает один параметр:
 
@@ -864,12 +864,12 @@ Daily request limit: [значение]
 При окончательном выводе отчёта
 **не сохраняйте результат `buildRequestSummary()` в промежуточную переменную** .
 
-Передайте его непосредственно как аргумент метода `printReport`.
+Передайте его непосредственно как аргумент метода `printRequestReport`.
 
 То есть этот этап должен концептуально соответствовать цепочке:
 
 ```text
-printReport(
+printRequestReport(
     результат buildRequestSummary(...)
 )
 ```
@@ -883,12 +883,12 @@ printReport(
 1. считать данные;
 2. получить нормализованный заголовок через `normalizeTitle`;
 3. получить приоритет через `calculatePriority`;
-4. проверить обращение через `isRequestAccepted`;
+4. проверить обращение через `canAcceptRequest`;
 5. вызвать `printCriticalWarning`;
 6. зарегистрировать обращение через `registerProcessedRequest`;
 7. получить счётчик через `getProcessedRequestCount`;
-8. обработать массив `requestLoads`;
-9. выполнить эксперименты с `responseTimes`;
+8. обработать массив `historicalRequestCounts`;
+9. выполнить эксперименты с `responseTimesInMinutes`;
 10. выполнить эксперимент с `dailyRequestLimit`;
 11. создать объект `SupportRequest`;
 12. установить его поля;
@@ -914,32 +914,32 @@ printReport(
 ### Ожидаемые основные значения
 
 ```text
-requestTitle → Payment service unavailable
-priorityLevel → 3
-isRequestAcceptedResult → true
+requestTitle          → Payment service unavailable
+priorityLevel         → 3
+isRequestAccepted     → true
 processedRequestCount → 1
 
-requestLoads → [3, 7, 2, 5]
-totalLoad → 17
+historicalRequestCounts     → [3, 7, 2, 5]
+totalHistoricalRequestCount → 17
 
-responseTimes до улучшения → [40, 55, 30, 70]
-responseTimes после improveResponseTimes → [35, 50, 25, 65]
+responseTimesInMinutes до уменьшения             → [40, 55, 30, 70]
+responseTimesInMinutes после reduceResponseTimes → [35, 50, 25, 65]
 
-responseTimes после tryToReplaceResponseTimes
-→ [35, 50, 25, 65]
+responseTimesInMinutes после tryToReplaceResponseTimes
+                                          → [35, 50, 25, 65]
 
-responseTimes после присваивания результата createReplacementResponseTimes
-→ [15, 20, 25, 30]
+responseTimesInMinutes после присваивания
+результата createReplacementResponseTimes → [15, 20, 25, 30]
 
-dailyRequestLimit до tryToChangeLimit → 100
-dailyRequestLimit после tryToChangeLimit → 100
+dailyRequestLimit до tryToChangeDailyRequestLimit    → 100
+dailyRequestLimit после tryToChangeDailyRequestLimit → 100
 ```
 
 Объект `request` после первоначального заполнения:
 
 ```text
-requestId → 501
-requestTitle → Payment service unavailable
+requestId     → 501
+requestTitle  → Payment service unavailable
 priorityLevel → 3
 ```
 
@@ -952,8 +952,8 @@ requestTitle → Payment service unavailable - verified
 После `tryToReplaceRequest` исходный объект должен по-прежнему иметь:
 
 ```text
-requestId → 501
-requestTitle → Payment service unavailable - verified
+requestId     → 501
+requestTitle  → Payment service unavailable - verified
 priorityLevel → 3
 ```
 
@@ -968,22 +968,22 @@ CRITICAL REQUEST: Payment service unavailable
 ## 34. Ожидаемая карточка после обновления
 
 ```text
-ID: 501
-Title: Payment service unavailable - verified
-Priority: 3
+ID:             501
+Title:          Payment service unavailable - verified
+Priority:       3
 Priority label: CRITICAL
 ```
 
 ## 35. Ожидаемый итоговый отчёт
 
 ```text
-Request ID: 501
-Title: Payment service unavailable - verified
-Priority: 3
-Accepted: true
+Request ID:            501
+Title:                 Payment service unavailable - verified
+Priority:              3
+Accepted:              true
 Total historical load: 17
-Processed requests: 1
-Daily request limit: 100
+Processed requests:    1
+Daily request limit:   100
 ```
 
 Дополнительные диагностические строки, связанные с массивами и экспериментами передачи параметров,
@@ -994,9 +994,9 @@ Daily request limit: 100
 Используйте:
 
 ```text
-Title: Printer does not work
-Severity: 2
-Affected users: 1
+Title:           Printer does not work
+Severity:        2
+Affected users:  1
 Waiting minutes: 70
 ```
 
@@ -1015,9 +1015,9 @@ priorityLevel → 2
 Используйте:
 
 ```text
-Title: Mouse replacement
-Severity: 1
-Affected users: 1
+Title:           Mouse replacement
+Severity:        1
+Affected users:  1
 Waiting minutes: 10
 ```
 
@@ -1037,7 +1037,7 @@ priorityLevel → 1
 requestTitle → ""
 ```
 
-Метод `isRequestAccepted` должен вернуть:
+Метод `canAcceptRequest` должен вернуть:
 
 ```text
 false
@@ -1050,7 +1050,7 @@ false
 Перед:
 
 ```
-tryToChangeLimit(dailyRequestLimit)
+tryToChangeDailyRequestLimit(dailyRequestLimit)
 ```
 
 значение:
@@ -1084,7 +1084,7 @@ dailyRequestLimit → 100
 После:
 
 ```
-improveResponseTimes(responseTimes, 5)
+reduceResponseTimes(responseTimesInMinutes, 5)
 ```
 
 ожидается:
@@ -1100,7 +1100,7 @@ improveResponseTimes(responseTimes, 5)
 После вызова:
 
 ```
-tryToReplaceResponseTimes(responseTimes)
+tryToReplaceResponseTimes(responseTimesInMinutes)
 ```
 
 исходная переменная в `main` должна продолжить ссылаться на прежний массив.
@@ -1176,14 +1176,14 @@ request.getPriorityLabel()
 
 Такой вызов должен привести к ошибке компиляции, поскольку метод приватный.
 
-При этом `displayRequestProfile()` должен иметь возможность вызвать его внутри самого
+При этом `printRequestProfile()` должен иметь возможность вызвать его внутри самого
 `SupportRequest` .
 
 После эксперимента верните программу в рабочее состояние.
 
 ## 45. Диагностический эксперимент 3. область видимости
 
-Временно обратитесь к `processingMessage` за пределами блока, где переменная была объявлена.
+Временно обратитесь к `requestProcessingMessage` за пределами блока, где переменная была объявлена.
 
 Зафиксируйте ошибку.
 
@@ -1195,26 +1195,26 @@ request.getPriorityLabel()
 
 * «нормализовать заголовок» (`normalizeTitle`);
 * «рассчитать приоритет» (`calculatePriority`);
-* «можно принять обращение» (`isRequestAccepted`);
+* «можно принять обращение» (`canAcceptRequest`);
 * «вывести критическое предупреждение» (`printCriticalWarning`);
 * «зарегистрировать обработанное обращение» (`registerProcessedRequest`);
 * «получить количество обработанных обращений» (`getProcessedRequestCount`);
-* «рассчитать общую нагрузку» (`calculateTotalLoad`);
-* «улучшить время ответа» (`improveResponseTimes`);
+* «рассчитать общее количество обращений» (`calculateTotalRequestCount`);
+* «уменьшить время ответа» (`reduceResponseTimes`);
 * «попытаться заменить время ответа» (`tryToReplaceResponseTimes`);
 * «создать новый набор времени ответа» (`createReplacementResponseTimes`);
-* «попытаться изменить лимит» (`tryToChangeLimit`);
+* «попытаться изменить дневной лимит обращений» (`tryToChangeDailyRequestLimit`);
 * «обновить заголовок обращения» (`updateRequestTitle`);
 * «попытаться заменить обращение» (`tryToReplaceRequest`);
 * «сформировать отчёт» (`buildRequestSummary`);
-* «вывести отчёт» (`printReport`).
+* «вывести отчёт об обращении» (`printRequestReport`).
 
 В классе `SupportRequest` должны находиться:
 
 * `setPriorityLevel`;
 * `getPriorityLevel`;
 * `getPriorityLabel`;
-* `displayRequestProfile`.
+* `printRequestProfile`.
 
 ## 47. Требования к возвращаемым типам
 
@@ -1385,8 +1385,8 @@ array = new ...
 
 ### Объект
 
-Изменение поля переданного объекта видно снаружи, но присваивание параметру нового объекта не
-заменяет исходную переменную вызывающего метода.
+Изменение поля переданного объекта видно снаружи, но присваивание параметру
+нового объекта не заменяет исходную переменную вызывающего метода.
 
 ## 55. Требования к качеству декомпозиции
 
@@ -1427,40 +1427,40 @@ test2
 5. `normalizeTitle` принимает `String` и возвращает `String`;
 6. `calculatePriority` принимает несколько параметров и возвращает `int`;
 7. все пути `calculatePriority` возвращают допустимый результат;
-8. `isRequestAccepted` возвращает `boolean`;
+8. `canAcceptRequest` возвращает `boolean`;
 9. `printCriticalWarning` использует `return;` для досрочного выхода;
 10. `registerProcessedRequest` изменяет статическое поле только для принятого обращения;
 11. `getProcessedRequestCount` возвращает значение статического поля;
-12. `calculateTotalLoad` принимает массив и возвращает сумму;
-13. локальная сумма `calculateTotalLoad` недоступна вне метода;
-14. `improveResponseTimes` изменяет элементы исходного массива;
+12. `calculateTotalRequestCount` принимает массив и возвращает сумму;
+13. локальная сумма `calculateTotalRequestCount` недоступна вне метода;
+14. `reduceResponseTimes` изменяет элементы исходного массива;
 15. эти изменения видны после возврата из метода;
 16. `tryToReplaceResponseTimes` не заменяет массив в `main`;
-17. новый массив успешно передаётся в `main` через возвращаемое значение
-    `createReplacementResponseTimes` ;
-18. `tryToChangeLimit` не изменяет исходную переменную типа `int`;
+17. новый массив успешно передаётся в `main`
+    через возвращаемое значение `createReplacementResponseTimes` ;
+18. `tryToChangeDailyRequestLimit` не изменяет исходную переменную типа `int`;
 19. объект `SupportRequest` создаётся через `new`;
 20. публичные поля объекта доступны из `Solution`;
 21. приватное поле `priorityLevel` недоступно напрямую;
 22. значение `priorityLevel` устанавливается публичным методом;
 23. в `setPriorityLevel` используется `this`;
 24. `getPriorityLabel` является приватным;
-25. публичный `displayRequestProfile` может вызвать приватный метод того же класса;
+25. публичный `printRequestProfile` может вызвать приватный метод того же класса;
 26. `updateRequestTitle` изменяет состояние переданного объекта;
 27. изменение объекта видно из `main`;
 28. `tryToReplaceRequest` не заменяет переменную `request` в вызывающем методе;
-29. область видимости `processingMessage` ограничена своим блоком;
+29. область видимости `requestProcessingMessage` ограничена своим блоком;
 30. `buildRequestSummary` возвращает строку, а не выводит её;
-31. результат `buildRequestSummary` передаётся непосредственно в `printReport`;
-32. в программе присутствуют методы с возвращаемыми типами `String` , `int` , `boolean` , `int[]` и
-    `void` ;
+31. результат `buildRequestSummary` передаётся непосредственно в `printRequestReport`;
+32. в программе присутствуют методы с возвращаемыми типами
+    `String` , `int` , `boolean` , `int[]` и `void` ;
 33. используются параметры примитивного, ссылочного и пользовательского типов;
 34. диагностические эксперименты с `private` и областью видимости дают ожидаемые ошибки компиляции;
 35. после завершения экспериментов итоговая версия программы снова компилируется;
 36. основной и дополнительные тесты дают ожидаемое поведение;
 37. вы можете объяснить разницу между параметром и аргументом;
 38. вы можете объяснить разницу между полем, параметром и локальной переменной;
-39. вы можете объяснить, почему изменение элемента массива видно снаружи метода, а присваивание
-    параметру нового массива — нет;
-40. вы можете объяснить назначение `public` , `private` , `static` , `void` , `return` и `this` в
-    собственной программе.
+39. вы можете объяснить, почему изменение элемента массива видно снаружи метода,
+    а присваивание параметру нового массива — нет;
+40. вы можете объяснить назначение `public` , `private` , `static` , `void` , `return` и `this`
+    в собственной программе.

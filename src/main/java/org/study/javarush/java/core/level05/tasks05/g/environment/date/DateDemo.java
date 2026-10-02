@@ -5,10 +5,10 @@ import java.util.Date;
 public class DateDemo {
     public static void main(String[] args) {
 
-        Date utilDate = new Date();
-        java.sql.Date sqlDate = new java.sql.Date(System.currentTimeMillis());
+        Date javaUtilDate = new Date();
+        java.sql.Date javaSqlDate = new java.sql.Date(System.currentTimeMillis());
 
-        System.out.println("java.util.Date: " + utilDate);
-        System.out.println("java.sql.Date: " + sqlDate);
+        System.out.println("java.util.Date: " + javaUtilDate);
+        System.out.println("java.sql.Date: "  + javaSqlDate);
     }
 }

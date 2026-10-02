@@ -38,10 +38,11 @@
 
 После текстовых данных считайте:
 
-* «количество свободных мест» (`availableSeats`) типа «целое число» (`int`) методом `nextInt()`;
-* «количество уже проданных билетов» (`soldTickets`) типа «целое число» (`int`) методом `nextInt()`;
-* «расстояние маршрута в километрах» (`routeDistance`) типа «вещественное число двойной точности»
-  (`double`) методом `nextDouble()`.
+* «количество свободных мест» (`availableSeatCount`) типа «целое число» (`int`) методом `nextInt()`;
+* «количество уже проданных билетов» (`soldTicketCount`) типа «целое число» (`int`) методом
+  `nextInt()`;
+* «расстояние маршрута в километрах» (`routeDistanceKilometers`) типа «вещественное число
+  двойной точности» (`double`) методом `nextDouble()`.
 
 Также непосредственно в коде создайте переменную «номер вагона» (`carriageNumber`) типа «байт»
 (`byte`) со значением `7`.
@@ -110,19 +111,19 @@ Helsinki - Tampere
 Результат сохраните в переменной «стоимость билета» (`ticketPrice`) типа `int`.
 
 Таким же способом преобразуйте `travelMinutesText` в переменную «продолжительность поездки в
-минутах» (`travelMinutes`) типа `int`.
+минутах» (`totalTravelMinutes`) типа `int`.
 
 После преобразования дальнейшие арифметические операции должны выполняться именно с числовыми
-переменными `ticketPrice` и `travelMinutes`.
+переменными `ticketPrice` и `totalTravelMinutes`.
 
 ## 5. Расчёт продолжительности поездки
 
-Продолжительность поездки хранится в `travelMinutes` как общее количество минут.
+Продолжительность поездки хранится в `totalTravelMinutes` как общее количество минут.
 
 Создайте две переменные типа `int` одной сокращённой записью:
 
 * «полные часы поездки» (`travelHours`);
-* «оставшиеся минуты поездки» (`remainingMinutes`).
+* «оставшиеся минуты поездки» (`remainingTravelMinutes`).
 
 Рассчитайте:
 
@@ -137,14 +138,14 @@ Helsinki - Tampere
 
 ## 6. Регистрация продажи билета
 
-До оформления билета переменная `soldTickets` содержит количество уже проданных билетов, а
-`availableSeats` — количество оставшихся свободных мест.
+До оформления билета переменная `soldTicketCount` содержит количество уже проданных билетов, а
+`availableSeatCount` — количество оставшихся свободных мест.
 
 После успешного оформления одного билета:
 
-* увеличьте «количество проданных билетов» (`soldTickets`) ровно на единицу с помощью оператора
+* увеличьте «количество проданных билетов» (`soldTicketCount`) ровно на единицу с помощью оператора
   «инкремент» (`++`);
-* уменьшите «количество свободных мест» (`availableSeats`) ровно на единицу с помощью оператора
+* уменьшите «количество свободных мест» (`availableSeatCount`) ровно на единицу с помощью оператора
   «декремент» (`--`).
 
 Для этих двух операций используйте именно `++` и `--`, а не обычное присваивание через `=`.
@@ -234,19 +235,19 @@ C:\Tickets\TRAIN-1001.txt
 
 После обработки данных должны получиться следующие значения:
 
-* `passengerName` → `Sergey Senin`;
-* `email` → `sergey.example@mail.com`;
-* `routeName` → `Helsinki - Tampere`;
-* `routeDisplayName` → `HELSINKI - TAMPERE`;
-* `ticketPrice` → `2450`;
-* `travelMinutes` → `187`;
-* `travelHours` → `3`;
-* `remainingMinutes` → `7`;
-* `soldTickets` → `159`;
-* `availableSeats` → `41`;
-* `ticketNumber` → `1001`;
-* `ticketCode` → `TRAIN-1001`;
-* `ticketFilePath` → `C:\Tickets\TRAIN-1001.txt`.
+* `passengerName`          → `Sergey Senin`;
+* `email`                  → `sergey.example@mail.com`;
+* `routeName`              → `Helsinki - Tampere`;
+* `routeDisplayName`       → `HELSINKI - TAMPERE`;
+* `ticketPrice`            → `2450`;
+* `totalTravelMinutes`     → `187`;
+* `travelHours`            → `3`;
+* `remainingTravelMinutes` → `7`;
+* `soldTicketCount`        → `159`;
+* `availableSeatCount`     → `41`;
+* `ticketNumber`           → `1001`;
+* `ticketCode`             → `TRAIN-1001`;
+* `ticketFilePath`         → `C:\Tickets\TRAIN-1001.txt`.
 
 ## 13. Итоговый вывод
 
@@ -256,19 +257,19 @@ C:\Tickets\TRAIN-1001.txt
 
 ```text
 "RAILWAY TICKET"
-	Code: TRAIN-1001
-	Passenger: Sergey Senin
-	Email: sergey.example@mail.com
-	Name length: 12
-	Route: Helsinki - Tampere
-	Route display: HELSINKI - TAMPERE
-	Carriage: 7
-	Distance: 179.6 km
-	Travel time: 3 h 7 min
-	Price: 2450
-	Sold tickets: 159
+	Code:            TRAIN-1001
+	Passenger:       Sergey Senin
+	Email:           sergey.example@mail.com
+	Name length:     12
+	Route:           Helsinki - Tampere
+	Route display:   HELSINKI - TAMPERE
+	Carriage:        7
+	Distance:        179.6 km
+	Travel time:     3 h 7 min
+	Price:           2450
+	Sold tickets:    159
 	Available seats: 41
-	File: C:\Tickets\TRAIN-1001.txt
+	File:            C:\Tickets\TRAIN-1001.txt
 ```
 
 Отступы перед строками данных должны быть созданы символом табуляции (`\t`), а переходы между
@@ -311,11 +312,11 @@ C:\Tickets\TRAIN-1001.txt
 
 ## 15. Дополнительное требование к пустой строке
 
-Чтобы отдельно закрепить работу с пустой строкой (`""`), создайте переменную «префикс» (`prefix`)
-типа `String` со значением `""`.
+Чтобы отдельно закрепить работу с пустой строкой (`""`), создайте переменную «префикс кода
+билета» (`ticketCodePrefix`) типа `String` со значением `""`.
 
-Сформируйте `ticketCode` так, чтобы `prefix` участвовала в конкатенации, но итоговое значение всё
-равно осталось:
+Сформируйте `ticketCode` так, чтобы `ticketCodePrefix` участвовала в конкатенации, но итоговое
+значение всё равно осталось:
 
 ```text
 TRAIN-1001
@@ -333,8 +334,8 @@ TRAIN-1001
 5. строки `ticketPriceText` и `travelMinutesText` преобразуются в `int` методом
    `Integer.parseInt()`;
 6. продолжительность поездки вычисляется с помощью `/` и `%`;
-7. `soldTickets` изменяется оператором `++`;
-8. `availableSeats` изменяется оператором `--`;
+7. `soldTicketCount` изменяется оператором `++`;
+8. `availableSeatCount` изменяется оператором `--`;
 9. числовая стоимость преобразуется в строку через `String.valueOf()`;
 10. итоговый код билета рассчитывается из значения переменной, а не содержит вручную записанное
     число `1001`;
