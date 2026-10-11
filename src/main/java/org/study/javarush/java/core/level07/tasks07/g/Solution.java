@@ -9,13 +9,12 @@ public class Solution {
         Scanner console = new Scanner(System.in);
 
         int athleteCount = 4;
+        String[] athleteNames = new String[athleteCount];
 
         String[] athleteNotes = new String[athleteCount];
         System.out.println(athleteNotes[0]);
         athleteNotes[0] = "Team captain";
         System.out.println(athleteNotes[0]);
-
-        String[] athleteNames = new String[athleteCount];
 
         for (int athleteNameIndex = 0; athleteNameIndex < athleteNames.length; athleteNameIndex++) {
             athleteNames[athleteNameIndex] = console.nextLine();
@@ -34,9 +33,9 @@ public class Solution {
         }
 
         System.out.println("First athlete: " + athleteNames[0]);
-        System.out.println("First score: "   + qualifyingScores[0]);
-        System.out.println("Last athlete: "  + athleteNames[athleteNames.length - 1]);
-        System.out.println("Last score: "    + qualifyingScores[qualifyingScores.length - 1]);
+        System.out.println("First score:   " + qualifyingScores[0]);
+        System.out.println("Last athlete:  " + athleteNames[athleteNames.length - 1]);
+        System.out.println("Last score:    " + qualifyingScores[qualifyingScores.length - 1]);
 
         int qualificationSum = 0;
 
@@ -116,7 +115,7 @@ public class Solution {
         }
 
         for (int athleteIndex = 0; athleteIndex < competitionScores.length; athleteIndex++) {
-            System.out.print(athleteNames[athleteIndex] + ":");
+            System.out.print(String.format("%-8s", athleteNames[athleteIndex] + ":"));
             for (int disciplineIndex = 0;
                  disciplineIndex < competitionScores[athleteIndex].length;
                  disciplineIndex++) {
@@ -147,7 +146,7 @@ public class Solution {
             }
         }
 
-        System.out.println("Winner: "       + athleteNames[winnerIndex]);
+        System.out.println("Winner:       " + athleteNames[winnerIndex]);
         System.out.println("Winner score: " + athleteTotalScores[winnerIndex]);
 
         System.out.println(Arrays.deepToString(competitionScores));
@@ -184,9 +183,8 @@ public class Solution {
 
         for (int athleteIndex = 0; athleteIndex < extraAttemptScores.length; athleteIndex++) {
             System.out.println(
-                    athleteNames[athleteIndex]
-                            + " attempts: "
-                            + extraAttemptScores[athleteIndex].length
+                    String.format("%-17s", athleteNames[athleteIndex] + " attempts:")
+                            + " " + extraAttemptScores[athleteIndex].length
             );
         }
 
@@ -197,19 +195,19 @@ public class Solution {
         awardStatuses[winnerIndex] = "GOLD";
         System.out.println(Arrays.toString(awardStatuses));
 
-        System.out.println("Athletes: "              + athleteNames.length);
-        System.out.println("Qualification scores: "  + Arrays.toString(qualifyingScores));
-        System.out.println("Qualification sum: "     + qualificationSum);
+        System.out.println("Athletes:              " + athleteNames.length);
+        System.out.println("Qualification scores:  " + Arrays.toString(qualifyingScores));
+        System.out.println("Qualification sum:     " + qualificationSum);
         System.out.println("Qualification average: " + qualificationAverage);
-        System.out.println("Minimum score: "         + minimumScore);
-        System.out.println("Maximum score: "         + maximumScore);
-        System.out.println("Sorted scores: "         + Arrays.toString(sortedQualifyingScores));
-        System.out.println("Finalist scores: "       + Arrays.toString(finalistScores));
-        System.out.println("Competition scores: "    + Arrays.deepToString(competitionScores));
-        System.out.println("Total scores: "          + Arrays.toString(athleteTotalScores));
-        System.out.println("Winner: "                + athleteNames[winnerIndex]);
-        System.out.println("Winner score: "          + athleteTotalScores[winnerIndex]);
-        System.out.println("Extra attempts sum: "    + totalExtraAttemptScore);
-        System.out.println("Award statuses: "        + Arrays.toString(awardStatuses));
+        System.out.println("Minimum score:         " + minimumScore);
+        System.out.println("Maximum score:         " + maximumScore);
+        System.out.println("Sorted scores:         " + Arrays.toString(sortedQualifyingScores));
+        System.out.println("Finalist scores:       " + Arrays.toString(finalistScores));
+        System.out.println("Competition scores:    " + Arrays.deepToString(competitionScores));
+        System.out.println("Total scores:          " + Arrays.toString(athleteTotalScores));
+        System.out.println("Winner:                " + athleteNames[winnerIndex]);
+        System.out.println("Winner score:          " + athleteTotalScores[winnerIndex]);
+        System.out.println("Extra attempts sum:    " + totalExtraAttemptScore);
+        System.out.println("Award statuses:        " + Arrays.toString(awardStatuses));
     }
 }

@@ -66,59 +66,59 @@ public class Solution {
 
         int extremeTemperature = 200;
         byte legacyControllerReading = (byte) extremeTemperature;
-        System.out.println("Original value: "          + extremeTemperature);
+        System.out.println("Original value:          " + extremeTemperature);
         System.out.println("Value after int -> byte: " + legacyControllerReading);
 
-        System.out.println("Protocol version: "       + protocolVersion);
-        System.out.println("Station altitude: "       + stationAltitude + " m");
-        System.out.println("Station code: "           + stationCode);
-        System.out.println("Station Unicode code: "   + stationUnicodeCode);
-        System.out.println("Restored station code: "  + restoredStationCode);
-        System.out.println("Total measurements: "     + totalMeasurementCount);
-        System.out.println("Legacy sensor accuracy: " + legacySensorAccuracy);
-        System.out.println("Calibration factor: "     + calibrationFactor);
+        System.out.println("Protocol version:              " + protocolVersion);
+        System.out.println("Station altitude:              " + stationAltitude + " m");
+        System.out.println("Station code:                  " + stationCode);
+        System.out.println("Station Unicode code:          " + stationUnicodeCode);
+        System.out.println("Restored station code:         " + restoredStationCode);
+        System.out.println("Total measurements:            " + totalMeasurementCount);
+        System.out.println("Legacy sensor accuracy:        " + legacySensorAccuracy);
+        System.out.println("Calibration factor:            " + calibrationFactor);
 
         System.out.println(
-                "Measurement count: "             + measurementCount
+                "Measurement count:             " + measurementCount
         );
         System.out.println(
-                "Temperature sum: "               + temperatureSum
+                "Temperature sum:               " + temperatureSum
         );
         System.out.println(
-                "Average temperature: "           + averageTemperature
+                "Average temperature:           " + averageTemperature
         );
         System.out.println(
-                "Average temperature rounded: "   + averageTemperatureRoundedToTwoDecimals
+                "Average temperature rounded:   " + averageTemperatureRoundedToTwoDecimals
         );
         System.out.println(
                 "Average temperature formatted: " + formattedAverageTemperature
         );
         System.out.println(
-                "Truncated temperature: "         + truncatedTemperature
+                "Truncated temperature:         " + truncatedTemperature
         );
         System.out.println(
-                "Rounded temperature: "           + averageTemperatureRoundedToWholeNumber
+                "Rounded temperature:           " + averageTemperatureRoundedToWholeNumber
         );
         System.out.println(
-                "Floor: "                         + averageTemperatureRoundedDown
+                "Floor:                         " + averageTemperatureRoundedDown
         );
         System.out.println(
-                "Ceil: "                          + averageTemperatureRoundedUp
+                "Ceil:                          " + averageTemperatureRoundedUp
         );
         System.out.println(
-                "Rint: "                          + averageTemperatureRintResult
+                "Rint:                          " + averageTemperatureRintResult
         );
 
-        System.out.println("Average rainfall: " + averageRainfall);
-        System.out.println("Processed data: "   + formattedTotalProcessedData);
+        System.out.println("Average rainfall:              " + averageRainfall);
+        System.out.println("Processed data:                " + formattedTotalProcessedData);
 
-        System.out.println("Exact calibration match: "      + exactCalibrationMatch);
-        System.out.println("Calibration within tolerance: " + calibrationWithinTolerance);
+        System.out.println("Exact calibration match:       " + exactCalibrationMatch);
+        System.out.println("Calibration within tolerance:  " + calibrationWithinTolerance);
 
-        System.out.println("Infinity diagnostic: "       + divisionByZeroResult);
-        System.out.println("Is infinite: "               + isDivisionByZeroInfinite);
-        System.out.println("NaN diagnostic: "            + negativeSquareRootResult);
-        System.out.println("Is NaN: "                    + isNegativeSquareRootNaN);
-        System.out.println("Legacy controller reading: " + legacyControllerReading);
+        System.out.println("Infinity diagnostic:           " + divisionByZeroResult);
+        System.out.println("Is infinite:                   " + isDivisionByZeroInfinite);
+        System.out.println("NaN diagnostic:                " + negativeSquareRootResult);
+        System.out.println("Is NaN:                        " + isNegativeSquareRootNaN);
+        System.out.println("Legacy controller reading:     " + legacyControllerReading);
     }
 }
