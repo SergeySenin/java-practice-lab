@@ -90,7 +90,7 @@ public class Solution {
             int dailyRequestLimit
     ) {
         return
-                "Request ID:              " + requestId                    + "\n"
+                "Request ID:            " + requestId                    + "\n"
                 + "Title:                 " + requestTitle                 + "\n"
                 + "Priority:              " + priorityLevel                + "\n"
                 + "Accepted:              " + isRequestAccepted            + "\n"
@@ -132,6 +132,7 @@ public class Solution {
         System.out.println(Arrays.toString(responseTimesInMinutes));
 
         responseTimesInMinutes = createReplacementResponseTimes();
+        System.out.println(Arrays.toString(responseTimesInMinutes));
 
         int dailyRequestLimit = 100;
         tryToChangeDailyRequestLimit(dailyRequestLimit);
@@ -144,7 +145,7 @@ public class Solution {
         request.setPriorityLevel(priorityLevel);
         request.printRequestProfile();
 
-        updateRequestTitle(request, "Payment service unavailable - verified");
+        updateRequestTitle(request, requestTitle + " - verified");
         request.printRequestProfile();
 
         tryToReplaceRequest(request);
@@ -158,9 +159,9 @@ public class Solution {
 
         printRequestReport(
                 buildRequestSummary(
-                        requestId,
+                        request.requestId,
                         request.requestTitle,
-                        priorityLevel,
+                        request.getPriorityLevel(),
                         isRequestAccepted,
                         totalHistoricalRequestCount,
                         currentProcessedRequestCount,
