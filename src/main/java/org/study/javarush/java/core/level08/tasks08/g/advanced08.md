@@ -925,11 +925,11 @@ totalHistoricalRequestCount → 17
 responseTimesInMinutes до уменьшения             → [40, 55, 30, 70]
 responseTimesInMinutes после reduceResponseTimes → [35, 50, 25, 65]
 
-responseTimesInMinutes после tryToReplaceResponseTimes
-                                          → [35, 50, 25, 65]
+responseTimesInMinutes после
+tryToReplaceResponseTimes → [35, 50, 25, 65]
 
-responseTimesInMinutes после присваивания
-результата createReplacementResponseTimes → [15, 20, 25, 30]
+responseTimesInMinutes после
+присваивания результата createReplacementResponseTimes → [15, 20, 25, 30]
 
 dailyRequestLimit до tryToChangeDailyRequestLimit    → 100
 dailyRequestLimit после tryToChangeDailyRequestLimit → 100
