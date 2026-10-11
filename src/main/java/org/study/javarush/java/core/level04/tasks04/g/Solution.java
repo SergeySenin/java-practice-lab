@@ -20,7 +20,7 @@ public class Solution {
             }
         } while (batteryLevelPercent < 20 || batteryLevelPercent > 100);
 
-        System.out.println("Battery accepted: " + batteryLevelPercent + "%");
+        System.out.println("Battery accepted:  " + batteryLevelPercent + "%");
 
         int checkpointCount = console.nextInt();
         int targetCheckpointNumber = console.nextInt();
@@ -50,19 +50,19 @@ public class Solution {
             sensorDistanceReading = console.nextInt();
         }
 
-        System.out.println("Sensor readings: "   + sensorReadingCount);
-        System.out.println("Sensor sum: "        + sensorDistanceSum);
+        System.out.println("Sensor readings:   " + sensorReadingCount);
+        System.out.println("Sensor sum:        " + sensorDistanceSum);
         System.out.println("Dangerous objects: " + dangerousObjectCount);
 
         boolean isTargetFound = false;
 
         for (int checkpointNumber = 1; checkpointNumber <= checkpointCount; checkpointNumber++) {
             if (checkpointNumber % 4 == 0) {
-                System.out.println("Checkpoint " + checkpointNumber + ": RESTRICTED");
+                System.out.println("Checkpoint " + checkpointNumber + ":      RESTRICTED");
                 continue;
             }
 
-            System.out.println("Checkpoint " + checkpointNumber + ": scanning");
+            System.out.println("Checkpoint " + checkpointNumber + ":      scanning");
 
             if (checkpointNumber == targetCheckpointNumber) {
                 isTargetFound = true;
@@ -88,13 +88,13 @@ public class Solution {
             System.out.println();
         }
 
-        System.out.println("Mission: "           + missionName);
-        System.out.println("Battery: "           + batteryLevelPercent      + "%");
-        System.out.println("Sensor readings: "   + sensorReadingCount);
+        System.out.println("Mission:           " + missionName);
+        System.out.println("Battery:           " + batteryLevelPercent      + "%");
+        System.out.println("Sensor readings:   " + sensorReadingCount);
         System.out.println("Dangerous objects: " + dangerousObjectCount);
         System.out.println("Target checkpoint: " + targetCheckpointNumber);
-        System.out.println("Search status: "     + targetSearchStatus);
-        System.out.println("Map size: "          + mapSideLength            + "x" + mapSideLength);
+        System.out.println("Search status:     " + targetSearchStatus);
+        System.out.println("Map size:          " + mapSideLength            + "x" + mapSideLength);
 
         console.close();
     }

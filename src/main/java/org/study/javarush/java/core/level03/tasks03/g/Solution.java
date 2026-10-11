@@ -44,7 +44,7 @@ public class Solution {
         }
 
         if (isLargeTransfer) {
-            System.out.println("SECURITY NOTICE: additional verification is required.");
+            System.out.println("SECURITY NOTICE:          additional verification is required.");
         }
 
         boolean isTransferAllowed = false;
@@ -108,19 +108,19 @@ public class Solution {
 
         String transferStatus = isTransferAllowed ? "APPROVED" : "DECLINED";
 
-        System.out.println("Customer: "                 + customerName);
-        System.out.println("Transfer type: "            + transferType);
-        System.out.println("Risk level: "               + riskLevel);
-        System.out.println("Account active: "           + isAccountActive);
-        System.out.println("Trusted device: "           + isTrustedDevice);
-        System.out.println("Code correct: "             + isConfirmationCodeCorrect);
-        System.out.println("Enough balance: "           + hasSufficientBalance);
-        System.out.println("New account: "              + isNewAccount);
+        System.out.println("Customer:                 " + customerName);
+        System.out.println("Transfer type:            " + transferType);
+        System.out.println("Risk level:               " + riskLevel);
+        System.out.println("Account active:           " + isAccountActive);
+        System.out.println("Trusted device:           " + isTrustedDevice);
+        System.out.println("Code correct:             " + isConfirmationCodeCorrect);
+        System.out.println("Enough balance:           " + hasSufficientBalance);
+        System.out.println("New account:              " + isNewAccount);
         System.out.println("Too many failed attempts: " + hasTooManyFailedAttempts);
-        System.out.println("Transfer status: "          + transferStatus);
-        System.out.println("Balance before: "           + accountBalance);
-        System.out.println("Transfer amount: "          + transferAmount);
-        System.out.println("Balance after: "            + accountBalanceAfterTransfer);
+        System.out.println("Transfer status:          " + transferStatus);
+        System.out.println("Balance before:           " + accountBalance);
+        System.out.println("Transfer amount:          " + transferAmount);
+        System.out.println("Balance after:            " + accountBalanceAfterTransfer);
 
         console.close();
     }

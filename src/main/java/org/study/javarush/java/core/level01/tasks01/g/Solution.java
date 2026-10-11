@@ -22,22 +22,22 @@ public class Solution {
         int totalOrderCost = orderCostBeforeDiscount - orderDiscount;
         totalOrderCost = totalOrderCost + serviceFee;
 
-        String orderTotalMessage = "Итого к оплате: " + totalOrderCost + " руб.";
+        String orderTotalMessage = "Итого к оплате:       " + totalOrderCost + " руб.";
 
-        System.out.print("Покупатель: ");
+        System.out.print("Покупатель:           ");
         System.out.println(customerName);
 
-        System.out.print("Товар: ");
+        System.out.print("Товар:                ");
         System.out.println(productName);
 
-        System.out.println("Цена за единицу: "      + itemUnitPrice           + " руб.");
-        System.out.println("Количество: "           + itemCount);
-        System.out.println("Стоимость товаров: "    + totalItemsCost          + " руб.");
-        System.out.println("Доставка: "             + deliveryFee             + " руб.");
-        System.out.println("Стоимость до скидки: "  + orderCostBeforeDiscount + " руб.");
-        System.out.println("Скидка: "               + orderDiscount           + " руб.");
+        System.out.println("Цена за единицу:      " + itemUnitPrice           + " руб.");
+        System.out.println("Количество:           " + itemCount);
+        System.out.println("Стоимость товаров:    " + totalItemsCost          + " руб.");
+        System.out.println("Доставка:             " + deliveryFee             + " руб.");
+        System.out.println("Стоимость до скидки:  " + orderCostBeforeDiscount + " руб.");
+        System.out.println("Скидка:               " + orderDiscount           + " руб.");
         System.out.println("Скидка на один товар: " + discountPerItem         + " руб.");
-        System.out.println("Сервисный сбор: "       + serviceFee              + " руб.");
+        System.out.println("Сервисный сбор:       " + serviceFee              + " руб.");
         System.out.println(orderTotalMessage);
     }
 }

@@ -58,20 +58,20 @@ public class Solution {
 
         String electronicTicket =
                 "\"RAILWAY TICKET\""                                               + "\n"
-                        + "\tCode: "            + ticketCode                       + "\n"
-                        + "\tPassenger: "       + passengerName                    + "\n"
-                        + "\tEmail: "           + email                            + "\n"
-                        + "\tName length: "     + passengerNameLength              + "\n"
-                        + "\tRoute: "           + routeName                        + "\n"
-                        + "\tRoute display: "   + routeDisplayName                 + "\n"
-                        + "\tCarriage: "        + carriageNumber                   + "\n"
-                        + "\tDistance: "        + routeDistanceKilometers + " km"  + "\n"
-                        + "\tTravel time: "     + travelHours             + " h "
+                        + "\tCode:            " + ticketCode                       + "\n"
+                        + "\tPassenger:       " + passengerName                    + "\n"
+                        + "\tEmail:           " + email                            + "\n"
+                        + "\tName length:     " + passengerNameLength              + "\n"
+                        + "\tRoute:           " + routeName                        + "\n"
+                        + "\tRoute display:   " + routeDisplayName                 + "\n"
+                        + "\tCarriage:        " + carriageNumber                   + "\n"
+                        + "\tDistance:        " + routeDistanceKilometers + " km"  + "\n"
+                        + "\tTravel time:     " + travelHours             + " h "
                                                 + remainingTravelMinutes  + " min" + "\n"
-                        + "\tPrice: "           + ticketPriceAsText                + "\n"
-                        + "\tSold tickets: "    + soldTicketCount                  + "\n"
+                        + "\tPrice:           " + ticketPriceAsText                + "\n"
+                        + "\tSold tickets:    " + soldTicketCount                  + "\n"
                         + "\tAvailable seats: " + availableSeatCount               + "\n"
-                        + "\tFile: "            + ticketFilePath;
+                        + "\tFile:            " + ticketFilePath;
 
         System.out.println(electronicTicket);
 
