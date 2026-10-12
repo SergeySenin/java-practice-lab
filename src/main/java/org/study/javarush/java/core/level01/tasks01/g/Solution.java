@@ -4,13 +4,13 @@ public class Solution {
     public static void main(String[] args) {
 
         String customerName = "Alice";
-        String productName = "Mechanical Keyboard";
+        String productName  = "Mechanical Keyboard";
 
         int itemUnitPrice = 4800;
-        int itemCount = 3;
-        int deliveryFee = 600;
+        int itemCount     = 3;
+        int deliveryFee   = 600;
         int orderDiscount = 1200;
-        int serviceFee = 200;
+        int serviceFee    = 200;
 
         int totalItemsCost;
         totalItemsCost = itemUnitPrice * itemCount;
@@ -20,9 +20,9 @@ public class Solution {
         int discountPerItem = orderDiscount / itemCount;
 
         int totalOrderCost = orderCostBeforeDiscount - orderDiscount;
-        totalOrderCost = totalOrderCost + serviceFee;
+        totalOrderCost     = totalOrderCost + serviceFee;
 
-        String orderTotalMessage = "Итого к оплате:       " + totalOrderCost + " руб.";
+        String orderTotalMessage = "Итого к оплате:       " + totalOrderCost  + " руб.";
 
         System.out.print("Покупатель:           ");
         System.out.println(customerName);

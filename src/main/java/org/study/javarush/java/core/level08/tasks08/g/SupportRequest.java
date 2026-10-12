@@ -4,9 +4,11 @@ public class SupportRequest {
 
     public int requestId;
     public String requestTitle;
+    // Из другого класса приоритет доступен только через публичные методы.
     private int priorityLevel;
 
     public void setPriorityLevel(int priorityLevel) {
+        // this.priorityLevel — поле объекта, priorityLevel — одноимённый параметр метода.
         this.priorityLevel = priorityLevel;
     }
 
@@ -14,6 +16,7 @@ public class SupportRequest {
         return priorityLevel;
     }
 
+    // Приватный метод доступен внутри SupportRequest: его вызывает printRequestProfile().
     private String getPriorityLabel() {
         if (priorityLevel == 3) {
             return "CRITICAL";

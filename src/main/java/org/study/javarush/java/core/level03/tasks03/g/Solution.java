@@ -7,25 +7,25 @@ public class Solution {
 
         Scanner console = new Scanner(System.in);
 
-        String customerNameInput = console.nextLine();
-        String accountStatusInput = console.nextLine();
-        String deviceStatusInput = console.nextLine();
+        String customerNameInput     = console.nextLine();
+        String accountStatusInput    = console.nextLine();
+        String deviceStatusInput     = console.nextLine();
         String confirmationCodeInput = console.nextLine();
 
-        int accountBalance = console.nextInt();
-        int transferAmount = console.nextInt();
-        int accountAgeDays = console.nextInt();
+        int accountBalance      = console.nextInt();
+        int transferAmount      = console.nextInt();
+        int accountAgeDays      = console.nextInt();
         int failedLoginAttempts = console.nextInt();
 
         String customerName = customerNameInput.trim();
 
-        boolean isAccountActive = accountStatusInput.equals("ACTIVE");
-        boolean isTrustedDevice = deviceStatusInput.equals("TRUSTED");
+        boolean isAccountActive           = accountStatusInput.equals("ACTIVE");
+        boolean isTrustedDevice           = deviceStatusInput.equals("TRUSTED");
         boolean isConfirmationCodeCorrect = confirmationCodeInput.equals("BANK-2026");
 
-        boolean hasSufficientBalance = transferAmount <= accountBalance;
-        boolean isLargeTransfer = transferAmount > 100000;
-        boolean isNewAccount = accountAgeDays < 30;
+        boolean hasSufficientBalance     = transferAmount <= accountBalance;
+        boolean isLargeTransfer          = transferAmount > 100000;
+        boolean isNewAccount             = accountAgeDays < 30;
         boolean hasTooManyFailedAttempts = failedLoginAttempts >= 3;
 
         boolean areBasicSecurityConditionsMet =

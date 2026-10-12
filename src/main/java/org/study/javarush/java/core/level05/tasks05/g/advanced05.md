@@ -13,11 +13,11 @@
 Создайте проект «инспектор Java-окружения» (`JavaEnvironmentInspector`) с папкой исходников `src`.
 Внутри неё создайте три пакета:
 
-| Назначение | Пакет |
-|---|---|
-| Приложение | `org.study.environment.app` |
-| Ввод данных | `org.study.environment.input` |
-| Работа с датами | `org.study.environment.date` |
+| Назначение      | Пакет                         |
+|-----------------|-------------------------------|
+| Приложение      | `org.study.environment.app`   |
+| Ввод данных     | `org.study.environment.input` |
+| Работа с датами | `org.study.environment.date`  |
 
 ### Внутри этого репозитория
 
@@ -27,11 +27,11 @@
 
 Для этого варианта нужны следующие полные имена пакетов:
 
-| Класс | Пакет |
-|---|---|
-| `Main` | `org.study.javarush.java.core.level05.tasks05.g.environment.app` |
+| Класс         | Пакет                                                              |
+|---------------|--------------------------------------------------------------------|
+| `Main`        | `org.study.javarush.java.core.level05.tasks05.g.environment.app`   |
 | `ScannerDemo` | `org.study.javarush.java.core.level05.tasks05.g.environment.input` |
-| `DateDemo` | `org.study.javarush.java.core.level05.tasks05.g.environment.date` |
+| `DateDemo`    | `org.study.javarush.java.core.level05.tasks05.g.environment.date`  |
 
 ### Работа с пакетами в IntelliJ IDEA
 
@@ -61,10 +61,10 @@ public static void main(String[] args)
 Явно импортируйте `java.util.Scanner`. После импорта обращайтесь к классу «сканер» (`Scanner`)
 по простому имени (simple class name) `Scanner`, без префикса `java.util`.
 
-1. Создайте объект «консоль» (`console`) типа `Scanner`, связанный со стандартным потоком
-   ввода (`System.in`).
-2. Методом «считать строку» (`nextLine()`) получите «ввод приложения» (`applicationInput`)
-   типа «строка» (`String`).
+1. Создайте объект «консоль» (`console`) типа `Scanner`,
+   связанный со стандартным потоком ввода (`System.in`).
+2. Методом «считать строку» (`nextLine()`) получите
+   «ввод приложения» (`applicationInput`) типа «строка» (`String`).
 3. Выведите подпись `Application input:`, один пробел и значение `applicationInput`.
 
 Тестовый ввод:
@@ -81,18 +81,18 @@ Application input: Java project
 
 ## 3. Этап 3. Использование полного имени класса (`ScannerDemo`)
 
-В пакете ввода данных создайте файл `ScannerDemo.java` с публичным классом
-«демонстрация сканера» (`ScannerDemo`). Укажите его пакет из этапа 1.
+В пакете ввода данных создайте файл `ScannerDemo.java` с
+публичным классом «демонстрация сканера» (`ScannerDemo`). Укажите его пакет из этапа 1.
 
 В этом файле **не добавляйте** `import java.util.Scanner;`.
-При объявлении и создании объекта используйте полное имя класса (fully qualified class name)
-`java.util.Scanner`.
+При объявлении и создании объекта используйте
+полное имя класса (fully qualified class name) `java.util.Scanner`.
 
 1. Создайте «консоль» (`console`) типа `java.util.Scanner`, связанную с `System.in`.
-2. Методом `nextLine()` получите «ввод через полное имя» (`fullyQualifiedScannerInput`)
-   типа `String`.
-3. Выведите подпись `Fully qualified Scanner input:`, один пробел
-   и значение `fullyQualifiedScannerInput`.
+2. Методом `nextLine()` получите
+   «ввод через полное имя» (`fullyQualifiedScannerInput`) типа `String`.
+3. Выведите подпись `Fully qualified Scanner input:`,
+   один пробел и значение `fullyQualifiedScannerInput`.
 
 Тестовый ввод:
 
@@ -119,7 +119,7 @@ Fully qualified Scanner input: java.util.Scanner
 
 В `main` создайте:
 
-* «обычная дата» (`javaUtilDate`) типа `Date` — новый объект `Date` без аргументов;
+* «обычная дата» (`javaUtilDate`) типа `Date`     — новый объект `Date` без аргументов;
 * «SQL-дата» (`javaSqlDate`) типа `java.sql.Date` — новый объект `java.sql.Date`,
   которому передаётся текущее время из `System.currentTimeMillis()`.
 
@@ -187,8 +187,8 @@ DateDemo.java    ↔ public class DateDemo
 `org.study.environment.app` для отдельного проекта или соответствующий пакет `Main`
 из таблицы этапа 1 для этого репозитория.
 
-Проверьте перемещение файла и обновление `package`. Повторным `F6` верните класс
-в исходный пакет ввода данных: `org.study.environment.input` либо пакет `ScannerDemo`
+Проверьте перемещение файла и обновление `package`. Повторным `F6` верните класс в
+исходный пакет ввода данных: `org.study.environment.input` либо пакет `ScannerDemo`
 из таблицы этапа 1. Финальная структура должна совпасть с этапом 6.
 
 ## 9. Этап 9. Запуск каждого класса
@@ -202,8 +202,8 @@ DateDemo.java    ↔ public class DateDemo
 ## 10. Этап 10. Проверка результата компиляции
 
 Откройте окно «Проект» (Project) через `Alt+1` и найдите результаты компиляции:
-каталог `out`, если используется компилятор IDEA, или `build/classes/java/main`
-при сборке этого проекта через Gradle.
+каталог `out`, если используется компилятор IDEA,
+или `build/classes/java/main` при сборке этого проекта через Gradle.
 
 Для исходников `Main.java`, `ScannerDemo.java` и `DateDemo.java` найдите соответствующие
 `Main.class`, `ScannerDemo.class` и `DateDemo.class` в подкаталогах их пакетов.

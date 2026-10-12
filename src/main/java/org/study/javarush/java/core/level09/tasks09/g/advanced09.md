@@ -32,13 +32,13 @@
 INC-5042 | error | auth-service | User@Example.com | C:\Logs\auth.log | Invalid password for "admin"
 ```
 
-В консоль вводите обычные обратные слеши и кавычки: Java-экранирование относится к литералам
-в исходном коде, а не к набираемому тексту.
+В консоль вводите обычные обратные слеши и кавычки:
+Java-экранирование относится к литералам в исходном коде, а не к набираемому тексту.
 
 ## 3. Этап 2. Разделение строки
 
-Создайте «поля записи журнала» (`logFields`) типа `String[]` через
-`logEntryInput.split("\\|", -1)`.
+Создайте «поля записи журнала» (`logFields`) типа `String[]`
+через `logEntryInput.split("\\|", -1)`.
 
 Первый аргумент — регулярное выражение: `|` нужно экранировать для regex,
 а обратный слеш — ещё раз для Java-литерала. Второй аргумент `-1` сохраняет пустое последнее поле,
@@ -89,7 +89,7 @@ incidentMessage → Invalid password for "admin"
 
 Методом `length()` получите две переменные типа `int`:
 
-* «длина кода инцидента» (`incidentCodeLength`) — `8` для основного ввода;
+* «длина кода инцидента» (`incidentCodeLength`)         — `8` для основного ввода;
 * «длина сообщения инцидента» (`incidentMessageLength`) — `28`.
 
 ## 8. Этап 7. Первый символ кода
@@ -128,8 +128,8 @@ incidentMessage → Invalid password for "admin"
 
 ## 12. Этап 11. Сравнение email без учёта регистра
 
-Создайте «зарегистрированный email» (`registeredEmail`) типа `String`
-со значением `"user@example.com"`.
+Создайте «зарегистрированный email» (`registeredEmail`)
+типа `String` со значением `"user@example.com"`.
 В «email совпадает» (`isRegisteredEmail`) типа `boolean` сохраните результат
 `email.equalsIgnoreCase(registeredEmail)`. Ожидается `true`, несмотря на разный регистр.
 
@@ -156,7 +156,7 @@ incidentMessage → Invalid password for "admin"
 
 * «файл находится в ожидаемом каталоге» (`isLogFileInExpectedDirectory`) —
   проверка `logFilePath.startsWith(expectedLogDirectory)`;
-* «файл имеет расширение журнала» (`hasLogFileExtension`) —
+* «файл имеет расширение журнала» (`hasLogFileExtension`)                —
   проверка `logFilePath.endsWith(".log")`.
 
 Для основного теста обе равны `true`. Сравнения пути здесь учитывают регистр.
@@ -267,8 +267,8 @@ Level:	"ERROR"
 
 ## 25. Этап 24. Текстовый блок
 
-Создайте «баннер отчёта» (`reportBanner`) типа `String` с помощью текстового блока
-с тройными двойными кавычками:
+Создайте «баннер отчёта» (`reportBanner`) типа `String`
+с помощью текстового блока с тройными двойными кавычками:
 
 ```
 """
@@ -283,20 +283,20 @@ System Log Processing Report
 Создайте `public static` метод «построить отчёт инцидента» (`buildIncidentReport`),
 возвращающий `String`. Он ничего не выводит и получает следующие параметры по порядку:
 
-* `String incidentCode` — код;
-* `String eventLevel` — нормализованный уровень;
-* `String serviceName` — сервис;
-* `String maskedEmail` — замаскированный email;
-* `String emailDomain` — домен;
-* `String logFileName` — имя файла;
-* `String incidentMessage` — исходное очищенное сообщение;
-* `int incidentCodeDigitCount` — количество цифр;
-* `String serviceNameOrder` — порядок имени сервиса;
-* `double validationPercent` — процент проверок;
+* `String incidentCode`            — код;
+* `String eventLevel`              — нормализованный уровень;
+* `String serviceName`             — сервис;
+* `String maskedEmail`             — замаскированный email;
+* `String emailDomain`             — домен;
+* `String logFileName`             — имя файла;
+* `String incidentMessage`         — исходное очищенное сообщение;
+* `int incidentCodeDigitCount`     — количество цифр;
+* `String serviceNameOrder`        — порядок имени сервиса;
+* `double validationPercent`       — процент проверок;
 * `int passedValidationCheckCount` — число пройденных проверок;
-* `int totalValidationCheckCount` — общее число проверок;
-* `boolean isErrorEvent` — признак ошибки;
-* `String warningSymbol` — предупреждающий символ.
+* `int totalValidationCheckCount`  — общее число проверок;
+* `boolean isErrorEvent`           — признак ошибки;
+* `String warningSymbol`           — предупреждающий символ.
 
 В `main` передавайте одноимённые переменные. Этапы 26–31 выполняются внутри этого метода
 с одним `StringBuilder`, без накопления длинного отчёта через `result = result + ...`.
@@ -367,8 +367,8 @@ Validation:    100,0%
 
 ## 32. Этап 31. Преобразование `StringBuilder` в `String`
 
-Верните `reportBuilder.toString()`. Метод должен возвращать обычную строку `String`,
-а не сам `StringBuilder`.
+Верните `reportBuilder.toString()`.
+Метод должен возвращать обычную строку `String`, а не сам `StringBuilder`.
 
 ## 33. Этап 32. Зеркальный код инцидента
 

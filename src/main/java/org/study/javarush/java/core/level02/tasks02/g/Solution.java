@@ -7,40 +7,42 @@ public class Solution {
     public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
+        // Русская локаль задаёт десятичную запятую при чтении nextDouble().
         console.useLocale(Locale.forLanguageTag("ru-RU"));
 
         String passengerNameInput = console.nextLine();
-        String emailInput = console.nextLine();
+        String emailInput         = console.nextLine();
         String departureCityInput = console.nextLine();
-        String arrivalCityInput = console.nextLine();
-        String ticketPriceText = console.nextLine();
-        String travelMinutesText = console.nextLine();
+        String arrivalCityInput   = console.nextLine();
+        String ticketPriceText    = console.nextLine();
+        String travelMinutesText  = console.nextLine();
 
-        int availableSeatCount = console.nextInt();
-        int soldTicketCount = console.nextInt();
+        int availableSeatCount         = console.nextInt();
+        int soldTicketCount            = console.nextInt();
         double routeDistanceKilometers = console.nextDouble();
 
         byte carriageNumber = 7;
 
-        String passengerName = passengerNameInput.trim();
+        String passengerName    = passengerNameInput.trim();
         int passengerNameLength = passengerName.length();
 
         String email = emailInput.trim();
-        email = email.toLowerCase();
+        email        = email.toLowerCase();
 
         String departureCity = departureCityInput.trim();
-        String arrivalCity = arrivalCityInput.trim();
+        String arrivalCity   = arrivalCityInput.trim();
 
-        String routeName = departureCity + " - " + arrivalCity;
+        String routeName =
+                departureCity + " - " + arrivalCity;
 
         String routeDisplayName = routeName;
-        routeDisplayName = routeDisplayName.toUpperCase();
+        routeDisplayName        = routeDisplayName.toUpperCase();
 
-        int ticketPrice = Integer.parseInt(ticketPriceText);
+        int ticketPrice        = Integer.parseInt(ticketPriceText);
         int totalTravelMinutes = Integer.parseInt(travelMinutesText);
 
         int travelHours, remainingTravelMinutes;
-        travelHours = totalTravelMinutes / 60;
+        travelHours            = totalTravelMinutes / 60;
         remainingTravelMinutes = totalTravelMinutes % 60;
 
         soldTicketCount++;
@@ -52,9 +54,10 @@ public class Solution {
         ticketNumber++;
 
         String ticketCodePrefix = "";
-        String ticketCode = ticketCodePrefix + "TRAIN-" + ticketNumber;
+        String ticketCode       = ticketCodePrefix + "TRAIN-" + ticketNumber;
 
-        String ticketFilePath = "C:\\Tickets\\" + ticketCode + ".txt";
+        // Обратный слеш в строковом литерале записывается дважды.
+        String ticketFilePath   = "C:\\Tickets\\" + ticketCode + ".txt";
 
         String electronicTicket =
                 "\"RAILWAY TICKET\""                                               + "\n"

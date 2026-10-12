@@ -8,7 +8,7 @@ public class Solution {
         Scanner console = new Scanner(System.in);
 
         String missionNameInput = console.nextLine();
-        String missionName = missionNameInput.trim();
+        String missionName      = missionNameInput.trim();
 
         int batteryLevelPercent;
 
@@ -22,11 +22,11 @@ public class Solution {
 
         System.out.println("Battery accepted:  " + batteryLevelPercent + "%");
 
-        int checkpointCount = console.nextInt();
+        int checkpointCount        = console.nextInt();
         int targetCheckpointNumber = console.nextInt();
-        int mapSideLength = console.nextInt();
-        int beaconRowIndex = console.nextInt();
-        int beaconColumnIndex = console.nextInt();
+        int mapSideLength          = console.nextInt();
+        int beaconRowIndex         = console.nextInt();
+        int beaconColumnIndex      = console.nextInt();
 
         for (int launchCountdown = 3; launchCountdown >= 1; launchCountdown--) {
             System.out.println(launchCountdown);
@@ -35,10 +35,11 @@ public class Solution {
         System.out.println("LAUNCH");
 
         int sensorDistanceReading = console.nextInt();
-        int sensorReadingCount = 0;
-        int sensorDistanceSum = 0;
-        int dangerousObjectCount = 0;
+        int sensorReadingCount    = 0;
+        int sensorDistanceSum     = 0;
+        int dangerousObjectCount  = 0;
 
+        // Отрицательное значение завершает ввод и не входит в статистику.
         while (sensorDistanceReading >= 0) {
             sensorReadingCount++;
             sensorDistanceSum += sensorDistanceReading;
@@ -59,14 +60,16 @@ public class Solution {
         for (int checkpointNumber = 1; checkpointNumber <= checkpointCount; checkpointNumber++) {
             if (checkpointNumber % 4 == 0) {
                 System.out.println("Checkpoint " + checkpointNumber + ":      RESTRICTED");
+                // Закрытую точку пропускаем целиком, включая проверку на цель.
                 continue;
             }
 
-            System.out.println("Checkpoint " + checkpointNumber + ":      scanning");
+            System.out.println("Checkpoint "     + checkpointNumber + ":      scanning");
 
             if (checkpointNumber == targetCheckpointNumber) {
                 isTargetFound = true;
                 System.out.println("TARGET FOUND AT CHECKPOINT " + checkpointNumber);
+                // Цель найдена: остальные точки уже не проверяем.
                 break;
             }
         }

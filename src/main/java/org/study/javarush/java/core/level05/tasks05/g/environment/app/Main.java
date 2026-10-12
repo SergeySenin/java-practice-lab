@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner console = new Scanner(System.in);
+        Scanner console         = new Scanner(System.in);
         String applicationInput = console.nextLine();
 
         System.out.println("Application input: " + applicationInput);
