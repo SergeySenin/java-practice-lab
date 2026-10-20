@@ -14,7 +14,7 @@ public class Solution201 {
 
     public static void displayPositiveScore(int currentScore) {
         if (currentScore <= 0) {
-            throw new IllegalArgumentException("Невозможно отобразить отрицательный счёт! Число отрицательное.");
+            throw new IllegalArgumentException("Счёт должен быть положительным.");
         }
 
         System.out.println(currentScore);

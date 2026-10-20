@@ -1,4 +1,3 @@
-
 package org.study.javarush.java.core.level12.tasks12.b;
 
 import java.util.ArrayList;
