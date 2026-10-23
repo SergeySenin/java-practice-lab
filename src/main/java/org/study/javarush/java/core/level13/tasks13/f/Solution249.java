@@ -8,7 +8,7 @@ public class Solution249 {
         LocalDate futureMilestone = LocalDate.of(2025, 1, 1);
         LocalDate today = LocalDate.now();
 
-        if (futureMilestone.isBefore(today)) {
+        if (!today.isBefore(futureMilestone)) {
             System.out.println("2025 уже наступил");
         } else {
             System.out.println("2025 еще не наступил");
