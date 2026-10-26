@@ -117,11 +117,9 @@ public static void printProductList(ArrayList<String> productNames)
 Вывод:
 
 ```text
-==== PRODUCT LIST ====
 0: Mechanical Keyboard
 1: Gaming Mouse
 2: Webcam
-======================
 ```
 
 Затем в `main` отдельным циклом `for-each` выведите только названия товаров,
@@ -310,10 +308,8 @@ reviewTasks.size() → 2
 Вывод:
 
 ```text
-=== REVIEW TASKS ===
 2: Approve images
 1: Check stock
-====================
 ```
 
 ## 10. Этап 9. Формирование текстового каталога
@@ -857,8 +853,7 @@ catalog_signature_backup.bin
 reviewTasks.size() → 0
 ```
 
-Раздел вывода задач должен содержать только заголовок и завершающую линию.
-Остальные части каталога работают как раньше.
+Строки задач не выводятся. Остальные результаты программы сохраняются.
 
 ### Дополнительный тест 2. Три задачи
 
@@ -873,7 +868,7 @@ Approve gallery
 
 Последняя строка пустая.
 
-Строки задач между заголовком и завершающей линией:
+Вывод задач:
 
 ```text
 3: Approve gallery

@@ -176,8 +176,8 @@ Invalid payout values: [payoutId]
 
 ```text
 PAY-101;1200;100 → 1100
-PAY-104;500;0   → 500
-PAY-107;200;20  → 180
+PAY-104;500;0    → 500
+PAY-107;200;20   → 180
 ```
 
 При недопустимых данных исключение создаёт ваша программа через `throw`.
@@ -344,11 +344,9 @@ IMPORT ATTEMPT FINISHED
 через константы индексов этапа 1. Формат:
 
 ```text
-=== PAYOUT IMPORT SUMMARY ===
 Accepted:      [количество]
 Rejected:      [количество]
 Payable total: [сумма]
-=============================
 ```
 
 Сводка появляется только после успешного возврата `runPayoutImport`:
@@ -382,11 +380,9 @@ Reason: Invalid payout identifier: ORD-105
 Line 6: REJECTED - VALIDATION
 Reason: Invalid payout record structure: PAY-106;400
 Line 7: ACCEPTED, amount: 180
-=== PAYOUT IMPORT SUMMARY ===
 Accepted:      3
 Rejected:      4
 Payable total: 1780
-=============================
 IMPORT ATTEMPT FINISHED
 ```
 
@@ -618,7 +614,7 @@ AFTER DIVISION
 После каждого теста восстановите исходные семь строк этапа 2 и повторите основной тест.
 
 Ниже показаны ключевые строки статистики; сообщения обработки записей,
-заголовок и граница сводки, `IMPORT STARTED` и `IMPORT ATTEMPT FINISHED` также сохраняются.
+`IMPORT STARTED` и `IMPORT ATTEMPT FINISHED` также сохраняются.
 
 ### Дополнительный тест 1. Только корректные выплаты
 
