@@ -1,4 +1,4 @@
-package org.study.javarush.java.core.level14.tasks14.c;
+package org.study.javarush.java.core.level14.tasks14.c.temp3;
 
 public class Counter {
     int currentValue;

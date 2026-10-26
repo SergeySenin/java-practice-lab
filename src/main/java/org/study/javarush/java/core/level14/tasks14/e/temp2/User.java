@@ -1,4 +1,4 @@
-package org.study.javarush.java.core.level14.tasks14.e;
+package org.study.javarush.java.core.level14.tasks14.e.temp2;
 
 public class User {
     String userName;

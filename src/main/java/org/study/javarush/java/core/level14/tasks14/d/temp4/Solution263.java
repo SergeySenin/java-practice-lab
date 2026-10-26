@@ -1,4 +1,4 @@
-package org.study.javarush.java.core.level14.tasks14.d;
+package org.study.javarush.java.core.level14.tasks14.d.temp4;
 
 public class Solution263 {
     public static void main(String[] args) {
