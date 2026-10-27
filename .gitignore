@@ -3,6 +3,9 @@ build/
 out/
 bin/
 
+# Файлы, создаваемые учебными программами
+/src/main/resources/generated/
+
 # Системы сборки
 ## Gradle
 .gradle/

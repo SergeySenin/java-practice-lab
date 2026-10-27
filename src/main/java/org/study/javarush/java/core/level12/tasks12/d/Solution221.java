@@ -7,7 +7,9 @@ import java.nio.file.Path;
 public class Solution221 {
     public static void main(String[] args) throws IOException {
 
-        Path filePath = Path.of("note.txt");
+        Path filePath = Path.of(
+                "src/main/resources/generated/javarush/level12/short", "note.txt"
+        );
 
         String noteText = Files.readString(filePath);
 

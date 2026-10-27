@@ -7,11 +7,16 @@ import java.nio.file.Path;
 public class Solution223 {
     public static void main(String[] args) throws IOException {
 
-        Path sourceFilePath = Path.of("letters.bin");
-        Path targetFilePath = Path.of("letters_copy.bin");
+        Path sourceFilePath = Path.of(
+                "src/main/resources/generated/javarush/level12/short", "letters.bin"
+        );
+        Path targetFilePath = Path.of(
+                "src/main/resources/generated/javarush/level12/short", "letters_copy.bin"
+        );
 
         byte[] fileBytes = Files.readAllBytes(sourceFilePath);
 
+        Files.createDirectories(targetFilePath.getParent());
         Files.write(targetFilePath, fileBytes);
     }
 }

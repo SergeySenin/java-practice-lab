@@ -11,7 +11,11 @@ public class Solution225 {
     public static void main(String[] args) throws IOException {
 
         URL imageUrl = new URL("https://httpbin.org/image/jpeg");
-        Path filePath = Path.of("image02.jpg");
+        Path filePath = Path.of(
+                "src/main/resources/generated/javarush/level12/short", "image02.jpg"
+        );
+
+        Files.createDirectories(filePath.getParent());
 
         try (
                 InputStream inputStream = imageUrl.openStream();

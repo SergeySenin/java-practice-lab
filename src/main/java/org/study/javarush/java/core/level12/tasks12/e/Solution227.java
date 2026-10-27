@@ -35,7 +35,10 @@ public class Solution227 {
 
         System.out.println("Тип: " + contentType + ", Размер: " + imageSize + " байт");
 
-        Path filePath = Path.of("image04.png");
+        Path filePath = Path.of(
+                "src/main/resources/generated/javarush/level12/short", "image04.png"
+        );
+        Files.createDirectories(filePath.getParent());
         Files.write(filePath, responseBytes);
     }
 }

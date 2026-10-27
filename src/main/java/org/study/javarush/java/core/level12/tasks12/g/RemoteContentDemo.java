@@ -16,7 +16,11 @@ public class RemoteContentDemo {
 
     public static void downloadPngWithUrl() throws IOException {
         URL  sourceUrl  = URI.create("https://httpbin.org/image/png").toURL();
-        Path targetPath = Path.of("product_preview.png");
+        Path targetPath = Path.of(
+                "src/main/resources/generated/javarush/level12/advanced12", "product_preview.png"
+        );
+
+        Files.createDirectories(targetPath.getParent());
 
         try (InputStream inputStream = sourceUrl.openStream()) {
             Files.copy(inputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);
@@ -27,7 +31,11 @@ public class RemoteContentDemo {
 
     public static void downloadJpegWithTransfer() throws IOException {
         URL  sourceUrl  = URI.create("https://httpbin.org/image/jpeg").toURL();
-        Path targetPath = Path.of("product_gallery.jpg");
+        Path targetPath = Path.of(
+                "src/main/resources/generated/javarush/level12/advanced12", "product_gallery.jpg"
+        );
+
+        Files.createDirectories(targetPath.getParent());
 
         try (InputStream inputStream = sourceUrl.openStream();
              OutputStream outputStream = Files.newOutputStream(targetPath)) {
@@ -72,8 +80,11 @@ public class RemoteContentDemo {
         System.out.println("Downloaded bytes: " + downloadedByteCount);
 
         if (contentType.startsWith("image/")) {
-            Path targetPath = Path.of("product_optimized.webp");
+            Path targetPath = Path.of(
+                    "src/main/resources/generated/javarush/level12/advanced12", "product_optimized.webp"
+            );
 
+            Files.createDirectories(targetPath.getParent());
             Files.write(targetPath, responseBytes);
 
             System.out.println("WebP download completed: product_optimized.webp");

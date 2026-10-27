@@ -7,6 +7,7 @@
 
 Задание закрепляет динамические списки (`ArrayList`), словари (`HashMap`),
 чтение и запись файлов, бинарные данные, сетевые потоки и HTTP-запросы.
+
 Используйте Java 17 или Java 21. Сторонние библиотеки не требуются.
 
 ## 1. Структура проекта
@@ -154,9 +155,9 @@ public static void printProductList(ArrayList<String> productNames)
 
 Результаты последних трёх операций сохраните соответственно в:
 
-* «мышь есть в словаре» (`hasMouseStock`) типа `boolean`;
-* «USB-концентратор есть в словаре» (`hasUsbHubStock`) типа `boolean`;
-* «остаток удалённого товара» (`removedProductStock`) типа `Integer`.
+* «мышь есть в словаре»             (`hasMouseStock`)       типа `boolean`;
+* «USB-концентратор есть в словаре» (`hasUsbHubStock`)      типа `boolean`;
+* «остаток удалённого товара»       (`removedProductStock`) типа `Integer`.
 
 Для вывода остатка мыши используйте `get("Gaming Mouse")`.
 
@@ -182,7 +183,7 @@ public static int calculateTotalStock(
         HashMap<String, Integer> stockByProductName)
 ```
 
-Параметры — «названия товаров» (`productNames`)
+Параметры — «названия товаров»  (`productNames`)
 и «остатки товаров по названию» (`stockByProductName`).
 Метод возвращает сумму и сам ничего не печатает.
 
@@ -211,7 +212,7 @@ Webcam              → 5
 Вывод:
 
 ```text
-Total stock: 25
+Total stock:         25
 ```
 
 Значение `Integer`, полученное через `get()`, участвует в арифметике с `int`
@@ -232,11 +233,16 @@ public static void printStockEntries(
 объявите как `Map.Entry<String, Integer>`. Получайте ключ через `getKey()`,
 а значение — через `getValue()`.
 
-Шаблон строки:
+Пример набора строк; порядок может отличаться:
 
 ```text
-Product: [название], Stock: [количество]
+Product: Gaming Mouse,        Stock: 8
+Product: Webcam,              Stock: 5
+Product: Mechanical Keyboard, Stock: 12
 ```
+
+Для названия вместе с запятой используйте поле шириной 20 символов, выровненное влево.
+Пробелы добавляйте после запятой, чтобы `Stock` и значения начинались в общих колонках.
 
 В `main` вызовите метод для итогового словаря: должны появиться ровно три записи.
 **Порядок вывода `HashMap` не гарантируется.** Проверяйте набор записей, а не их расположение.
@@ -263,14 +269,14 @@ mouse keyboard mouse webcam mouse
 
 Учитывайте автоматическую упаковку и распаковку значений `Integer`.
 Для проверки выведите значения именно этих трёх ключей в указанном порядке
-через отдельные вызовы `get()`. Оформление строк здесь свободное.
+через отдельные вызовы `get()`, сохраняя выравнивание.
 
-Контрольные значения:
+Вывод:
 
 ```text
-mouse    → 3
-keyboard → 1
-webcam   → 1
+mouse:    3
+keyboard: 1
+webcam:   1
 ```
 
 Сам словарь не обязан сохранять порядок ключей.
@@ -350,18 +356,27 @@ TOTAL STOCK:         25
 
 ## 11. Этап 10. Сохранение текстового каталога
 
-В `Solution.main` создайте «путь к каталогу» (`catalogPath`) типа `Path`
-через `Path.of("catalog.txt")`.
+В `Solution.main` создайте «каталог результатов» (`outputDirectory`) типа `Path`:
+
+```
+Path outputDirectory =
+        Path.of("src/main/resources/generated/javarush/level12/advanced12");
+```
+
+Создайте «путь к каталогу» (`catalogPath`) типа `Path`
+через `outputDirectory.resolve("catalog.txt")`.
 Вызовите `buildCatalogText()` для итоговых списка и словаря
 и сохраните результат в «текст каталога» (`catalogText`) типа `String`.
 
 Запишите текст через `Files.writeString()` с кодировкой `StandardCharsets.UTF_8`.
-Относительные пути в этом задании относятся к рабочему каталогу процесса.
-При необходимости проверьте **Run Configuration → Working directory** в IntelliJ IDEA.
+Рабочий каталог запуска — корень проекта: в IntelliJ IDEA укажите
+**Run Configuration → Working directory** равным `$PROJECT_DIR$`.
+Все создаваемые файлы этого задания хранятся в каталоге результатов.
 Если файл уже существует, замените его содержимое.
 
 Все файловые операции этапов 10–13 выполняйте последовательно в одном блоке `try`
-внутри `main`. Перехватите `IOException` параметром `exception` и выведите:
+внутри `main`. В начале блока создайте каталог через `Files.createDirectories(outputDirectory)`.
+Перехватите `IOException` параметром `exception` и выведите:
 
 ```text
 Local file operation failed: [сообщение исключения]
@@ -391,9 +406,9 @@ Local file operation failed: [сообщение исключения]
 Вывод:
 
 ```text
-Catalog file exists:  true
-Catalog text matches: true
-Catalog file size:    [фактическое число] bytes
+Catalog file exists:   true
+Catalog text matches:  true
+Catalog file size:     [фактическое число] bytes
 ```
 
 Размер получите программно, не подставляйте заранее рассчитанное значение.
@@ -414,7 +429,8 @@ MKT1
 ```
 
 Создайте «путь к сигнатуре» (`signaturePath`) типа `Path`
-через `Path.of("catalog_signature.bin")` и запишите массив с помощью `Files.write()`.
+через `outputDirectory.resolve("catalog_signature.bin")`.
+Запишите массив с помощью `Files.write()`.
 Прочитайте файл через `Files.readAllBytes()`
 в «прочитанную сигнатуру» (`savedSignatureBytes`) типа `byte[]`.
 
@@ -436,7 +452,7 @@ M K T 1
 ## 14. Этап 13. Резервная копия бинарного файла
 
 В том же блоке `try` создайте «путь к резервной копии» (`backupPath`) типа `Path`
-через `Path.of("catalog_signature_backup.bin")`.
+через `outputDirectory.resolve("catalog_signature_backup.bin")`.
 Повторно считайте `signaturePath` через `Files.readAllBytes()`
 в «исходные байты для копирования» (`sourceSignatureBytes`) типа `byte[]`.
 Запишите этот массив в `backupPath` через `Files.write()`, заменяя прежнее содержимое.
@@ -468,7 +484,10 @@ Binary backup matches: true
 | Пример JSON | `https://httpbin.org/json`       | Вывод в консоль          |
 
 Это демонстрационные ресурсы, а не реальные изображения товаров или API маркетплейса.
-Файлы сохраняются в рабочем каталоге процесса.
+Файлы сохраняются в каталоге результатов из этапа 10.
+В каждом методе задавайте путь через `Path.of()`, передавая каталог и имя файла.
+Перед записью создавайте каталог через `Files.createDirectories(targetPath.getParent())`.
+Для WebP выполняйте это только после успешных проверок статуса и типа содержимого.
 Сетевую программу запускайте отдельно от `Solution`.
 
 **Внешние сервисы могут быть недоступны.** Сетевая ошибка не означает,
@@ -485,7 +504,8 @@ public static void downloadPngWithUrl() throws IOException
 
 Метод ничего не возвращает и не принимает параметров.
 Создайте «адрес источника» (`sourceUrl`) типа `URL` с адресом PNG из этапа 14
-и «путь назначения» (`targetPath`) типа `Path` через `Path.of("product_preview.png")`.
+и «путь назначения» (`targetPath`) типа `Path` для `product_preview.png`
+в каталоге результатов.
 Через `sourceUrl.openStream()` откройте «входной поток» (`inputStream`) типа `InputStream`.
 
 Скопируйте поток в файл через `Files.copy()` с параметром
@@ -509,11 +529,12 @@ public static void downloadJpegWithTransfer() throws IOException
 
 Метод ничего не возвращает и не принимает параметров.
 Создайте «адрес источника» (`sourceUrl`) типа `URL` с адресом JPEG из этапа 14
-и «путь назначения» (`targetPath`) типа `Path` через `Path.of("product_gallery.jpg")`.
+и «путь назначения» (`targetPath`) типа `Path`
+для `product_gallery.jpg` в каталоге результатов.
 
 В одном `try-with-resources` объявите:
 
-* «входной поток» (`inputStream`) типа `InputStream`, открытый через `sourceUrl.openStream()`;
+* «входной поток»  (`inputStream`)  типа `InputStream`, открытый через `sourceUrl.openStream()`;
 * «выходной поток» (`outputStream`) типа `OutputStream`,
   открытый через `Files.newOutputStream(targetPath)`.
 
@@ -581,7 +602,7 @@ Downloaded bytes: [количество]
 ### Сохранение изображения
 
 Если `contentType` начинается с `"image/"`, создайте «путь назначения» (`targetPath`)
-типа `Path` через `Path.of("product_optimized.webp")`
+типа `Path` для `product_optimized.webp` в каталоге результатов
 и запишите `responseBytes` через `Files.write()`, заменяя прежнее содержимое.
 
 Вывод после успешной записи:
@@ -713,11 +734,11 @@ public static String extractJsonTextField(
 и границы значения; извлеките значение через `substring()`.
 Для поиска используйте:
 
-* «имя поля в кавычках» (`fieldMarker`) типа `String`;
-* «позицию поля» (`fieldIndex`)         типа `int`;
-* «позицию двоеточия» (`colonIndex`)    типа `int`;
-* «начало значения» (`valueStartIndex`) типа `int`: индекс первого символа значения;
-* «конец значения» (`valueEndIndex`)    типа `int`: индекс закрывающей кавычки.
+* «имя поля в кавычках» (`fieldMarker`)     типа `String`;
+* «позицию поля»        (`fieldIndex`)      типа `int`;
+* «позицию двоеточия»   (`colonIndex`)      типа `int`;
+* «начало значения»     (`valueStartIndex`) типа `int`: индекс первого символа значения;
+* «конец значения»      (`valueEndIndex`)   типа `int`: индекс закрывающей кавычки.
 
 Если ключ отсутствует, верните `null` до дальнейшего поиска границ и вызова `substring()`.
 Не обращайтесь к строке по отрицательному индексу.
@@ -751,7 +772,7 @@ Approve images
 
 ```
 
-Последняя строка пустая. При успешной работе с файлами должны появиться:
+Последняя строка пустая. При успешной работе в каталоге результатов должны появиться:
 
 ```text
 catalog.txt

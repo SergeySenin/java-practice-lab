@@ -32,10 +32,11 @@ public class Solution {
 
     public static void printStockEntries(HashMap<String, Integer> stockByProductName) {
         for (Map.Entry<String, Integer> stockEntry : stockByProductName.entrySet()) {
-            System.out.println(
-                    "Product: "   + stockEntry.getKey()
-                    + ", Stock: " + stockEntry.getValue()
-            );
+            System.out.println(String.format(
+                    "Product: %-20s Stock: %d",
+                    stockEntry.getKey()  + ",",
+                    stockEntry.getValue()
+            ));
         }
     }
 
@@ -104,11 +105,11 @@ public class Solution {
         HashMap<String, Integer> stockByProductName = new HashMap<>();
 
         stockByProductName.put("Mechanical Keyboard", 12);
-        stockByProductName.put("Gaming Mouse", 7);
-        stockByProductName.put("Webcam", 5);
-        stockByProductName.put("USB Hub", 2);
+        stockByProductName.put("Gaming Mouse"       , 7 );
+        stockByProductName.put("Webcam"             , 5 );
+        stockByProductName.put("USB Hub"            , 2 );
 
-        stockByProductName.put("Gaming Mouse", 8);
+        stockByProductName.put("Gaming Mouse"       , 8 );
         stockByProductName.remove("USB Hub");
 
         boolean hasMouseStock       = stockByProductName.containsKey("Gaming Mouse");
@@ -122,12 +123,13 @@ public class Solution {
 
         int totalStock = calculateTotalStock(productNames, stockByProductName);
 
-        System.out.println("Total stock: " + totalStock);
+        System.out.println("Total stock:         " + totalStock);
 
         printStockEntries(stockByProductName);
 
         String   searchLog   = "mouse keyboard mouse webcam mouse";
         String[] searchWords = searchLog.split(" ");
+
         HashMap<String, Integer> searchFrequency = new HashMap<>();
 
         for (String searchWord : searchWords) {
@@ -140,9 +142,9 @@ public class Solution {
             }
         }
 
-        System.out.println("mouse: "    + searchFrequency.get("mouse"));
+        System.out.println("mouse:    " + searchFrequency.get("mouse"));
         System.out.println("keyboard: " + searchFrequency.get("keyboard"));
-        System.out.println("webcam: "   + searchFrequency.get("webcam"));
+        System.out.println("webcam:   " + searchFrequency.get("webcam"));
 
         Scanner console               = new Scanner(System.in);
         ArrayList<String> reviewTasks = new ArrayList<>();
@@ -157,10 +159,12 @@ public class Solution {
             System.out.println((taskIndex + 1) + ": " + reviewTasks.get(taskIndex));
         }
 
-        Path   catalogPath = Path.of("catalog.txt");
-        String catalogText = buildCatalogText(productNames, stockByProductName);
+        Path outputDirectory = Path.of("src/main/resources/generated/javarush/level12/advanced12");
+        Path catalogPath     = outputDirectory.resolve("catalog.txt");
+        String catalogText   = buildCatalogText(productNames, stockByProductName);
 
         try {
+            Files.createDirectories(outputDirectory);
             Files.writeString(catalogPath, catalogText, StandardCharsets.UTF_8);
 
             String savedCatalogText = Files.readString(catalogPath, StandardCharsets.UTF_8);
@@ -169,12 +173,12 @@ public class Solution {
             boolean catalogFileExists     = Files.exists(catalogPath);
             long    catalogFileSize       = Files.size(catalogPath);
 
-            System.out.println("Catalog file exists:  " + catalogFileExists);
-            System.out.println("Catalog text matches: " + isCatalogTextMatching);
-            System.out.println("Catalog file size:    " + catalogFileSize + " bytes");
+            System.out.println("Catalog file exists:   " + catalogFileExists);
+            System.out.println("Catalog text matches:  " + isCatalogTextMatching);
+            System.out.println("Catalog file size:     " + catalogFileSize + " bytes");
 
             byte[] catalogSignatureBytes = {77, 75, 84, 49};
-            Path   signaturePath         = Path.of("catalog_signature.bin");
+            Path   signaturePath         = outputDirectory.resolve("catalog_signature.bin");
 
             Files.write(signaturePath, catalogSignatureBytes);
 
@@ -189,7 +193,7 @@ public class Solution {
 
             System.out.println();
 
-            Path backupPath = Path.of("catalog_signature_backup.bin");
+            Path backupPath = outputDirectory.resolve("catalog_signature_backup.bin");
 
             byte[] sourceSignatureBytes = Files.readAllBytes(signaturePath);
             Files.write(backupPath, sourceSignatureBytes);

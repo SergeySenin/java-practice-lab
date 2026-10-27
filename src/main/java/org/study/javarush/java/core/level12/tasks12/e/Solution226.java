@@ -29,9 +29,12 @@ public class Solution226 {
         int status = response.statusCode();
 
         if (status == 200) {
-            Path filePath = Path.of("image03.webp");
+            Path filePath = Path.of(
+                    "src/main/resources/generated/javarush/level12/short", "image03.webp"
+            );
             byte[] responseBytes = response.body();
 
+            Files.createDirectories(filePath.getParent());
             Files.write(filePath, responseBytes);
         } else {
             System.out.println("Ошибка загрузки: код ответа " + status);

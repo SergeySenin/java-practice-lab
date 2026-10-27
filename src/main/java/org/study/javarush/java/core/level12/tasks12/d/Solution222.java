@@ -7,10 +7,13 @@ import java.nio.file.Path;
 public class Solution222 {
     public static void main(String[] args) throws IOException {
 
-        Path filePath = Path.of("letters.bin");
+        Path filePath = Path.of(
+                "src/main/resources/generated/javarush/level12/short", "letters.bin"
+        );
 
         byte[] originalBytes = {72, 73, 74};
 
+        Files.createDirectories(filePath.getParent());
         Files.write(filePath, originalBytes);
 
         byte[] restoredBytes = Files.readAllBytes(filePath);
