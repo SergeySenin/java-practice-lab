@@ -94,21 +94,21 @@ public class Solution {
 
     // Новым объектом заменяется только локальная копия ссылки, как и в опыте с массивом.
     public static void tryToReplaceRequest(SupportRequest request) {
-        request = new SupportRequest();
-        request.requestId = 999;
+        request              = new SupportRequest();
+        request.requestId    = 999;
         request.requestTitle = "Another request";
         request.setPriorityLevel(1);
     }
 
     // Сборка отчёта отделена от вывода: метод возвращает готовый текст.
     public static String buildRequestSummary(
-            int requestId,
-            String requestTitle,
-            int priorityLevel,
+            int     requestId,
+            String  requestTitle,
+            int     priorityLevel,
             boolean isRequestAccepted,
-            int totalHistoricalRequestCount,
-            int currentProcessedRequestCount,
-            int dailyRequestLimit
+            int     totalHistoricalRequestCount,
+            int     currentProcessedRequestCount,
+            int     dailyRequestLimit
     ) {
         return
                   "Request ID:            " + requestId                    + "\n"
@@ -137,8 +137,8 @@ public class Solution {
         int waitingTimeMinutes   = console.nextInt();
 
         // Нормализация, приоритет и решение о принятии обращения.
-        String requestTitle       = normalizeTitle(requestTitleInput);
-        int priorityLevel         = calculatePriority(severityLevel, affectedUserCount, waitingTimeMinutes);
+        String  requestTitle      = normalizeTitle(requestTitleInput);
+        int     priorityLevel     = calculatePriority(severityLevel, affectedUserCount, waitingTimeMinutes);
         boolean isRequestAccepted = canAcceptRequest(requestTitle, priorityLevel);
 
         printCriticalWarning(priorityLevel, requestTitle);

@@ -3,6 +3,7 @@ package org.study.javarush.java.core.level04.tasks04.g;
 import java.util.Scanner;
 
 public class Solution {
+
     public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);

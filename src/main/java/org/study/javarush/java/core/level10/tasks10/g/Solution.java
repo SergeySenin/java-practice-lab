@@ -47,13 +47,13 @@ public class Solution {
         System.out.println(isProductionEnvironment);
 
         // Явная упаковка int в Integer и распаковка обратно в int.
-        int requestedRetryCount = Integer.parseInt(retryCountText);
-        Integer boxedRetryCount = Integer.valueOf(requestedRetryCount);
-        int unboxedRetryCount   = boxedRetryCount.intValue();
+        int     requestedRetryCount = Integer.parseInt(retryCountText);
+        Integer boxedRetryCount     = Integer.valueOf(requestedRetryCount);
+        int     unboxedRetryCount   = boxedRetryCount.intValue();
 
         // Те же преобразования автоматически, при присваивании.
-        Integer autoBoxedRetryCount = requestedRetryCount;
-        int autoUnboxedRetryCount   = autoBoxedRetryCount;
+        Integer autoBoxedRetryCount     = requestedRetryCount;
+        int     autoUnboxedRetryCount   = autoBoxedRetryCount;
 
         int effectiveRetryCount = requestedRetryCount;
 
@@ -69,12 +69,12 @@ public class Solution {
         double cpuLimitPercentValue = cpuLimitPercent;
 
         // Текст "NaN" превращается в особое значение; проверяем его методом isNaN.
-        double monitoringValue       = Double.parseDouble(monitoringValueText);
+        double  monitoringValue      = Double.parseDouble(monitoringValueText);
         boolean isMonitoringValueNaN = Double.isNaN(monitoringValue);
 
         // По условию строка непустая; Character.isDigit распознаёт также цифры Unicode.
-        char releaseCharacter             = releaseCharacterInput.charAt(0);
-        boolean isReleaseCharacterDigit   = Character.isDigit(releaseCharacter);
+        char      releaseCharacter        = releaseCharacterInput.charAt(0);
+        boolean   isReleaseCharacterDigit = Character.isDigit(releaseCharacter);
         Character wrappedReleaseCharacter = releaseCharacter;
 
         // null означает, что ручной порт не задан. Примитив int хранить null не может.

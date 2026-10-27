@@ -4,19 +4,20 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Solution {
+
     public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
 
-        byte protocolVersion       = 6;
-        short stationAltitude      = 1847;
-        int measurementCount       = 3;
-        long totalMeasurementCount = 12_500_000_000L;
-        float legacySensorAccuracy = 98.5F;
-        double calibrationFactor   = legacySensorAccuracy;
+        byte   protocolVersion       = 6;
+        short  stationAltitude       = 1847;
+        int    measurementCount      = 3;
+        long   totalMeasurementCount = 12_500_000_000L;
+        float  legacySensorAccuracy  = 98.5F;
+        double calibrationFactor     = legacySensorAccuracy;
 
         char stationCode         = 'M';
-        int stationUnicodeCode   = stationCode;
+        int  stationUnicodeCode  = stationCode;
         char restoredStationCode = (char) stationUnicodeCode;
 
         double firstTemperature   = console.nextDouble();
@@ -25,16 +26,16 @@ public class Solution {
         double temperatureSum     = firstTemperature + secondTemperature + thirdTemperature;
         double averageTemperature = temperatureSum / measurementCount;
 
-        int totalRainfall      = 7;
-        int rainyDays          = 2;
+        int    totalRainfall   = 7;
+        int    rainyDays       = 2;
         double averageRainfall = (double) totalRainfall / rainyDays;
 
         // Приведение к int отбрасывает дробную часть в сторону нуля, без округления.
-        int truncatedTemperature                    = (int) averageTemperature;
-        long averageTemperatureRoundedToWholeNumber = Math.round(averageTemperature);
-        double averageTemperatureRoundedDown        = Math.floor(averageTemperature);
-        double averageTemperatureRoundedUp          = Math.ceil(averageTemperature);
-        double averageTemperatureRintResult         = Math.rint(averageTemperature);
+        int    truncatedTemperature                   = (int) averageTemperature;
+        long   averageTemperatureRoundedToWholeNumber = Math.round(averageTemperature);
+        double averageTemperatureRoundedDown          = Math.floor(averageTemperature);
+        double averageTemperatureRoundedUp            = Math.ceil(averageTemperature);
+        double averageTemperatureRintResult           = Math.rint(averageTemperature);
 
         // Округление даёт число; форматирование ниже — строку с двумя знаками после точки.
         double averageTemperatureRoundedToTwoDecimals =
@@ -54,11 +55,11 @@ public class Solution {
                 = processedDataNumberFormat.format(totalProcessedData);
 
         // Из-за погрешности double сравниваем разницу с допуском, а не только через ==.
-        double actualCalibration           = 0.1 + 0.2;
-        double expectedCalibration         = 0.3;
-        double calibrationTolerance        = 0.000001;
+        double  actualCalibration          = 0.1 + 0.2;
+        double  expectedCalibration        = 0.3;
+        double  calibrationTolerance       = 0.000001;
         boolean exactCalibrationMatch      = actualCalibration == expectedCalibration;
-        double calibrationDifference       = Math.abs(actualCalibration - expectedCalibration);
+        double  calibrationDifference      = Math.abs(actualCalibration - expectedCalibration);
         boolean calibrationWithinTolerance = calibrationDifference < calibrationTolerance;
 
         if (calibrationWithinTolerance) {
@@ -72,11 +73,11 @@ public class Solution {
         boolean isDivisionByZeroInfinite = Double.isInfinite(divisionByZeroResult);
 
         // sqrt(-1) даёт NaN; его проверяют через isNaN, а не через ==.
-        double negativeSquareRootResult = Math.sqrt(-1);
-        boolean isNegativeSquareRootNaN = Double.isNaN(negativeSquareRootResult);
+        double  negativeSquareRootResult = Math.sqrt(-1);
+        boolean isNegativeSquareRootNaN  = Double.isNaN(negativeSquareRootResult);
 
         // Число 200 не помещается в byte; при приведении получается -56.
-        int extremeTemperature       = 200;
+        int  extremeTemperature      = 200;
         byte legacyControllerReading = (byte) extremeTemperature;
         System.out.println("Original value:          " + extremeTemperature);
         System.out.println("Value after int -> byte: " + legacyControllerReading);

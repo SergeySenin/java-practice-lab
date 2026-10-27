@@ -57,8 +57,8 @@ public static void main(String[] args)
 
 ## 3. Этап 2. Подготовка файла с заявками
 
-В рабочем каталоге запуска программы создайте текстовый файл `payouts.txt`.
-Запишите в него ровно семь строк:
+Используйте текстовый файл `src/main/resources/payouts.txt`. Если файла ещё нет, создайте его.
+Для основного теста он должен содержать ровно семь строк:
 
 ```text
 PAY-101;1200;100
@@ -79,8 +79,11 @@ PAY-107;200;20
 Строка `PAY-101;1200;100` означает: начислено `1200`, комиссия `100`, к выплате `1100`.
 В исходных данных намеренно присутствуют разные ошибки. Исправлять эти строки не нужно.
 
-Путь `payouts.txt` относительный: Java ищет файл в рабочем каталоге процесса.
-В IntelliJ IDEA при необходимости проверьте настройку **Run Configuration → Working directory**.
+Рабочий каталог запуска — корень проекта. В IntelliJ IDEA прожмите
+**Run Configuration → Working directory** значение `$PROJECT_DIR$`.
+Путь `src/main/resources/payouts.txt` отсчитывается от этого каталога.
+Программа читает оригинал файла напрямую; в тестах редактируйте этот же файл.
+Исходные данные хранятся в Git, где можно просмотреть изменения и восстановить содержимое.
 
 ## 4. Этап 3. Получение пути к файлу
 
@@ -91,7 +94,7 @@ PAY-107;200;20
 Основной ввод:
 
 ```text
-payouts.txt
+src/main/resources/payouts.txt
 ```
 
 За один запуск считывайте только одну строку пути.
@@ -362,13 +365,13 @@ Payable total: [сумма]
 Ввод в консоль:
 
 ```text
-payouts.txt
+src/main/resources/payouts.txt
 ```
 
 Ожидаемый вывод; переменная часть сообщения исключения обозначена в квадратных скобках:
 
 ```text
-IMPORT STARTED: payouts.txt
+IMPORT STARTED: src/main/resources/payouts.txt
 Line 1: ACCEPTED, amount: 1100
 Line 2: REJECTED - NUMBER_FORMAT
 Reason: [сообщение NumberFormatException]
@@ -406,17 +409,17 @@ IMPORT ATTEMPT FINISHED
 ## 11. Этап 9. Проверка отсутствующего файла
 
 Не удаляя `payouts.txt`, повторно запустите `Solution`.
-Убедитесь, что в рабочем каталоге нет `missing_payouts.txt`, и введите:
+Убедитесь, что в `src/main/resources` нет `missing_payouts.txt`, и введите:
 
 ```text
-missing_payouts.txt
+src/main/resources/missing_payouts.txt
 ```
 
 Ожидаемый вывод:
 
 ```text
-IMPORT STARTED: missing_payouts.txt
-IMPORT FAILED: unable to read missing_payouts.txt
+IMPORT STARTED: src/main/resources/missing_payouts.txt
+IMPORT FAILED: unable to read src/main/resources/missing_payouts.txt
 IMPORT ATTEMPT FINISHED
 ```
 
@@ -610,7 +613,7 @@ AFTER DIVISION
 
 Каждый тест запускайте отдельно после восстановления рабочего кода.
 Если дано содержимое файла, полностью заменяйте им `payouts.txt`
-и вводите в консоль путь `payouts.txt`.
+и вводите в консоль путь `src/main/resources/payouts.txt`.
 После каждого теста восстановите исходные семь строк этапа 2 и повторите основной тест.
 
 Ниже показаны ключевые строки статистики; сообщения обработки записей,

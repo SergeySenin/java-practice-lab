@@ -7,20 +7,20 @@ public class Solution {
 
     // Собираем отчёт в изменяемом StringBuilder, а наружу возвращаем готовую строку.
     public static String buildIncidentReport(
-            String incidentCode,
-            String eventLevel,
-            String serviceName,
-            String maskedEmail,
-            String emailDomain,
-            String logFileName,
-            String incidentMessage,
-            int incidentCodeDigitCount,
-            String serviceNameOrder,
-            double validationPercent,
-            int passedValidationCheckCount,
-            int totalValidationCheckCount,
+            String  incidentCode,
+            String  eventLevel,
+            String  serviceName,
+            String  maskedEmail,
+            String  emailDomain,
+            String  logFileName,
+            String  incidentMessage,
+            int     incidentCodeDigitCount,
+            String  serviceNameOrder,
+            double  validationPercent,
+            int     passedValidationCheckCount,
+            int     totalValidationCheckCount,
             boolean isErrorEvent,
-            String warningSymbol
+            String  warningSymbol
     ) {
         StringBuilder reportBuilder = new StringBuilder("STATUS:        PENDING\n");
 
@@ -43,9 +43,24 @@ public class Solution {
         reportBuilder.append("File:          ").append(logFileName)     .append("\n");
         reportBuilder.append("Message:       ").append(incidentMessage) .append("\n");
 
-        reportBuilder.append(String.format("Code digits:   %d\n", incidentCodeDigitCount));
-        reportBuilder.append("Service order: ").append(serviceNameOrder).append("\n");
-        reportBuilder.append(String.format(Locale.GERMANY, "Validation:    %.1f%%\n", validationPercent));
+        reportBuilder
+                .append(String.format(
+                        "Code digits:   %d\n",
+                        incidentCodeDigitCount
+                ));
+
+        reportBuilder
+                .append("Service order: ")
+                .append(serviceNameOrder)
+                .append("\n");
+
+        reportBuilder
+                .append(String.format(
+                        Locale.GERMANY,
+                        "Validation:    "
+                        + "%.1f%%\n",
+                        validationPercent
+                ));
 
         // Вставка в позицию 0 добавляет предупреждение перед уже собранным отчётом.
         if (isErrorEvent) {
@@ -108,12 +123,12 @@ public class Solution {
             return;
         }
 
-        char firstCodeCharacter        = incidentCode.charAt(0);
+        char    firstCodeCharacter     = incidentCode.charAt(0);
         boolean hasValidIncidentPrefix = incidentCode.startsWith("INC-");
 
         // По условию считаем только цифры от '0' до '9'.
         char[] incidentCodeCharacters = incidentCode.toCharArray();
-        int incidentCodeDigitCount    = 0;
+        int    incidentCodeDigitCount = 0;
 
         for (char codeCharacter : incidentCodeCharacters) {
             if (codeCharacter >= '0' && codeCharacter <= '9') {
@@ -131,15 +146,15 @@ public class Solution {
             emailDomain = "";
         }
 
-        String registeredEmail    = "user@example.com";
+        String  registeredEmail   = "user@example.com";
         boolean isRegisteredEmail = email.equalsIgnoreCase(registeredEmail);
         boolean isErrorEvent      = eventLevel.equals("ERROR");
 
-        String lowerCaseIncidentMessage = incidentMessage.toLowerCase(Locale.ROOT);
-        boolean hasPasswordKeyword      = lowerCaseIncidentMessage.contains("password");
+        String  lowerCaseIncidentMessage = incidentMessage.toLowerCase(Locale.ROOT);
+        boolean hasPasswordKeyword       = lowerCaseIncidentMessage.contains("password");
 
         // Проверяем текст пути; существование файла на диске здесь не проверяется.
-        String expectedLogDirectory          = "C:\\Logs\\";
+        String  expectedLogDirectory         = "C:\\Logs\\";
         boolean isLogFileInExpectedDirectory = logFilePath.startsWith(expectedLogDirectory);
         boolean hasLogFileExtension          = logFilePath.endsWith(".log");
 
@@ -156,8 +171,8 @@ public class Solution {
         String maskedEmail = email.replace("@", "[at]");
 
         // Для compareTo важен знак результата: он не обязан быть строго -1 или 1.
-        String referenceServiceName = "billing-service";
-        int serviceNameComparison   = serviceName.compareTo(referenceServiceName);
+        String referenceServiceName  = "billing-service";
+        int    serviceNameComparison = serviceName.compareTo(referenceServiceName);
         String serviceNameOrder;
 
         if (serviceNameComparison < 0) {
@@ -207,8 +222,8 @@ public class Solution {
                 + String.format("%-15s | %-7s | %s\n", serviceName, eventLevel, logFileName);
 
         String escapedDiagnosticMessage =
-                  "Source:\t\"" + logFilePath
-                + "\"\nLevel:\t\"" + eventLevel + "\"";
+                  "Source:\t\""    + logFilePath
+                + "\"\nLevel:\t\"" + eventLevel  + "\"";
 
         String warningSymbol = "\u26A0";
         String reportBanner = """

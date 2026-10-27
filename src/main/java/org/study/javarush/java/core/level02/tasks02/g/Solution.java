@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Solution {
+
     public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
@@ -17,14 +18,14 @@ public class Solution {
         String ticketPriceText    = console.nextLine();
         String travelMinutesText  = console.nextLine();
 
-        int availableSeatCount         = console.nextInt();
-        int soldTicketCount            = console.nextInt();
+        int    availableSeatCount      = console.nextInt();
+        int    soldTicketCount         = console.nextInt();
         double routeDistanceKilometers = console.nextDouble();
 
         byte carriageNumber = 7;
 
-        String passengerName    = passengerNameInput.trim();
-        int passengerNameLength = passengerName.length();
+        String passengerName       = passengerNameInput.trim();
+        int    passengerNameLength = passengerName.length();
 
         String email = emailInput.trim();
         email        = email.toLowerCase();

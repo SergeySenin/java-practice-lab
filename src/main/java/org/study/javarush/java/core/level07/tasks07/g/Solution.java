@@ -4,12 +4,13 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Solution {
+
     public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
 
         // Данные спортсменов
-        int athleteCount      = 4;
+        int      athleteCount = 4;
         String[] athleteNames = new String[athleteCount];
         String[] athleteNotes = new String[athleteCount];
 
