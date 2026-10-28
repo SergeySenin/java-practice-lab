@@ -323,10 +323,19 @@ BootCamp и JavaRush используют общую сборку.
   — темы и последовательность изучения.
 - [Памятка оформления JavaRush][r2]
   — правила для лекций, условий задач и других документов направления.
-- [Инициализация и изменение полей объекта][r3]
-  — шпаргалка по полям, конструкторам и способам изменения значений.
+- [Переменные и поля в Java][r3]
+  — категории переменных и значения по умолчанию.
+- [Инициализация и изменение полей][r4]
+  — способы присваивания и порядок инициализации объекта и класса.
+- [Модификатор `final` в Java][r5]
+  — ограничения для переменных, методов и классов.
+- [Модификаторы полей в Spring][r6]
+  — сочетания модификаторов и применение в сервисах.
 
 [bootcamp-help]: src/main/java/org/study/bootcamp/mishustin/info/HELPME.md
 [r1]: src/main/java/org/study/javarush/java/core/javarush_65_levels_topics.md
 [r2]: docs/javarush/markdown_style.md
-[r3]: docs/javarush/field_initialization.md
+[r3]: docs/javarush/variables_and_fields/java_variables_and_fields.md
+[r4]: docs/javarush/variables_and_fields/java_field_initialization_and_modification.md
+[r5]: docs/javarush/variables_and_fields/java_final_modifier.md
+[r6]: docs/javarush/variables_and_fields/java_field_modifiers_in_spring.md
