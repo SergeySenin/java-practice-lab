@@ -331,6 +331,10 @@ BootCamp и JavaRush используют общую сборку.
   — ограничения для переменных, методов и классов.
 - [Модификаторы полей в Spring][r6]
   — сочетания модификаторов и применение в сервисах.
+- Пошаговые схемы решений:
+  [№298 — `ArtifactChain`][r7] и [№299 — `Book.Builder`][r8].
+  Откройте соответствующий `index.html` в браузере из локальной копии проекта.
+  Просмотр и скачивание кадров работают без интернета.
 
 [bootcamp-help]: src/main/java/org/study/bootcamp/mishustin/info/HELPME.md
 [r1]: src/main/java/org/study/javarush/java/core/javarush_65_levels_topics.md
@@ -339,3 +343,5 @@ BootCamp и JavaRush используют общую сборку.
 [r4]: docs/javarush/variables_and_fields/java_field_initialization_and_modification.md
 [r5]: docs/javarush/variables_and_fields/java_final_modifier.md
 [r6]: docs/javarush/variables_and_fields/java_field_modifiers_in_spring.md
+[r7]: docs/javarush/visualizations/level16/solution298_artifact_chain/index.html
+[r8]: docs/javarush/visualizations/level16/solution299_book_builder/index.html
