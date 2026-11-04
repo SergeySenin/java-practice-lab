@@ -319,29 +319,44 @@ BootCamp и JavaRush используют общую сборку.
 
 ## Полезные материалы JavaRush
 
+Программа, правила и учебный контекст:
+
 - [Программа обучения на 65 уровней][r1]
   — темы и последовательность изучения.
 - [Памятка оформления JavaRush][r2]
   — правила для лекций, условий задач и других документов направления.
-- [Переменные и поля в Java][r3]
+- [Учебный контекст JavaRush][r3]
+  — оценка курса, учебные предпочтения и карта повторения
+  для внешних помощников, анализирующих репозиторий.
+
+Разборы тем:
+
+- [Переменные и поля в Java][r4]
   — категории переменных и значения по умолчанию.
-- [Инициализация и изменение полей][r4]
+- [Инициализация и изменение полей][r5]
   — способы присваивания и порядок инициализации объекта и класса.
-- [Модификатор `final` в Java][r5]
+- [Модификатор `final` в Java][r6]
   — ограничения для переменных, методов и классов.
-- [Модификаторы полей в Spring][r6]
+- [Модификаторы полей в Spring][r7]
   — сочетания модификаторов и применение в сервисах.
+
+Практика и пошаговые схемы:
+
+- [Короткие задачи для осмысленного повторения][r8]
+  — 16 упражнений на данные, состояние и взаимодействие объектов.
 - Пошаговые схемы решений:
-  [№298 — `ArtifactChain`][r7] и [№299 — `Book.Builder`][r8].
+  [№298 — `ArtifactChain`][r9] и [№299 — `Book.Builder`][r10].
   Откройте соответствующий `index.html` в браузере из локальной копии проекта.
   Просмотр и скачивание кадров работают без интернета.
 
 [bootcamp-help]: src/main/java/org/study/bootcamp/mishustin/info/HELPME.md
 [r1]: src/main/java/org/study/javarush/java/core/javarush_65_levels_topics.md
 [r2]: docs/javarush/markdown_style.md
-[r3]: docs/javarush/variables_and_fields/java_variables_and_fields.md
-[r4]: docs/javarush/variables_and_fields/java_field_initialization_and_modification.md
-[r5]: docs/javarush/variables_and_fields/java_final_modifier.md
-[r6]: docs/javarush/variables_and_fields/java_field_modifiers_in_spring.md
-[r7]: docs/javarush/visualizations/level16/solution298_artifact_chain/index.html
-[r8]: docs/javarush/visualizations/level16/solution299_book_builder/index.html
+[r3]: docs/javarush/learning_context.md
+[r4]: docs/javarush/topic_guides/variables_and_fields/java_variables_and_fields.md
+[r5]: docs/javarush/topic_guides/variables_and_fields/java_field_initialization_and_modification.md
+[r6]: docs/javarush/topic_guides/variables_and_fields/java_final_modifier.md
+[r7]: docs/javarush/topic_guides/variables_and_fields/java_field_modifiers_in_spring.md
+[r8]: docs/javarush/practice_selection.md
+[r9]: docs/javarush/visualizations/level16/solution298_artifact_chain/index.html
+[r10]: docs/javarush/visualizations/level16/solution299_book_builder/index.html
