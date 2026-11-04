@@ -2,7 +2,9 @@ package org.study.javarush.java.core.level20.tasks20.d.temp4;
 
 public class Solution383 {
     public static void main(String[] args) {
+
         MediaDevice device = new MediaDevice();
+
         testDevice(device, device);
     }
 

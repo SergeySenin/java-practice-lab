@@ -4,6 +4,7 @@ public class Solution322 {
     public static void main(String[] args) {
 
         Cat cat = new Cat();
+
         cat.printNames();
     }
 }

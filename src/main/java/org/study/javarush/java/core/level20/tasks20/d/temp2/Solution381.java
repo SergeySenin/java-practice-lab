@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 public class Solution381 {
     public static void main(String[] args) {
+
         User user = new User("Анна");
+
         System.out.println(user.getName());
     }
 }

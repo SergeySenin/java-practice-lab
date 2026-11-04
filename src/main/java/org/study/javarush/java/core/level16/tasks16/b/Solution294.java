@@ -11,7 +11,6 @@ public class Solution294 {
 }
 
 class Library {
-
     public void addScroll(String scrollTitle) {
     }
 

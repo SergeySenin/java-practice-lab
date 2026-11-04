@@ -10,11 +10,8 @@ public class Solution306 {
 }
 
 class SpecialCalculator {
-
     public void calculateAndDisplaySum(int numA, int numB) {
-
         class SumResultPrinter {
-
             public void printResult() {
                 System.out.println(numA + numB);
             }

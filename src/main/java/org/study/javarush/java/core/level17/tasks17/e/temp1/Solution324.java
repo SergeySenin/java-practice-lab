@@ -5,6 +5,7 @@ public class Solution324 {
 
         Dog dog = new Dog();
         dog.petName = "Бобик";
+
         dog.eat();
     }
 }

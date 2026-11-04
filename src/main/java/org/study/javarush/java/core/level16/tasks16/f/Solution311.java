@@ -8,7 +8,6 @@ public class Solution311 {
     }
 
     public static class DevUtils {
-
         public static <T> void printTwice(T item) {
             System.out.println(item);
             System.out.println(item);

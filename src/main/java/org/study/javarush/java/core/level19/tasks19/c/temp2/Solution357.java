@@ -4,6 +4,7 @@ public class Solution357 {
     public static void main(String[] args) {
 
         Phone phone = new Phone();
+
         phone.turnOn();
         phone.turnOff();
     }

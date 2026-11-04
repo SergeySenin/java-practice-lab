@@ -10,11 +10,8 @@ public class Solution304 {
 }
 
 class DisplayBoard {
-
     public void showTemporaryMessage() {
-
         class GreetingDisplay {
-
             public void displayMessage() {
                 System.out.println("Привет из локального класса!");
             }

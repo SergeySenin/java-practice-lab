@@ -13,9 +13,7 @@ class SecretKeeper {
     private String hiddenSecret = "Java — круто!";
 
     public void revealSecret() {
-
         class TruthRevealer {
-
             public void printSecret() {
                 System.out.println(hiddenSecret);
             }

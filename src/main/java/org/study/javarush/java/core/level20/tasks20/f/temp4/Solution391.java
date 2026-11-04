@@ -5,12 +5,14 @@ import java.util.List;
 
 public class Solution391 {
     public static void main(String[] args) {
+
         NewsPublisher publisher = new NewsPublisher();
         Person first = new Person("Анна");
         Person second = new Person("Иван");
 
         publisher.addSubscriber(first);
         publisher.addSubscriber(second);
+
         publisher.notifySubscribers("Обновление курса Java!");
     }
 }

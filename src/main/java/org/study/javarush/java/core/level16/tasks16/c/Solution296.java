@@ -10,9 +10,7 @@ public class Solution296 {
 }
 
 class Spellbook {
-
     static class BasicCharm {
-
         public void castSpell() {
             System.out.println("Hello from static basic charm!");
         }

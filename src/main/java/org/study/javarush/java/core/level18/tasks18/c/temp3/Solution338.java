@@ -4,6 +4,7 @@ public class Solution338 {
     public static void main(String[] args) {
 
         Greetings greetings = new Greetings();
+
         greetings.sayHello("Алекс");
         greetings.sayHello("Джон", "Доу");
     }

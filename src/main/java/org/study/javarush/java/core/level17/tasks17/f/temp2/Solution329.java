@@ -4,6 +4,7 @@ public class Solution329 {
     public static void main(String[] args) {
 
         Child child = new Child();
+
         child.printSecret();
         child.demonstrateAccess();
     }

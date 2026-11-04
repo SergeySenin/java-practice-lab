@@ -18,7 +18,6 @@ class Person {
     }
 
     class Greeting {
-
         public void sayHello() {
             System.out.println("Hello, " + userName);
         }

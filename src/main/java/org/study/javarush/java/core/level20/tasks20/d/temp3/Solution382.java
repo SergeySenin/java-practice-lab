@@ -2,7 +2,9 @@ package org.study.javarush.java.core.level20.tasks20.d.temp3;
 
 public class Solution382 {
     public static void main(String[] args) {
+
         MultiAction action = new MultiAction();
+
         action.doAction();
     }
 }

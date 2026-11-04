@@ -10,9 +10,7 @@ public class Solution307 {
 }
 
 class TextAnalyzer {
-
     public void generateNameReport(String customerName) {
-
         class NameStatistics {
             private String originalCustomerName;
 

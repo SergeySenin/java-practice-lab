@@ -4,6 +4,7 @@ public class Solution349 {
     public static void main(String[] args) {
 
         Animal animal = new Dog();
+
         animal.makeSound();
     }
 }

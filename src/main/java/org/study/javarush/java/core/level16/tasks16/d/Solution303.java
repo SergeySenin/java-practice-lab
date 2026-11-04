@@ -14,7 +14,6 @@ class SecureLab {
 
     public void revealSecret() {
         Runnable revealTask = new Runnable() {
-
             @Override
             public void run() {
                 System.out.println(classifiedSecret);

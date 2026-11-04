@@ -4,6 +4,7 @@ public class Solution326 {
     public static void main(String[] args) {
 
         SchoolStudent student = new SchoolStudent();
+
         student.introduce();
     }
 }

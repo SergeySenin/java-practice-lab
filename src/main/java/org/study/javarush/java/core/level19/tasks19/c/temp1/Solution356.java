@@ -4,7 +4,9 @@ public class Solution356 {
     public static void main(String[] args) {
 
         UpperCaseCipher cipher = new UpperCaseCipher();
+
         String result = cipher.encode("secret message");
+
         System.out.println(result);
     }
 }

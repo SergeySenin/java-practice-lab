@@ -4,6 +4,7 @@ public class Solution337 {
     public static void main(String[] args) {
 
         Multiplier multiplier = new Multiplier();
+
         System.out.println(multiplier.multiply(5, 4));
         System.out.println(multiplier.multiply(2.5, 3.0));
     }

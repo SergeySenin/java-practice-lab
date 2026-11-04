@@ -4,6 +4,7 @@ public class Solution341 {
     public static void main(String[] args) {
 
         ColorPrinter printer = new ColorPrinter();
+
         printer.print(5);
         printer.print("Hello");
     }

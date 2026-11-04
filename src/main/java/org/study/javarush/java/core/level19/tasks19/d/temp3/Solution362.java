@@ -4,6 +4,7 @@ public class Solution362 {
     public static void main(String[] args) {
 
         Manager manager = new Manager("Ivan", 50000);
+
         System.out.println(manager.getName());
         System.out.println(manager.getSalary());
     }

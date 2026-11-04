@@ -2,7 +2,9 @@ package org.study.javarush.java.core.level20.tasks20.b.temp3;
 
 public class Solution374 {
     public static void main(String[] args) {
+
         Calculator calculator = new Calculator();
+
         calculator.printPi();
     }
 }

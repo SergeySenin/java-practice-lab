@@ -2,7 +2,9 @@ package org.study.javarush.java.core.level20.tasks20.c.temp4;
 
 public class Solution379 {
     public static void main(String[] args) {
+
         SmartPhone phone = new SmartPhone();
+
         phone.turnOn();
         phone.work();
         phone.charge();

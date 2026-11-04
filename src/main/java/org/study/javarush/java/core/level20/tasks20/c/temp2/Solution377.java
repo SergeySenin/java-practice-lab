@@ -2,7 +2,9 @@ package org.study.javarush.java.core.level20.tasks20.c.temp2;
 
 public class Solution377 {
     public static void main(String[] args) {
+
         Student student = new Student("Анна");
+
         student.printInfo();
     }
 }

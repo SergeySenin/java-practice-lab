@@ -4,7 +4,6 @@ public class Solution300 {
     public static void main(String[] args) {
 
         MagicalCreature creature = new MagicalCreature() {
-
             @Override
             public void makeSound() {
                 System.out.println("Ква-ква!");
@@ -16,7 +15,6 @@ public class Solution300 {
 }
 
 class MagicalCreature {
-
     public void makeSound() {
         System.out.println("Существо издаёт звук");
     }

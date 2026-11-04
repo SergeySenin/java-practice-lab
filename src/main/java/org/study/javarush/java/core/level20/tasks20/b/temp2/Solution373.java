@@ -2,7 +2,9 @@ package org.study.javarush.java.core.level20.tasks20.b.temp2;
 
 public class Solution373 {
     public static void main(String[] args) {
+
         Drawable drawable = new Circle();
+
         drawable.draw();
     }
 }

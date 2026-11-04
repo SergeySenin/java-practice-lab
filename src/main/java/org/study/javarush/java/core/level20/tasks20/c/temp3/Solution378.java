@@ -2,7 +2,9 @@ package org.study.javarush.java.core.level20.tasks20.c.temp3;
 
 public class Solution378 {
     public static void main(String[] args) {
+
         MultiFunctionDevice device = new MultiFunctionDevice();
+
         device.print();
         device.scan();
     }

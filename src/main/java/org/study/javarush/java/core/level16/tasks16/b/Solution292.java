@@ -11,9 +11,7 @@ public class Solution292 {
 }
 
 class Box {
-
     class Label {
-
         public void printLabel() {
             System.out.println("Box label");
         }

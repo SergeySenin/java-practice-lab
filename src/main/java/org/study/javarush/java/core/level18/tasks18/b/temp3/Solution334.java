@@ -4,6 +4,7 @@ public class Solution334 {
     public static void main(String[] args) {
 
         Employee employee = new Developer();
+
         employee.work();
     }
 }

@@ -2,6 +2,7 @@ package org.study.javarush.java.core.level20.tasks20.f.temp3;
 
 public class Solution390 {
     public static void main(String[] args) {
+
         Greeter greeter = new Greeter();
 
         greeter.setStrategy(new FriendlyGreeting());

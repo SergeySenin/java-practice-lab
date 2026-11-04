@@ -4,6 +4,7 @@ public class Solution318 {
     public static void main(String[] args) {
 
         Parent person = new Child();
+
         person.greet();
     }
 }

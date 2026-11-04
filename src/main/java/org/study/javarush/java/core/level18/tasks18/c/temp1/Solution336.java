@@ -4,6 +4,7 @@ public class Solution336 {
     public static void main(String[] args) {
 
         MessagePrinter printer = new MessagePrinter();
+
         printer.printMessage("Привет, мир!");
         printer.printMessage(10, 20);
     }
