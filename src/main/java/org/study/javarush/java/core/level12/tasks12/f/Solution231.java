@@ -32,7 +32,6 @@ public class Solution231 {
     }
 
     private static String extractJsonStringValue(String jsonText, String propertyName) {
-
         String valuePrefix = "\"" + propertyName + "\": \"";
 
         int valueStartIndex = jsonText.indexOf(valuePrefix) + valuePrefix.length();

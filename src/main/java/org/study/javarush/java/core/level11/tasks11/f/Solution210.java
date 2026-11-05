@@ -7,12 +7,10 @@ public class Solution210 {
     }
 
     public static void calculateReportData() {
-
         processRawNumbers();
     }
 
     public static void processRawNumbers() {
-
         System.out.println(100 / 0);
     }
 }

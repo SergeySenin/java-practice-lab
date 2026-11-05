@@ -9,7 +9,6 @@ public class Solution290 {
 }
 
 class SystemComponent {
-
     static {
         System.out.println("Глобальная инициализация: Шаг 1");
     }

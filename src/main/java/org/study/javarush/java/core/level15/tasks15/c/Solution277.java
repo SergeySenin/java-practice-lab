@@ -15,7 +15,6 @@ public class Solution277 {
 }
 
 class MagicCalculator {
-
     public int addNumbers(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
     }

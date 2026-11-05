@@ -11,7 +11,6 @@ public class Solution207 {
     }
 
     public static int convertToGoldAmount(String playerInput) throws NumberFormatException {
-
         return Integer.parseInt(playerInput);
     }
 }

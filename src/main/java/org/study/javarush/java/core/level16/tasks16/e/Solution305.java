@@ -20,6 +20,7 @@ class SecretKeeper {
         }
 
         TruthRevealer revealer = new TruthRevealer();
+
         revealer.printSecret();
     }
 }

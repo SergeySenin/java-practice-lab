@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Solution39 {
     public static void main(String[] args) {
+
         Scanner console = new Scanner(System.in);
 
         int age = Integer.parseInt(console.nextLine());

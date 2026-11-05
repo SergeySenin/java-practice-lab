@@ -6,9 +6,11 @@ public class Solution109 {
         char secretAgentLetter = 'G';
 
         int numericCode = (int) secretAgentLetter;
+
         System.out.println(numericCode);
 
         char decodedAgentLetter = (char) numericCode;
+
         System.out.println(decodedAgentLetter);
     }
 }

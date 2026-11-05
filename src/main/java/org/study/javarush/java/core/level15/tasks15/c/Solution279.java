@@ -15,7 +15,6 @@ public class Solution279 {
 }
 
 class DigitalLibraryManager {
-
     public void announceOpening() {
         System.out.println("Библиотека открыта для посетителей!");
     }

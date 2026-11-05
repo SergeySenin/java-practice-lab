@@ -18,6 +18,7 @@ class SpecialCalculator {
         }
 
         SumResultPrinter printer = new SumResultPrinter();
+
         printer.printResult();
     }
 }

@@ -18,6 +18,7 @@ class DisplayBoard {
         }
 
         GreetingDisplay display = new GreetingDisplay();
+
         display.displayMessage();
     }
 }

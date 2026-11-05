@@ -7,5 +7,4 @@ public class Solution252 {
 }
 
 class Dog {
-
 }

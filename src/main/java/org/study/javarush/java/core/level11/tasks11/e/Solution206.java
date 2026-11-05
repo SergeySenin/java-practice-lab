@@ -12,7 +12,6 @@ public class Solution206 {
 
     public static void extractFirstLineFromData(String dataFile)
             throws FileNotFoundException, IOException {
-
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(dataFile))) {
             bufferedReader.readLine();
         }

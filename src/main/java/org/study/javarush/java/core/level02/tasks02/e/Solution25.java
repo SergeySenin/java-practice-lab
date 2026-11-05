@@ -2,6 +2,7 @@ package org.study.javarush.java.core.level02.tasks02.e;
 
 public class Solution25 {
     public static void main(String[] args) {
+
         byte level = 99;
         int goldAmount = 1_000_000;
         double rating = 15.5;

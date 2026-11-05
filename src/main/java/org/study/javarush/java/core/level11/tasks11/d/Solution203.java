@@ -11,7 +11,6 @@ public class Solution203 {
     }
 
     public static void validateUserName(String userName) {
-
         try {
             if (userName.isEmpty()) {
                 throw new IllegalArgumentException("Регистрация отклонена: Имя пользователя не может быть пустым.");

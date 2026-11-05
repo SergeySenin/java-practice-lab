@@ -27,6 +27,7 @@ public class Solution228 {
         );
 
         String responseBody = response.body();
+
         System.out.println(responseBody);
     }
 }

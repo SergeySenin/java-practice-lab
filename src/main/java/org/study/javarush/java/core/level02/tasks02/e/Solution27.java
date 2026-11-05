@@ -2,6 +2,7 @@ package org.study.javarush.java.core.level02.tasks02.e;
 
 public class Solution27 {
     public static void main(String[] args) {
+
         byte b = 10;
         int i = 100;
         double d = 3.14;

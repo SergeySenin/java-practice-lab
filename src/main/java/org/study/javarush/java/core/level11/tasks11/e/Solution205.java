@@ -17,7 +17,6 @@ public class Solution205 {
     }
 
     public static void analyzeSystemLog(String logFileName) throws IOException {
-
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(logFileName))) {
             bufferedReader.readLine();
         }

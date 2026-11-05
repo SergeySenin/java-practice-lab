@@ -2,6 +2,7 @@ package org.study.javarush.java.core.level02.tasks02.e;
 
 public class Solution28 {
     public static void main(String[] args) {
+
         int account1 = 100;
         int account2 = 200;
 

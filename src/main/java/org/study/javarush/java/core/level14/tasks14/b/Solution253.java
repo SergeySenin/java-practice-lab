@@ -8,5 +8,4 @@ public class Solution253 {
 }
 
 class Cat {
-
 }

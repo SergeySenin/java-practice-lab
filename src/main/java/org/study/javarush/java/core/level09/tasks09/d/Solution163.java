@@ -7,6 +7,7 @@ public class Solution163 {
 
         if (productName.charAt(0) == 'E') {
             String abbreviatedName = productName.substring(0, 3);
+
             System.out.println(abbreviatedName);
         } else {
             System.out.println("Первая буква не E");

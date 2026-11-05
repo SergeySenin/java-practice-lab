@@ -9,7 +9,6 @@ public class Solution204 {
     }
 
     public static void accessSecretDocument(String documentPath) throws IOException {
-
         try (FileReader fileReader = new FileReader(documentPath)) {
             // Документ открыт. При выходе из блока поток автоматически закроется.
         }

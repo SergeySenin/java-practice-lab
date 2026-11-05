@@ -10,7 +10,6 @@ public class Solution278 {
 }
 
 class ModuleMain {
-
     void run() {
         ModuleHelper helper = new ModuleHelper();
 
@@ -19,7 +18,6 @@ class ModuleMain {
 }
 
 class ModuleHelper {
-
     void provideInternalAssistance() {
         System.out.println("Предоставляю внутреннюю помощь модуля!");
     }

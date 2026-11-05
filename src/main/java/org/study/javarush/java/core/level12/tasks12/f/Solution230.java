@@ -29,6 +29,7 @@ public class Solution230 {
         switch (status) {
             case 200:
                 String responseBody = response.body();
+
                 System.out.println(responseBody);
                 break;
             case 404:

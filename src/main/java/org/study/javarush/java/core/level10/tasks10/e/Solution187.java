@@ -8,6 +8,7 @@ public class Solution187 {
         System.out.println(currentPlanet.name());
 
         int planetOrdinal = currentPlanet.ordinal();
+
         System.out.println(planetOrdinal);
 
         String targetPlanetName = "JUPITER";

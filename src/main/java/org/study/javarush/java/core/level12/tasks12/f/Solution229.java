@@ -25,6 +25,7 @@ public class Solution229 {
         );
 
         int status = response.statusCode();
+
         System.out.println(status);
     }
 }
