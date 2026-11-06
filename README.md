@@ -340,6 +340,9 @@ BootCamp и JavaRush используют общую сборку.
 - [Модификаторы полей в Spring][r7]
   — сочетания модификаторов и применение в сервисах.
 
+- [Каталог паттернов проектирования — Refactoring.Guru][patterns-catalog]
+  — объяснения паттернов, схемы и примеры реализации.
+
 Практика и пошаговые схемы:
 
 - [Короткие задачи для осмысленного повторения][r8]
@@ -360,3 +363,4 @@ BootCamp и JavaRush используют общую сборку.
 [r8]: docs/javarush/practice_selection.md
 [r9]: docs/javarush/visualizations/level16/solution298_artifact_chain/index.html
 [r10]: docs/javarush/visualizations/level16/solution299_book_builder/index.html
+[patterns-catalog]: https://refactoring.guru/ru/design-patterns/catalog
