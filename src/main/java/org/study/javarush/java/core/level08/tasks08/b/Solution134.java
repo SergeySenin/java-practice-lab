@@ -1,7 +1,7 @@
 package org.study.javarush.java.core.level08.tasks08.b;
 
 public class Solution134 {
-    public static void main(String[] args) { // main не в GameScore → отклонение от условия задачи
+    public static void main(String[] args) {
 
         GameScore.collectCoin();
         GameScore.collectCoin();

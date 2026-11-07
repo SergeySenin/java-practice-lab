@@ -16,6 +16,5 @@ class Robot {
 class Dog extends Animal {
 }
 
-// НАМЕРЕННАЯ ОШИБКА: убрать //, чтобы проверить запрет множественного наследования.
 // class RoboDog extends Animal, Robot {
 // }

@@ -7,7 +7,7 @@ public class Solution425 {
 
         System.out.println(validEmail);
 
-        new Email("invalid-email"); // Ожидаемое исключение IllegalArgumentException.
+        new Email("invalid-email");
     }
 }
 

@@ -1,7 +1,7 @@
 package org.study.javarush.java.core.level08.tasks08.c;
 
 public class Solution139 {
-    public static void main(String[] args) { // main не в ShapeDesigner → отклонение от условия задачи
+    public static void main(String[] args) {
 
         ShapeDesigner.printRectangleSpecs(5, 10);
         ShapeDesigner.printRectangleSpecs(3, 7);

@@ -8,14 +8,10 @@ public class Solution275 {
         System.out.println("ID: " + product.getProductID());
         System.out.println("Название: " + product.getProductName());
 
-        /*
-        Прямое изменение приватных полей запрещено:
-        product.productID = 102;
-        product.productName = "Хлеб";
+        // product.productID = 102;
+        // product.productName = "Хлеб";
 
-        Сеттеров также нет:
-        product.setProductName("Хлеб");
-        */
+        // product.setProductName("Хлеб");
     }
 }
 

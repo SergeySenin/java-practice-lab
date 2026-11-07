@@ -9,7 +9,6 @@ public class Solution279 {
         manager.conductStaffMeeting();
         manager.manageBookInventory();
 
-        // Ошибка компиляции при раскомментировании:
         // manager.handleFinancialAudits();
     }
 }

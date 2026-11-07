@@ -20,7 +20,6 @@ class Parent {
 
 class Child extends Parent {
     void demonstrateAccess() {
-        // НАМЕРЕННАЯ ОШИБКА: убрать // для проверки доступа к private.
         // System.out.println(familySecret);
     }
 }

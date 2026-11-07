@@ -16,8 +16,8 @@ public class Solution431 {
 
         System.out.println(fixedProfile.name() + ", " + fixedProfile.age());
 
-        // fixedProfile.name = "Пётр";    // Ошибка компиляции: компонент record является private final.
-        // fixedProfile.setName("Пётр");  // Ошибка компиляции: сеттер не объявлен.
+        // fixedProfile.name = "Пётр";
+        // fixedProfile.setName("Пётр");
     }
 }
 

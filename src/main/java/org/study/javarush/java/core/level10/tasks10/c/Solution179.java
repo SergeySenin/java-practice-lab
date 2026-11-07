@@ -5,7 +5,6 @@ public class Solution179 {
 
         final int MAX_PLAYERS_ON_SERVER = 100;
 
-//      MAX_PLAYERS_ON_SERVER = 200;
-//      cannot assign a value to final variable MAX_PLAYERS_ON_SERVER
+        // MAX_PLAYERS_ON_SERVER = 200;
     }
 }

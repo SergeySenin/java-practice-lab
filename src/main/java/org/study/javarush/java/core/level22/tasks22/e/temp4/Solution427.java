@@ -7,7 +7,7 @@ public class Solution427 {
 
         System.out.println(validTransaction.description());
 
-        new Transaction("Анна", "Иван", -100.0); // Ожидаемое исключение IllegalArgumentException.
+        new Transaction("Анна", "Иван", -100.0);
     }
 }
 

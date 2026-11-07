@@ -1,7 +1,7 @@
 package org.study.javarush.java.core.level08.tasks08.c;
 
 public class Solution136 {
-    public static void main(String[] args) { // main не в PersonalGreeter → отклонение от условия задачи
+    public static void main(String[] args) {
 
         PersonalGreeter.welcomeNewUser("Аня");
     }

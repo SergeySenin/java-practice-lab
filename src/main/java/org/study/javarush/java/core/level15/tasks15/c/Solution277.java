@@ -9,7 +9,6 @@ public class Solution277 {
 
         System.out.println(result);
 
-        // Ошибка компиляции при раскомментировании:
         // calculator.displayInternalResult(result);
     }
 }

@@ -8,8 +8,8 @@ public class Solution417 {
         System.out.println(person.name());
         System.out.println(person.age());
 
-        // person.name = "Другое имя";    // Ошибка компиляции: компонент record является private final.
-        // person.setName("Другое имя");  // Ошибка компиляции: сеттер не объявлен.
+        // person.name = "Другое имя";
+        // person.setName("Другое имя");
     }
 }
 

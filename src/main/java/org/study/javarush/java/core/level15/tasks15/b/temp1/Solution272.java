@@ -5,11 +5,8 @@ public class Solution272 {
 
         Person person = new Person();
 
-        /*
-        Эти обращения вызовут ошибки компиляции:
-        System.out.println(person.memberName);
-        System.out.println(person.memberAge);
-        */
+        // System.out.println(person.memberName);
+        // System.out.println(person.memberAge);
     }
 }
 

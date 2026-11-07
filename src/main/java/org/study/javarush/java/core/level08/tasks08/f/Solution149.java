@@ -8,7 +8,6 @@ public class Solution149 {
         myPrivateAccount.depositMoney(1000);
 
         // myPrivateAccount.accountBalance = 2000;
-        // accountBalance has private access in CustomerBankAccount
     }
 }
 

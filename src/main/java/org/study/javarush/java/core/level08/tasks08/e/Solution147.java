@@ -1,6 +1,6 @@
 package org.study.javarush.java.core.level08.tasks08.e;
 
-public class Solution147 { // MagicalContainer в Solution147 → иотклонение от условия задачи
+public class Solution147 {
     public static void main(String[] args) {
 
         MagicalContainer myTreasureChest = new MagicalContainer();

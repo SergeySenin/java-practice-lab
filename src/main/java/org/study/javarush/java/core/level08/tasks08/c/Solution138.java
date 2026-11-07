@@ -1,7 +1,7 @@
 package org.study.javarush.java.core.level08.tasks08.c;
 
 public class Solution138 {
-    public static void main(String[] args) { // main не в HRProfileManager → отклонение от условия задачи
+    public static void main(String[] args) {
 
         HRProfileManager.displayEmployeeCard("Олег", 30);
     }

@@ -10,7 +10,6 @@ public class Solution151 {
         newPupil.setStudentAge(16);
 
         // newPupil.studentAge = 18;
-        // studentAge has private access in SchoolStudent
 
         newPupil.displayStudentProfile();
     }

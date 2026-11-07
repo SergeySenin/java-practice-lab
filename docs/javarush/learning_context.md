@@ -108,6 +108,7 @@ JavaRush небрежно подготовленной. Основные пре�
 |         | equals(Object o)                           | (полный ответ для собеседований) |
 |         | hashCode()                                 | (полный ответ для собеседований) |
 |         | toString()                                 | (полный ответ для собеседований) |
+| 23      | ООП                                        | (полный ответ для собеседований) |
 
 [r1]: visualizations/level16/solution298_artifact_chain/index.html
 [r2]: visualizations/level16/solution299_book_builder/index.html
